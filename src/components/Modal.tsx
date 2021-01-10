@@ -11,7 +11,7 @@ function Modal({store, getStore}: ICalendarProps) {
 
   const handleCloseButtonClick = ()=>{
     getStore({...store, isOpenModal: !isOpenModal, dataChangeMessage: {
-      currentHour: null,
+      currentHour: undefined,
       text: '',
     }})
   }
@@ -28,7 +28,7 @@ function Modal({store, getStore}: ICalendarProps) {
     getStore({...store, isOpenModal: !isOpenModal, 
       storeMessages: JSON.parse(localStorage.getItem("storeMessages") || '{}'),
       dataChangeMessage: {
-      currentHour: null,
+      currentHour: undefined,
       text: '',
       }
     })

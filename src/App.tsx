@@ -18,7 +18,7 @@ function App() {
     idSelectedDate: currentDate.getTime(),
     storeMessages: JSON.parse(localStorage.getItem("storeMessages") || '{}'),
     dataChangeMessage: {
-       currentHour: null,
+       currentHour: undefined,
        text: '',
      },
   })

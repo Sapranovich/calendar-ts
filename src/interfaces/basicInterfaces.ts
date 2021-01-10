@@ -9,7 +9,7 @@ export interface IStandartTypesStore{
 }
 
 interface DataChangeMessageTypes{
-  currentHour: number | null
+  currentHour: number | undefined
   text: string
 }
 
@@ -23,5 +23,5 @@ export interface IToDoListItemProps{
   store: IStandartTypesStore
   getStore: React.Dispatch<IStandartTypesStore>
   data: string | null 
-  hour: number
+  hour: number | undefined
 }
