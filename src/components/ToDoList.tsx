@@ -5,11 +5,11 @@ import ToDoListItem from './ToDoListItem';
 
 import {ICalendarProps} from '../interfaces/basicInterfaces';
 
-function ToDoList({store, getStore}:ICalendarProps) {
+function ToDoList({store, setStore}:ICalendarProps) {
   const {currentDate, selectedDate, storeMessages, idSelectedDate} = store;
  
   const handleCurrentButtonClick =()=>{
-    getStore({
+    setStore({
       ...store,
       selectedDate:currentDate, 
       calendarDate: currentDate,
@@ -26,8 +26,8 @@ function ToDoList({store, getStore}:ICalendarProps) {
       <div className="to-do-list__wrapper to-do-list_decor">
         {
           (idSelectedDate in storeMessages) 
-          ? storeMessages[idSelectedDate].map((data:string | null, index:number)=> <ToDoListItem store ={store} getStore={getStore} key={index} hour={index} data = {data} />)
-          : (Array(CONSTANTS.HOURS_DAY).fill(null).map( (data, index)=> <ToDoListItem store ={store} getStore={getStore} key={index} hour={index} data = {data} />)) 
+          ? storeMessages[idSelectedDate].map((data:string | null, index:number)=> <ToDoListItem store ={store} setStore={setStore} key={index} hour={index} data = {data} />)
+          : (Array(CONSTANTS.HOURS_DAY).fill(null).map( (data, index)=> <ToDoListItem store ={store} setStore={setStore} key={index} hour={index} data = {data} />)) 
         }
       </div>
     </div>

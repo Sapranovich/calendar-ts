@@ -5,11 +5,11 @@ import saveInLocalStorage from '../services/localStoreServices';
 
 import {IToDoListItemProps} from '../interfaces/basicInterfaces';
 
-function ToDoListItem({hour, data, store, getStore}:IToDoListItemProps) {
+function ToDoListItem({hour, data, store, setStore}:IToDoListItemProps) {
   const { isOpenModal, idSelectedDate} = store;
   
   const handleOpenModalButtonClick = ()=>{
-    getStore({...store, 
+    setStore({...store, 
       isOpenModal:!isOpenModal,
       dataChangeMessage: {
         currentHour: hour,
@@ -20,7 +20,7 @@ function ToDoListItem({hour, data, store, getStore}:IToDoListItemProps) {
 
   const handleRemoveMessageButtonClick = ()=>{
     saveInLocalStorage(idSelectedDate, hour, '');
-    getStore({...store, 
+    setStore({...store, 
       storeMessages: JSON.parse(localStorage.getItem("storeMessages") || '{}'),
     })
   }

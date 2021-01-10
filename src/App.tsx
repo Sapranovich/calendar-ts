@@ -10,7 +10,7 @@ function App() {
   const date = new Date();
   const currentDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
 
-  const [store, getStore] = React.useState<IStandartTypesStore>({
+  const [store, setStore] = React.useState<IStandartTypesStore>({
     isOpenModal: false,
     calendarDate: currentDate,
     currentDate: currentDate,
@@ -27,10 +27,10 @@ function App() {
     <div className="app">
       <div className="wrapper">
         <div className="app__wrapper">
-          <Calendar  store={store} getStore={getStore}/>
-          <ToDoList store={store} getStore={getStore}/>
+          <Calendar  store={store} setStore={setStore}/>
+          <ToDoList store={store} setStore={setStore}/>
         </div>
-        {store.isOpenModal && <Modal store={store} getStore={getStore}/> }
+        {store.isOpenModal && <Modal store={store} setStore={setStore}/> }
       </div>
     </div>
   );

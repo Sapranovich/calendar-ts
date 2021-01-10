@@ -16,12 +16,12 @@ interface DataChangeMessageTypes{
 
 export interface ICalendarProps{
   store: IStandartTypesStore
-  getStore: React.Dispatch<IStandartTypesStore>
+  setStore: React.Dispatch<IStandartTypesStore>
 }
 
 export interface IToDoListItemProps{
   store: IStandartTypesStore
-  getStore: React.Dispatch<IStandartTypesStore>
+  setStore: React.Dispatch<IStandartTypesStore>
   data: string | null 
   hour: number | undefined
 }

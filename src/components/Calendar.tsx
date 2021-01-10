@@ -5,12 +5,12 @@ import currentMonthData from '../services/calendarServices';
 
 import {ICalendarProps} from '../interfaces/basicInterfaces';
 
-function Calendar({ store, getStore }:ICalendarProps) {
+function Calendar({ store, setStore }:ICalendarProps) {
   const { currentDate, calendarDate, selectedDate } = store;
 
   const handlePrevMonthButtonClick = () => {
     const date = new Date( calendarDate.getFullYear(), calendarDate.getMonth() - 1);
-    getStore({ 
+    setStore({ 
       ...store, 
       calendarDate: date 
     });
@@ -18,14 +18,14 @@ function Calendar({ store, getStore }:ICalendarProps) {
 
   const handleNextMonthButtonClick = () => {
     const date = new Date( calendarDate.getFullYear(), calendarDate.getMonth() + 1);
-    getStore({ 
+    setStore({ 
       ...store, 
       calendarDate: date 
     });
   };
 
   const handleDayCellClick = (date: Date) => {
-    getStore({ 
+    setStore({ 
       ...store, 
       selectedDate: date, 
       idSelectedDate: date.getTime() });

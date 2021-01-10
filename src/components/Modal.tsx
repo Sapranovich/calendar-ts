@@ -5,12 +5,12 @@ import saveInLocalStorage from '../services/localStoreServices';
 
 import {ICalendarProps} from '../interfaces/basicInterfaces';
 
-function Modal({store, getStore}: ICalendarProps) {
+function Modal({store, setStore}: ICalendarProps) {
   const {isOpenModal, idSelectedDate, selectedDate, dataChangeMessage:{currentHour, text}} = store;
   const [inputText, setInputText] = React.useState(text);
 
   const handleCloseButtonClick = ()=>{
-    getStore({...store, isOpenModal: !isOpenModal, dataChangeMessage: {
+    setStore({...store, isOpenModal: !isOpenModal, dataChangeMessage: {
       currentHour: undefined,
       text: '',
     }})
@@ -25,7 +25,7 @@ function Modal({store, getStore}: ICalendarProps) {
       localStorage.setItem("storeMessages", JSON.stringify({}));
     }
     saveInLocalStorage(idSelectedDate, currentHour, inputText);
-    getStore({...store, isOpenModal: !isOpenModal, 
+    setStore({...store, isOpenModal: !isOpenModal, 
       storeMessages: JSON.parse(localStorage.getItem("storeMessages") || '{}'),
       dataChangeMessage: {
       currentHour: undefined,
