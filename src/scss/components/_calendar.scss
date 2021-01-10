@@ -1,0 +1,72 @@
+.calendar {
+  padding: 0 40px;
+  background-color: rgba($color-dark-xl, 0.95);
+}
+.calendar__header {
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.calendar__button {
+  color: $color-light-xl;
+  width: 37px;
+  height: 37px;
+  border-radius: 100%;
+  background-color: transparent;
+  &:hover{
+    background-color: rgba($color-hover,0.5);
+  }
+}
+.calendar__title {
+  color: $color-light-l;
+}
+.calendar__list {
+  padding: 20px 0;
+  &_decor {
+    border-top: solid 1px $color-dark-s;
+    border-bottom: solid 1px $color-dark-s;
+  }
+}
+
+.calendar__row {
+  display: flex;
+  justify-content: space-between;
+  &-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color-light-l;
+    width: 37px;
+    height: 37px;
+    font-size: 1.4rem;
+    border-radius: 100%;
+    cursor: pointer;
+    @extend %transition;
+    &:hover {
+      background-color: $color-hover;
+    }
+    &_selected {
+      background-color: $color-selected;
+      pointer-events: none;
+    }
+    &_remove-hover {
+      color: $color-light-s;
+      pointer-events: none;
+    }
+    &_empty{
+      pointer-events: none;
+    }
+    &_current{
+      background-color: $color-current;
+    }
+    &_empty{
+      pointer-events: none;
+    }
+    @include  media-tablet{
+      width: 32px;
+      height: 32px;
+    }
+  }
+}

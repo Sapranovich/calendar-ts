@@ -1,0 +1,18 @@
+.wrapper{
+  width: $content-width;
+  padding: 0 50px;
+  margin: 0 auto;
+
+  @include  media-tablet{
+    width: $tablet-width;
+    padding: 0 40px;
+  }
+  @include media-mobile{
+    width: $mobile-big-width;
+    padding: 0 30px;
+  }
+  @include media-mobile-small{
+    width: $mobile-small-width;
+    padding: 0 10px;
+  }
+}

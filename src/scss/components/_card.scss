@@ -1,0 +1,18 @@
+
+.card__title {
+  margin-bottom: 20px;
+}
+.card__textarea {
+  resize: none;
+  width: 500px;
+  height: 150px;
+  margin-bottom: 30px;
+  padding: 15px;
+  @include media-mobile{
+    width: 300px;
+  }
+  @include media-mobile-small{
+    width: 250px;
+  }
+}
+
