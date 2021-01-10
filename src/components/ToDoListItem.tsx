@@ -10,7 +10,7 @@ function ToDoListItem({hour, data, store, setStore}:IToDoListItemProps) {
   
   const handleOpenModalButtonClick = ()=>{
     setStore({...store, 
-      isOpenModal:!isOpenModal,
+      isOpenModal: !isOpenModal,
       dataChangeMessage: {
         currentHour: hour,
         text: data ? data : '',

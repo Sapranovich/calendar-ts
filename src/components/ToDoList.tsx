@@ -11,7 +11,7 @@ function ToDoList({store, setStore}:ICalendarProps) {
   const handleCurrentButtonClick =()=>{
     setStore({
       ...store,
-      selectedDate:currentDate, 
+      selectedDate: currentDate, 
       calendarDate: currentDate,
       idSelectedDate: currentDate.getTime(),
     })
