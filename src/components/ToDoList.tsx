@@ -8,7 +8,7 @@ import {ICalendarProps} from '../interfaces/basicInterfaces';
 function ToDoList({store, setStore}:ICalendarProps) {
   const {currentDate, selectedDate, storeMessages, idSelectedDate} = store;
  
-  const handleCurrentButtonClick =()=>{
+  const handleCurrentButtonClick = ()=>{
     setStore({
       ...store,
       selectedDate: currentDate, 

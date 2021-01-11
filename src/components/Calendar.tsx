@@ -28,7 +28,7 @@ function Calendar({ store, setStore }:ICalendarProps) {
     setStore({ 
       ...store, 
       selectedDate: date, 
-      idSelectedDate: date.getTime() });
+      idSelectedDate: date.getTime()});
   };
 
   return (
