@@ -1,7 +1,9 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 
 const Logout = () =>{
-  return <div>logout</div>
+
+  return <Redirect to='/' />
 }
 
 export default Logout;
