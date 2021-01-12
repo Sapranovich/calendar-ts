@@ -2,6 +2,7 @@ import * as constants from "./authConstants";
 
 const initialState = {
   isAuthenticated: false,
+  user:{}
 };
 
 export default function authReducer(state = initialState, action: any) {
