@@ -1,8 +1,27 @@
-import React from 'react';
+import React from "react";
 
-const Login = () =>{
-  return <div>login
-  </div>
-}
+import { SignInForm, SignUpForm } from "../../components";
 
-export default Login
+const Login = () => {
+  const [isSignUpForm, toggleIsSignUpForm] = React.useState(false);
+
+  const handleToggleButtonClick = () => {
+    toggleIsSignUpForm(!isSignUpForm);
+  };
+
+  return (
+    <div className="login">
+      <div className="wrapper">
+        <div className="login__wrapper">
+          {isSignUpForm ? (
+            <SignUpForm handleToggleButtonClick={handleToggleButtonClick} />
+          ) : (
+            <SignInForm handleToggleButtonClick={handleToggleButtonClick} />
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Login;
