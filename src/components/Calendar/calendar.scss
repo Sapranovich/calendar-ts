@@ -1,0 +1,14 @@
+.calendar {
+  &__header {
+    display: flex;
+    > * {
+      width: 100%;
+    }
+  }
+  &__week {
+    display: flex;
+  }
+}
+.week {
+  display: flex;
+}

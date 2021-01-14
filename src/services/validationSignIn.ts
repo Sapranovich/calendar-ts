@@ -1,19 +1,20 @@
-import Validator from 'validator';
-import  isEmpty from './isEmpty';
-
+import Validator from "validator";
+import isEmpty from "./isEmpty";
 
 interface IValidationSignInProps {
-  email: string
-  password: string
-
+  email: string;
+  password: string;
 }
 interface IValidationSignInErrors {
-  email?: string
-  password?: string
-
+  email?: string;
+  password?: string;
 }
-function validationSignIn(data:IValidationSignInProps) {
-  let errors:IValidationSignInErrors = {};
+interface IReturnvalidationSignIn {
+  errors: IValidationSignInErrors;
+  isValid: boolean;
+}
+function validationSignIn(data: IValidationSignInProps): IReturnvalidationSignIn {
+  let errors: IValidationSignInErrors = {};
 
   if (!Validator.isEmail(data.email)) {
     errors.email = "Электронная почта введена не корректно";
@@ -35,7 +36,6 @@ function validationSignIn(data:IValidationSignInProps) {
     errors,
     isValid: isEmpty(errors),
   };
-};
-
+}
 
 export default validationSignIn;

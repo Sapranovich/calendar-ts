@@ -1,4 +1,4 @@
-function isEmpty(value:any){
+function isEmpty(value:any):boolean{
   return (
       value === undefined ||
       value === null ||
