@@ -13,3 +13,11 @@ export function authLogout() {
     payload: false
   };
 }
+
+
+export function setLoaded(boolean:boolean){
+  return {
+    type: constants.SET_LOADED,
+    payload: boolean
+  }
+}

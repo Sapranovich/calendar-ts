@@ -1,0 +1,3 @@
+export const SET_ALL_START_DATES = 'SET_ALL_START_DATES';
+export const SET_DATA = 'SET_DATA';
+export const SET_SELECTED_DATE = 'SET_SELECTED_DATE';

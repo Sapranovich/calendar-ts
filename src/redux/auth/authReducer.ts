@@ -1,9 +1,20 @@
 import * as constants from "./authConstants";
 
 const initialState = {
-  isAuthenticated: false,
-  user:{}
+  isAuthenticated: true,
+  isLoaded: false,
+  user:{
+    name:'Sapranovich Andrey',
+    email: 'SapranovichAndrey@yandex.ru',
+    role: ['admin', 'user', 'trainee'],
+    id: 13,
+  }
 };
+
+// const initialState = {
+//   isAuthenticated: false,
+//   user:{}
+// };
 
 export default function authReducer(state = initialState, action: any) {
   switch (action.type) {
@@ -16,6 +27,11 @@ export default function authReducer(state = initialState, action: any) {
       return {
         ...initialState,
         isAuthenticated: action.payload,
+      };
+    case constants.SET_LOADED:
+      return {
+        ...initialState,
+        isLoaded: action.payload,
       };
     default:
       return state;

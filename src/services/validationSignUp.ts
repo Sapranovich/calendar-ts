@@ -14,9 +14,13 @@ interface IValidationSignUpErrors {
   password?: string
   password_confirmed?:string
 }
+interface IReturnvalidationSignUp {
+  errors: IValidationSignUpErrors
+  isValid: boolean
+}
 
 
-function validationSignUp(data:IValidationSignUpProps){
+function validationSignUp(data:IValidationSignUpProps): IReturnvalidationSignUp {
   let errors:IValidationSignUpErrors = {};
   
   if (!Validator.isLength(data.name, { min: 2, max: 30 })) {
