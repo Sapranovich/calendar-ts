@@ -5,7 +5,7 @@ import setAuthToken from "./services/setAuthToken";
 import { setAuthUser } from "./redux/actions";
 import { IAuthUser, IDecodedToken } from "./components/SignInForm";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-
+import { MainWrapper } from "./components";
 import { Landing, Login, Logout, NotFound, Account } from "./pages";
 
 function App() {
@@ -17,8 +17,8 @@ function App() {
     if (localStorage.accessToken) {
       const decodedToken: IDecodedToken = jwt_decode(localStorage.accessToken);
       const currentTime = Date.now() / 1000;
-      if (decodedToken.exp < currentTime) {
-      
+      // decodedToken.exp < currentTime
+      if (false) {
       } else {
         setAuthToken(localStorage.accessToken);
         const user: IAuthUser = {
@@ -33,24 +33,26 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Switch>
-          <Route exact path="/" component={Landing} />
-          <Route
-            exact
-            path="/login"
-            component={() =>
-              !isAuthenticated ? <Login /> : <Redirect to="/calendar" />
-            }
-          />
-          <Route
-            path="/calendar"
-            component={() =>
-              isAuthenticated ? <Account /> : <Redirect to="/login" />
-            }
-          />
-          <Route exact path="/logout" component={Logout} />
-          <Route component={NotFound} />
-        </Switch>
+        <MainWrapper>
+          <Switch>
+            <Route exact path="/" component={Landing} />
+            <Route
+              exact
+              path="/login"
+              component={() =>
+                !isAuthenticated ? <Login /> : <Redirect to="/calendar" />
+              }
+            />
+            <Route
+              path="/calendar"
+              component={() =>
+                isAuthenticated ? <Account /> : <Redirect to="/login" />
+              }
+            />
+            <Route exact path="/logout" component={Logout} />
+            <Route component={NotFound} />
+          </Switch>
+        </MainWrapper>
       </BrowserRouter>
     </div>
   );

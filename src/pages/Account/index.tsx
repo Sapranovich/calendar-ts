@@ -7,7 +7,6 @@ const Account = () => {
   const location = useLocation();
   const match = useRouteMatch();
   return (
-    <MainWrapper>
       <Switch>
         <Route
           exact
@@ -22,7 +21,6 @@ const Account = () => {
         />
         <Route component={NotFound} />
       </Switch>
-    </MainWrapper>
   );
 };
 

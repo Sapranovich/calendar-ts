@@ -12,7 +12,7 @@ const Logout = ({history}:RouteComponentProps<any>) => {
     dispatch(setAuthUser({}));
     history.push("/login");
   }, []);
-  return <Redirect to="/" />;
+  return null;
 };
 
 export default withRouter(Logout);

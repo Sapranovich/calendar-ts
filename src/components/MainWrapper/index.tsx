@@ -16,12 +16,15 @@ const MainWrapper = ({ children }: { children: any }) => {
   );
   const currentDataCalendar = monthData(currentDate.getFullYear(), currentDate.getMonth())
   
-  React.useEffect(() => {
+  React.useEffect(():any => {
+    // набросано всякого... нужно продумать что и как должно быть, и когда что прогружаться 
+    // возможно нужно перенести данную обертку в App.tsx
     // console.log(currentDate, currentDataCalendar)
     dispatch(setAllStartDates(currentDate));
     dispatch(setData(currentDataCalendar));
 // временный фейк-запрос
     setTimeout(() => dispatch(setLoaded(true)), 1000);
+    return ()=> dispatch(setLoaded(false))
   },[]);
   const location = useLocation();
 

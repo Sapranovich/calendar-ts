@@ -52,6 +52,11 @@
       "email": "MyWork2323232Email@yandex.ru",
       "password": "$2a$10$oG52o7nbGyp34C5nA1jDIeJIx2mz/yWbyLOIcA8LfAibrNUDqsvAi",
       "id": 9
+    },
+    {
+      "email": "Sap@yandex.ru",
+      "password": "$2a$10$K2MiqlUETcQsl3JJbn75lO0orsgS6YYdkmzJZYx3jxwuG5R2sY8vO",
+      "id": 10
     }
   ]
 }
