@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const Landing = () => {
   return (
     <div>
-      <Link to="/login">
-        <button>Login</button>
+      <Link to="/calendar">
+        <button>Start</button>
       </Link>
       
       <h1>САМЫЙ ЛУЧШИЙ ЛАНДИНГ!!!!!</h1>
