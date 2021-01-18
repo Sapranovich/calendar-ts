@@ -25,6 +25,18 @@ export function setSelectedDate(date: Date): SetSelectedDateActionType {
   };
 }
 
+type SetSelectedWeekActionType = {
+  type: typeof constants.SET_SELECTED_WEEK;
+  payload: number;
+};
+
+export function setSelectedWeek(value: number): SetSelectedWeekActionType {
+  return {
+    type: constants.SET_SELECTED_WEEK,
+    payload: value,
+  };
+}
+
 type SetDataActionType = {
   type: typeof constants.SET_DATA;
   payload: Array<InitialStateDataType[]>;

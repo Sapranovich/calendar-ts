@@ -1,12 +1,12 @@
 import { combineReducers } from "redux";
 
 import authReducer from './auth/authReducer';
-import errorsForm from './authErrors/authErrorsReducer';
 import calendar from './calendar/calendarReducers';
+import account from './account/accountReducers';
 
 const rootReducers = combineReducers({
   calendar,
   authReducer,
-  errorsForm
+  account
 })
 export default rootReducers;

@@ -1,7 +1,7 @@
-export { authLogin, authLogout, setLoaded, setAuthUser } from "./auth/authActions";
-export { setErrorsForm, clearErrorsForm } from "./authErrors/authErrorsActions";
+export { setLoaded, setAuthUser, signInFormRequest,signUpFormRequest, userIsAuth } from "./auth/authActions";
 export {
   setData,
   setSelectedDate,
+  setSelectedWeek,
   setAllStartDates,
 } from "./calendar/calendarActions";

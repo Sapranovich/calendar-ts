@@ -1,62 +1,14 @@
 {
   "users": [
     {
-      "email": "MyWorkEmail@yandex.ru",
-      "password": "$2a$10$jKKCHuMD/ZWovzTQzBW8k.Wlmd5Ekuy7J2/YIyZhO3iqaNTFDubCO",
-      "name": "fsdf",
-      "password_confirmed": "123123",
+      "email": "admin@admin.admin",
+      "password": "$2a$10$KKS5b9tmhyNsRhbd9hPxOeOnzE.fCZ1Apoemk89jn/aqDqAYQXsCW",
+      "name": "admin",
+      "role": "admin",
       "id": 1
-    },
-    {
-      "email": "MyWorEmail@yandex.ru",
-      "password": "$2a$10$L7LUQ.9qM4K/G0vmR.6x2.WPWzX9MrzmbWWHrfiJARJCk778GB0cO",
-      "name": "fsdf",
-      "password_confirmed": "123123",
-      "id": 2
-    },
-    {
-      "email": "SapranovichAndrei@yandex.ru",
-      "password": "$2a$10$rEAExyh.sGRaXUZh9glvye7ZmRlx/Ra6T7HlM6xBAlcugNuhDpFpS",
-      "name": "fsdf",
-      "password_confirmed": "123123",
-      "id": 3
-    },
-    {
-      "email": "SapranovichAndrey@yandex.ru",
-      "password": "$2a$10$uXC8lk6UF9vho5stJvno5.5ZVPS.JkXLFGBcw7oOc61CGbRVxEjCy",
-      "name": "dasd",
-      "password_confirmed": "123123",
-      "id": 4
-    },
-    {
-      "email": "SapravichAndrei@yandex.ru",
-      "password": "$2a$10$sm7M0YoNTIb0pK4kA3WP/uRsxvUTlBikXD7veIgdB64zjKHjpR/UK",
-      "id": 5
-    },
-    {
-      "email": "flatro501@yandex.ru",
-      "password": "$2a$10$OFmIFCPXMzXWcb3XLyfZpOBnk5f1Qs6rCMHaT1JJx9mO3fjS4uwZe",
-      "id": 6
-    },
-    {
-      "email": "MyWorkE123123mail@yandex.ru",
-      "password": "$2a$10$po/KlsoAfpO.bqDGT9lOZuh.VwfyOdrjI0/rMA88iZZHItsM3Jxgu",
-      "id": 7
-    },
-    {
-      "email": "MyWorkE1231mail@yandex.ru",
-      "password": "$2a$10$iO8FXHDpBXAA6q2z7ddae.9B2gYF37r5u2uf8hXUGIp1SJjBSjwlu",
-      "id": 8
-    },
-    {
-      "email": "MyWork2323232Email@yandex.ru",
-      "password": "$2a$10$oG52o7nbGyp34C5nA1jDIeJIx2mz/yWbyLOIcA8LfAibrNUDqsvAi",
-      "id": 9
-    },
-    {
-      "email": "Sap@yandex.ru",
-      "password": "$2a$10$K2MiqlUETcQsl3JJbn75lO0orsgS6YYdkmzJZYx3jxwuG5R2sY8vO",
-      "id": 10
     }
+  ],
+  "messages":[
+    
   ]
 }

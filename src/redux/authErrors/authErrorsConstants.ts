@@ -1,2 +1,0 @@
-export const SET_ERRORS_FORM = 'SET_ERRORS_FORM';
-export const CLEAR_ERRORS_FORM = 'CLEAR_ERRORS_FORM';

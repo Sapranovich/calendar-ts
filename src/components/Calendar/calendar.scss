@@ -1,4 +1,6 @@
 .calendar {
+  width: 100%;
+
   &__header {
     display: flex;
     > * {
@@ -11,4 +13,20 @@
 }
 .week {
   display: flex;
+
+}
+
+.aside{
+  width: 200px;
+  background-color: violet;
+}
+.main{
+  display: flex;
+}
+.widget-week{
+  display: flex;
+  >*{
+    flex: 100%;
+    text-align: center;
+  }
 }

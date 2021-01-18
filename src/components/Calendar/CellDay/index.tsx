@@ -5,7 +5,7 @@ import { setSelectedDate } from "../../../redux/actions";
 import "./cellDay.scss";
 import { InitialStateDataType } from "../../../redux/calendar/calendarReducers";
 
-interface CellDayPropsType extends RouteComponentProps<any> {
+export interface CellDayPropsType extends RouteComponentProps<any> {
   dayData: InitialStateDataType;
 }
 const CellDay = ({history, dayData: { date, isCurrentMonth }}: CellDayPropsType) => {

@@ -10,6 +10,7 @@ export type InitialStateType = {
   currentDate: Date | null;
   basicDate: Date | null
   selectedDate: Date | null;
+  selectedWeek: number | null;
   idSelectedDate: number | null;
 };
 
@@ -17,6 +18,7 @@ const initialState: InitialStateType = {
   data: null,
   basicDate: null,
   currentDate: null,
+  selectedWeek: null,
   selectedDate: null,
   idSelectedDate: null,
 };
@@ -37,6 +39,11 @@ export default function calendar(state = initialState, action: any): InitialStat
         selectedDate: action.payload,
         idSelectedDate: action.payload.getTime(),
       };
+      case constants.SET_SELECTED_WEEK:
+        return {
+          ...state,
+          selectedWeek: action.payload,
+        };
     case constants.SET_DATA:
       return {
         ...state,

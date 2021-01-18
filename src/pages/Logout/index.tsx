@@ -1,7 +1,6 @@
 import React from "react";
 import {RouteComponentProps, withRouter} from 'react-router-dom';
 import { useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
 import {setAuthUser} from '../../redux/actions';
 import setAuthToken from "../../services/setAuthToken";
 const Logout = ({history}:RouteComponentProps<any>) => {
@@ -10,8 +9,8 @@ const Logout = ({history}:RouteComponentProps<any>) => {
     localStorage.removeItem("accessToken");
     setAuthToken(false);
     dispatch(setAuthUser({}));
-    history.push("/login");
-  }, []);
+    history.push("/");
+  }, [dispatch, history]);
   return null;
 };
 

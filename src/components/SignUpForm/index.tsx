@@ -1,40 +1,25 @@
 import React from "react";
-import { Link, withRouter, RouteComponentProps } from "react-router-dom";
-import validationSignUp from "../../services/validationSignUp";
 import { useDispatch } from "react-redux";
-import axios from "axios";
-
-export interface IErrorsForm {
-  name?: string;
-  email?: string;
-  password?: string;
-  password_confirmed?: string;
-  request?: string;
-}
-
-export interface IStateForm {
-  name: string;
-  email: string;
-  password: string;
-  password_confirmed: string;
-}
-export interface IUser {
-  email: string;
-  password: string;
-}
-
-export interface ISignUpFormProps extends RouteComponentProps {
-  handleToggleButtonClick: () => void;
-}
+import { Link } from "react-router-dom";
+import validationSignUp from "../../services/validationSignUp";
+import getModelUser from '../../services/getModelUser';
+import {
+  IErrorsSignUpForm,
+  IStateSignUpForm,
+  IUser,
+  ISignUpFormProps,
+} from "../../types/signUpFormTypes";
+import { signUpFormRequest } from "../../redux/actions";
 
 const SignUpForm = ({ handleToggleButtonClick }: ISignUpFormProps) => {
-  const [stateForm, setStateForm] = React.useState<IStateForm>({
+  const [stateForm, setStateForm] = React.useState<IStateSignUpForm>({
     name: "",
     email: "",
     password: "",
     password_confirmed: "",
   });
-  const [errorsForm, setErrorsForm] = React.useState<IErrorsForm>({});
+
+  const [errorsForm, setErrorsForm] = React.useState<IErrorsSignUpForm>({});
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setStateForm({
@@ -52,16 +37,8 @@ const SignUpForm = ({ handleToggleButtonClick }: ISignUpFormProps) => {
     event.preventDefault();
     const { isValid, errors } = validationSignUp(stateForm);
     if (isValid) {
-      const user: IUser = {
-        email: stateForm.email,
-        password: stateForm.password,
-      };
-      // Возможно сделано криво
-      // Почему-то после регистрации пользователя происходит перезагрузка страницы
-      // Решил данный функционал не прописывать в action
-      axios
-        .post("http://localhost:3001/signup", user)
-        .catch((err) => setErrorsForm({ request: err.response.data }));
+      const user = getModelUser(stateForm);
+      signUpFormRequest(user, setErrorsForm);
     } else {
       setErrorsForm(errors);
     }
@@ -142,4 +119,4 @@ const SignUpForm = ({ handleToggleButtonClick }: ISignUpFormProps) => {
   );
 };
 
-export default withRouter(SignUpForm);
+export default SignUpForm;

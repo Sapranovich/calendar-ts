@@ -8,16 +8,6 @@ const initialState = {
 
 export default function authReducer(state = initialState, action: any) {
   switch (action.type) {
-    // case constants.AUTH_LOGIN:
-    //   return {
-    //     ...state,
-    //     isAuthenticated: action.payload,
-    //   };
-    // case constants.AUTH_LOGOUT:
-    //   return {
-    //     ...initialState,
-    //     isAuthenticated: action.payload,
-    //   };
       case constants.SET_AUTH_USER:
         return {
           ...state,

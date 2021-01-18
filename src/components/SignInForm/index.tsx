@@ -1,37 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {useDispatch} from 'react-redux';
-import {setAuthUser} from '../../redux/actions';
+import { useDispatch } from "react-redux";
+import { signInFormRequest } from "../../redux/actions";
 import validationSignIn from "../../services/validationSignIn";
-import axios from 'axios';
-import jwt_decode from 'jwt-decode';
-import setAuthToken from '../../services/setAuthToken';
-export interface IErrorsForm {
-  email?: string;
-  password?: string;
-  request?: string;
-}
 
-export interface IStateSignInForm {
-  email: string;
-  password: string;
-}
+import {IErrorsSignInForm , IStateSignInForm, ISignInFormProps } from '../../types/signInFormTypes';
 
-export interface ISignInFormProps {
-  handleToggleButtonClick: () => void;
-}
-
-export interface IAuthUser{
-  email: string
-  sub: string
-}
-
-export interface IDecodedToken{
-  email: string
-  exp: number
-  iat: number
-  sub: string
-}
 
 const SignInForm = ({ handleToggleButtonClick }: ISignInFormProps) => {
   const dispatch = useDispatch();
@@ -40,7 +14,7 @@ const SignInForm = ({ handleToggleButtonClick }: ISignInFormProps) => {
     email: "",
     password: "",
   });
-  const [errorsForm, setErrorsForm] = React.useState<IErrorsForm>({});
+  const [errorsForm, setErrorsForm] = React.useState<IErrorsSignInForm>({});
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setStateForm({
@@ -58,19 +32,7 @@ const SignInForm = ({ handleToggleButtonClick }: ISignInFormProps) => {
     event.preventDefault();
     const { isValid, errors } = validationSignIn(stateForm);
     if (isValid) {
-      axios.post("http://localhost:3001/signin", stateForm)
-        .then(res=> {
-          const { accessToken } = res.data;
-          localStorage.setItem('accessToken', accessToken);
-          setAuthToken(accessToken);
-          const decodedToken:IDecodedToken = jwt_decode(accessToken);
-          const user:IAuthUser = {
-            email: decodedToken.email,
-            sub: decodedToken.sub
-          }
-          dispatch(setAuthUser(user));
-        })
-        .catch(err => setErrorsForm({ request: err.response.data }));
+      dispatch(signInFormRequest(stateForm, setErrorsForm));
     } else {
       setErrorsForm(errors);
     }
