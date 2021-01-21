@@ -5,6 +5,8 @@ import * as CONSTANTS from "../../constants";
 import { updateDataMonth, updateSelectedDate } from "../../redux/actions";
 import MonthToggle from "../Calendar/MonthToggle";
 
+import axios from 'axios';
+
 interface IHeaderProps {
   isOpenSideBar: boolean;
   setIsOpenSideBar: React.Dispatch<boolean>;
@@ -23,7 +25,9 @@ const Header = ({ isOpenSideBar, setIsOpenSideBar }: IHeaderProps) => {
     dispatch(updateDataMonth(currentDate));
   };
   const handleToggleAsideButtonClick = () => {
-    setIsOpenSideBar(!isOpenSideBar);
+    axios.get('http://localhost:3001/messages')
+    .then(res=>console.log(res.data))
+    // setIsOpenSideBar(!isOpenSideBar);
   };
 
   return (
@@ -32,7 +36,7 @@ const Header = ({ isOpenSideBar, setIsOpenSideBar }: IHeaderProps) => {
         <span className="hamburger" onClick={handleToggleAsideButtonClick}>
           <span className="hamburger__line"></span>
         </span>
-        <h2 className="header__title">{email}</h2>
+        <h2 className="header__email">{email}</h2>
         <button className="button" onClick={handleCurrentDateButtonClick}>
           Сегодня
         </button>
@@ -41,6 +45,7 @@ const Header = ({ isOpenSideBar, setIsOpenSideBar }: IHeaderProps) => {
           {CONSTANTS.MONTH_NAMES[basicDate.getMonth()]}{" "}
           {basicDate.getFullYear()}
         </h2>
+        <Link to='/calendar/segment'>Все заметки</Link>
       </div>
 
       <Link to="/logout" className="button">

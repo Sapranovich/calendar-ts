@@ -4,23 +4,8 @@ import { InitialStateDataType } from "../../../redux/calendar/calendarReducers";
 import { useSelector } from 'react-redux';
 import WeekOfTheMonth from './WeekOfTheMonth';
 function Month() {
-  const { currentDate, data } = useSelector((store: any) => store.calendar);
+  const { data } = useSelector((store: any) => store.calendar);
 
-  const handlePrevMonthButtonClick = () => {
-    const date = new Date(
-      currentDate.getFullYear(),
-      currentDate.getMonth() - 1
-    );
-  };
-
-  const handleNextMonthButtonClick = () => {
-    const date = new Date(
-      currentDate.getFullYear(),
-      currentDate.getMonth() + 1
-    );
-  };
-
-  const handleDayCellClick = () => {};
   return (
     <div className="month-list">
       <div className="month-list__header">

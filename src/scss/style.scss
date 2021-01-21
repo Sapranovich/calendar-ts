@@ -8,9 +8,18 @@
 @import './base/logo';
 
 @import './components/aside';
+@import './components/month';
+@import './components/sideBar';
+@import './components/widgetMonth';
+@import './components/day';
+@import './components/week';
+@import './components/segment';
+@import './components/card';
 @import './components/list';
 @import './components/user';
 @import './components/calendar';
-@import './components/widgetCalendar';
+
+@import './pages/modal';
+// @import './components/widgetCalendar';
 
 @import './layout/header';

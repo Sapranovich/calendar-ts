@@ -1,0 +1,33 @@
+.widget-month{
+width: 100%;
+}
+.widget-month__header{
+  display: flex;
+  align-items: center;
+}
+.widget-month__list{
+  &-header{
+    display: flex;
+  }
+}
+.widget-month__week{
+   display: flex;
+}
+.widget-month__day{
+  width: 100%;
+  &-name{
+    width: 100%;
+  }
+  &__number{
+
+  }
+  &_shadowed{
+
+  }
+  &_current{
+
+  }
+  &_selected{
+
+  }
+}

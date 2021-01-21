@@ -1,0 +1,48 @@
+.card-message {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+  padding: 5px;
+  > * {
+    margin-right: 20px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+.card-message__time {
+  font-size: 1.6rem;
+}
+.card-message__marker {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  text-align: center;
+  &_user {
+    background-color: yellowgreen;
+  }
+  &_admin {
+    background-color: grey;
+  }
+  &_viewer {
+    background-color: hotpink;
+  }
+}
+.card-message__email {
+  font-size: 1.6rem;
+}
+.card-message__message {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 50px;
+}
+.card-message__buttons {
+  display: none;
+  // display: flex;
+}

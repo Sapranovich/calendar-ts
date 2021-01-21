@@ -1,5 +1,5 @@
 import React from "react";
-import { RouteComponentProps, withRouter } from "react-router-dom";
+import { RouteComponentProps, withRouter, useRouteMatch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { updateSelectedDate } from "../../../../redux/actions";
 import { InitialStateDataType } from "../../../../redux/calendar/calendarReducers";
@@ -12,10 +12,13 @@ const DayOfTheWeek = ({
   dayData: { date, isCurrentMonth },
 }: DayOfTheWeekPropsType) => {
   const dispatch = useDispatch();
-  const handleTransitionClick = () => {
-    dispatch(updateSelectedDate(date));
-    history.push(`/calendar/day/${date.getTime()}`);
-  };
+  
+  const {path} = useRouteMatch();
+  const handleSelectedDateClick =()=>{
+    dispatch(updateSelectedDate(date))
+    history.push(`${path}/day`);
+  }
+
   return (
     <div className="month-list__day">
       <div
@@ -24,7 +27,7 @@ const DayOfTheWeek = ({
             ? "month-list__day-header_active"
             : "month-list__day-header_passive"
         }`}
-        onClick={handleTransitionClick}
+        onClick={handleSelectedDateClick}
       >
         <div className="month-list__day-number">{date.getDate()}</div>
       </div>

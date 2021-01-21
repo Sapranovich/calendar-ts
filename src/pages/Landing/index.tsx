@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Landing = () => {
   return (
     <div>
-      <Link to="/calendar/month" className="button">
+      <Link to="/calendar" className="button">
         Start
       </Link>
       <h1>САМЫЙ ЛУЧШИЙ ЛАНДИНГ!!!!!</h1>

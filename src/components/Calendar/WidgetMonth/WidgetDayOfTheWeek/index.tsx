@@ -1,14 +1,15 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, useRouteMatch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { CellDayPropsType } from "../../CellDay";
+import { DayOfTheWeekPropsType } from "../../Month/DayOfTheWeek";
 import { updateSelectedDate } from "../../../../redux/actions";
 
 const WidgetDayOfTheWeek = ({
   history,
   dayData: { date, isCurrentMonth },
-}: CellDayPropsType) => {
+}: DayOfTheWeekPropsType) => {
+  const {path} = useRouteMatch();
   const dispatch = useDispatch();
   const { selectedDate, currentDate } = useSelector(
     (store: any) => store.calendar
@@ -18,6 +19,7 @@ const WidgetDayOfTheWeek = ({
   
   const handleSelectedDateClick =()=>{
     dispatch(updateSelectedDate(date))
+    history.push(`${path}/day`);
   }
   return (
     <div

@@ -3,14 +3,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: $color-dark-xl;
-  color: $color-light-l;
+  // background-color: $color-dark-xl;
+  // color: $color-light-l;
 }
-.header__box {
+.header__group{
   display: flex;
-  justify-content: space-between;
   align-items: center;
   >*{
     margin-right: 40px;
+    &:last-child{
+      margin-right: 0;
+    }
   }
 }
+.header__email{
+
+}
+.header__date{
+
+}
+

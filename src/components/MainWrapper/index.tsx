@@ -1,8 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, Link } from "react-router-dom";
-import { setAllStartDates, setLoaded } from "../../redux/actions";
-
+import { useLocation } from "react-router-dom";
+import {
+  setAllStartDates,
+  setLoaded,
+  requestAllMessages,
+} from "../../redux/actions";
 
 const MainWrapper = ({ children }: { children: any }) => {
   const { isLoaded } = useSelector((store: any) => store.authReducer);
@@ -14,21 +17,21 @@ const MainWrapper = ({ children }: { children: any }) => {
     date.getDate()
   );
 
-  React.useEffect(():any => {
+  React.useEffect((): any => {
     dispatch(setAllStartDates(currentDate));
-
-// временный фейк-запрос
+    dispatch(requestAllMessages());
+    // временный фейк-запрос
     setTimeout(() => dispatch(setLoaded(true)), 1000);
-    return ()=> dispatch(setLoaded(false))
-  },[]);
-  
+    return () => dispatch(setLoaded(false));
+  }, []);
+
   const location = useLocation();
   return (
-    <div>
+    <React.Fragment>
       {/* MainWrapper = {location.pathname}
       <Link to="/">на главную</Link> */}
       {isLoaded ? children : <div>Загрузка</div>}
-    </div>
+    </React.Fragment>
   );
 };
 
