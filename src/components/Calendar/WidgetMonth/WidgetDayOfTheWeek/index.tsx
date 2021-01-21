@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { CellDayPropsType } from "../../CellDay";
 import { updateSelectedDate } from "../../../../redux/actions";
 
-const WidgetCellDay = ({
+const WidgetDayOfTheWeek = ({
   history,
   dayData: { date, isCurrentMonth },
 }: CellDayPropsType) => {
@@ -21,15 +21,15 @@ const WidgetCellDay = ({
   }
   return (
     <div
-      className={`widget-day 
-      ${!isCurrentMonth ? "widget-day_shadowed" : ""} 
-      ${isCurrentDate ? "widget-day_current" : ""}
-      ${isSelectedDate ? "widget-day_selected" : ""}`}
+      className={`widget-month__day 
+      ${!isCurrentMonth ? "widget-month__day_shadowed" : ""} 
+      ${isCurrentDate ? "widget-month__day_current" : ""}
+      ${isSelectedDate ? "widget-month___selected" : ""}`}
       onClick={handleSelectedDateClick}
     >
-      <span className="widget-day__number">{date.getDate()}</span>
+      <span className="widget-month__day__number">{date.getDate()}</span>
     </div>
   );
 };
 
-export default withRouter(WidgetCellDay);
+export default withRouter(WidgetDayOfTheWeek);

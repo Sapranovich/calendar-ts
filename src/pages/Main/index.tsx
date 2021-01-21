@@ -1,17 +1,15 @@
 import React from "react";
-import * as constants from './basicStates';
-import { MainWrapper, Calendar, Header, Aside } from "../../components";
+import { MainWrapper, Calendar, Header, SideBar } from "../../components";
 
 const Main = () => {
-  const [stateMain, setStateMain] = React.useState(constants.MONTH);
-  
+  const [isOpenSideBar, setIsOpenSideBar] = React.useState(false);
   return (
     <MainWrapper>
-      <Header />
-      <div className="main">
-        <Aside />
+      <Header isOpenSideBar={isOpenSideBar} setIsOpenSideBar={setIsOpenSideBar} />
+      <main className="main">
+        <SideBar isOpenSideBar={isOpenSideBar} />
         <Calendar />
-      </div>
+      </main>
     </MainWrapper>
   );
 };

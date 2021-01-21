@@ -6,9 +6,35 @@
       "name": "admin",
       "role": "admin",
       "id": 1
+    },
+    {
+      "email": "MyWorkEmail@yandex.ru",
+      "password": "$2a$10$.KnLxhk2SBC2qDLq1h87lOHM.UA4pEHh9N7qpneQszVWr0YCXkU3G",
+      "name": "dasd",
+      "role": "user",
+      "id": 2
+    },
+    {
+      "email": "flatron1501@yandex.ru",
+      "password": "$2a$10$6cTBUAUxGX4jMoDVekopcOYjsW2tlXXGcx2tRovDhIp5sXxvPNgve",
+      "name": "dasd",
+      "role": "user",
+      "id": 3
+    },
+    {
+      "email": "flatron150q1@yandex.ru",
+      "password": "$2a$10$BcP.G667kUxNEadNE30M9OWXBpU9OExo7xbcKz8ILFIWZTZ4Ct0eS",
+      "name": "dasd",
+      "role": "user",
+      "id": 4
+    },
+    {
+      "email": "SapranovichAndrey@yandex.ru",
+      "password": "$2a$10$DYreGMwQWXz56uWPFNbb9OAVGDvDmppoqKFt0m0lB7QKx6YQuud8C",
+      "name": "asd",
+      "role": "user",
+      "id": 5
     }
   ],
-  "messages":[
-    
-  ]
+  "messages": []
 }

@@ -5,7 +5,7 @@ import { Landing, Login, Logout, NotFound, Main } from "./pages";
 import {userIsAuth} from './redux/actions';
 
 
-
+import './scss/style.scss';
 
 
 
@@ -20,11 +20,10 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        
           <Switch>
             <Route exact path="/" component={Landing} />
-            <Route path="/calendar" component={() => isAuthenticated ? <Main /> : <Redirect to="/login" /> } />
-            <Route exact path="/login" component={() => !isAuthenticated ? <Login /> : <Redirect to="/calendar" />} />
+            <Route path="/calendar/month" component={() => isAuthenticated ? <Main /> : <Redirect to="/login" /> } />
+            <Route exact path="/login" component={() => !isAuthenticated ? <Login /> : <Redirect to="/calendar/month" />} />
             <Route exact path="/logout" component={Logout} />
             <Route component={NotFound} />
           </Switch>

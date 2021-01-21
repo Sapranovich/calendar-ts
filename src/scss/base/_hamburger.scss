@@ -1,0 +1,30 @@
+%hamburger-line{
+  content: '';
+  position: absolute;
+  display: inline-block;
+  background-color: $color-light-l;
+  border-radius: 5px;
+  height: 2px;
+  width: 100%;
+}
+.hamburger{
+  position: relative;
+  width: 26px;
+  height: 20px;
+  cursor: pointer;
+  &::before{
+    @extend %hamburger-line;
+    top: 0;
+    left: 0;
+  }
+  &::after{
+    @extend %hamburger-line;
+    bottom: 0;
+    left: 0;
+  }
+}
+.hamburger__line{
+  @extend %hamburger-line;
+  top: calc(50% - 1px);
+  left: 0;
+}

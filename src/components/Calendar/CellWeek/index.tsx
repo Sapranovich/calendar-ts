@@ -1,6 +1,5 @@
 import React from "react";
 import {useDispatch} from 'react-redux';
-import {setSelectedWeek} from '../../../redux/actions';
 import {RouteComponentProps, withRouter} from 'react-router-dom';
 import CellDay from "../CellDay";
 import { InitialStateDataType } from "../../../redux/calendar/calendarReducers";
@@ -15,7 +14,7 @@ export interface CellWeekPropTypes extends RouteComponentProps<any> {
 const CellWeek = ({history, weekData, weekNumber }: CellWeekPropTypes) => {
   const dispatch = useDispatch();
   const handleTransitionButtonClick = () =>{
-    dispatch(setSelectedWeek(weekNumber))
+    
     history.push(`/calendar/week/${weekNumber}`)
   }
   return (
@@ -23,7 +22,6 @@ const CellWeek = ({history, weekData, weekNumber }: CellWeekPropTypes) => {
       {weekData.map((day, index) => (
         <CellDay key = {index} dayData={day} />
       ))}
-      <button className='button week__button' onClick={handleTransitionButtonClick}>{weekNumber+1}</button>
     </div>
   );
 };

@@ -1,8 +1,7 @@
 import React from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setSelectedDate } from "../../../redux/actions";
-import "./cellDay.scss";
+import { updateSelectedDate } from "../../../redux/actions";
 import { InitialStateDataType } from "../../../redux/calendar/calendarReducers";
 
 export interface CellDayPropsType extends RouteComponentProps<any> {
@@ -12,7 +11,7 @@ const CellDay = ({history, dayData: { date, isCurrentMonth }}: CellDayPropsType)
   const dispatch = useDispatch();
   const handleTransitionClick = () => {
     console.log(date.getDate())
-    dispatch(setSelectedDate(date));
+    dispatch(updateSelectedDate(date));
     history.push(`/calendar/day/${date.getTime()}`)
   };
   return (
@@ -23,11 +22,14 @@ const CellDay = ({history, dayData: { date, isCurrentMonth }}: CellDayPropsType)
         }`}
         onClick={handleTransitionClick}
       >
-        <div className="day__title">{date.getDate()}</div>
+        <div className="day__number">{date.getDate()}</div>
       </div>
-      <div className="list day__list">
-        <div className="list__item">Что-то записываем</div>
-      </div>
+      <ul className="day__tasks">
+                <li className="day__task"> заметка </li>
+                <li className="day__task">заметка</li>
+                <li className="day__task">заметка</li>
+                <li className="day__task">заметка</li>
+              </ul>
     </div>
   );
 };
