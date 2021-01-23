@@ -14,7 +14,7 @@ export default function messages(state = initialState, action: any) {
       return {
         ...state,
         isNoMessages: isEmpty(action.payload),
-        isLoadedMesages: true,
+        isLoadedMessages: true,
         messages: action.payload
       }
       case constants.ADD_MESSAGE:

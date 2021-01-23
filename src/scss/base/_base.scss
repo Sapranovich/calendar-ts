@@ -46,9 +46,8 @@ li {
   border-bottom: solid  1px  $color-light-l;
 }
 
-.main{
+.main__wrapper{
   display: flex;
-  width: 100vw;
+  position: relative;
   height: calc(100vh - 73px);
-  overflow: hidden;
 }

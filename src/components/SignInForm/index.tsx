@@ -1,13 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { signInFormRequest } from "../../redux/actions";
+import { setAuthUser } from "../../redux/actions";
 import validationSignIn from "../../services/validationSignIn";
 
-import {IErrorsSignInForm , IStateSignInForm, ISignInFormProps } from '../../types/signInFormTypes';
+import setAuthToken from "../../services/setAuthToken";
+import jwt_decode from "jwt-decode";
+import axios from "axios";
+import {
+  IErrorsSignInForm,
+  IStateSignInForm,
+  ISignInFormProps,
+} from "../../types/signInFormTypes";
+import { IDecodedToken } from "../../types/decodedTokenTypes";
 
+const URL_DB = "http://localhost:3001";
 
-const SignInForm = ({ handleToggleButtonClick }: ISignInFormProps) => {
+const SignInForm = ({ handleToggleButtonClick, registerUserEmail }: ISignInFormProps) => {
   const dispatch = useDispatch();
   //возможно стоит перенести ошибки в redux хранилище
   const [stateForm, setStateForm] = React.useState<IStateSignInForm>({
@@ -27,12 +36,27 @@ const SignInForm = ({ handleToggleButtonClick }: ISignInFormProps) => {
       [event.target.name]: "",
     });
   };
+  React.useEffect(()=>{
+    setStateForm({...stateForm, email: registerUserEmail})
+  },[registerUserEmail])
 
   const handleSubmitForm = (event: React.FormEvent) => {
     event.preventDefault();
     const { isValid, errors } = validationSignIn(stateForm);
     if (isValid) {
-      dispatch(signInFormRequest(stateForm, setErrorsForm));
+      axios
+        .post(`${URL_DB}/signin`, stateForm)
+        .then((res: any) => {
+          const { accessToken } = res.data;
+          localStorage.setItem("accessToken", accessToken);
+          setAuthToken(accessToken);
+          const decodedToken: IDecodedToken = jwt_decode(accessToken);
+          const idUser = decodedToken.sub;
+          axios
+            .get(`${URL_DB}/data-users/${idUser}`)
+            .then((res: any) => dispatch(setAuthUser(res.data)));
+        })
+        .catch((err: any) => setErrorsForm({ request: err.response.data }));
     } else {
       setErrorsForm(errors);
     }
@@ -73,10 +97,10 @@ const SignInForm = ({ handleToggleButtonClick }: ISignInFormProps) => {
       </div>
 
       <div className="sign-in-form__group">
-        <button type="submit" className="button">
+        <button type='submit' className="button">
           Вход
         </button>
-        <button onClick={handleToggleButtonClick}>перейти к SignUp</button>
+        <button type='button' onClick={handleToggleButtonClick}>перейти к SignUp</button>
         <Link to="/">
           <button> на главную</button>
         </Link>

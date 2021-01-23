@@ -1,0 +1,8 @@
+.side-bar{
+  @extend %transition;
+  overflow: hidden;
+  width: 0;
+  &_visible{
+    width: $mobile-small-width;
+  }
+}

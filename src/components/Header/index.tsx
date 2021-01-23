@@ -5,7 +5,6 @@ import * as CONSTANTS from "../../constants";
 import { updateDataMonth, updateSelectedDate } from "../../redux/actions";
 import MonthToggle from "../Calendar/MonthToggle";
 
-import axios from 'axios';
 
 interface IHeaderProps {
   isOpenSideBar: boolean;
@@ -25,9 +24,7 @@ const Header = ({ isOpenSideBar, setIsOpenSideBar }: IHeaderProps) => {
     dispatch(updateDataMonth(currentDate));
   };
   const handleToggleAsideButtonClick = () => {
-    axios.get('http://localhost:3001/messages')
-    .then(res=>console.log(res.data))
-    // setIsOpenSideBar(!isOpenSideBar);
+    setIsOpenSideBar(!isOpenSideBar);
   };
 
   return (

@@ -13,6 +13,8 @@ const NotFound = () => {
     <Redirect exact to={match.url} />
   ) : (
     <div className="not-found">
+      <div className='wrapper'>
+      <div className='not-found__wrapper'>
       <div className="not-found__title">NotFound</div>
       <div className="not-found__image"></div>
       <div className="not-found__discription">
@@ -24,6 +26,8 @@ const NotFound = () => {
       <button className="not-found__button" onClick={handleRedirectButtonClick}>
         На главную
       </button>
+      </div>
+      </div>
     </div>
   );
 };

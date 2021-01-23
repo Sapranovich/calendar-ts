@@ -1,22 +1,37 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { openModal } from "../../../redux/actions";
+import { openModal, setCurrentHour, updateSelectedDate } from "../../../redux/actions";
 import getTimeInFormat from "../../../services/getTimeInFormat";
-function CardMessage({ data, hour }: { data?: null; hour?: number }) {
+import  {IUserMessageDataProps} from '../../../redux/messages/messagesActions';
+export interface ICardMessageProps{
+  message:IUserMessageDataProps
+  groupId?: number
+}
+function CardMessage({ groupId, message:{message, email, currentHour, role} }:ICardMessageProps) {
   const dispatch = useDispatch();
   const handleOpenModalClick = () => {
+    if(groupId){
+      const date = new Date(groupId);
+      dispatch(setCurrentHour(currentHour))
+      dispatch(updateSelectedDate(date))
+    }
     dispatch(openModal());
   };
   return (
+
+    // userId:number,
+    // message: string,
+    // currentHour:number,
+    // email: string,
+    // role: string  
+    // {getTimeInFormat(hour)}
     <div className="card-message border_bottom">
-      <h3 className="card-message__time" onClick={handleOpenModalClick}>{getTimeInFormat(hour)}</h3>
-      {data ? (
-        <React.Fragment>
-          <div className="card-message__marker card-message__marker_admin">
-            U
+      <h3 className="card-message__time" onClick={handleOpenModalClick}>{getTimeInFormat(currentHour)}</h3>
+          <div className={`card-message__marker card-message__marker_${role}`}>
+            {role[0]}
           </div>
-          <h4 className="card-message__email">admin@admin.admin</h4>
-          <div className="card-message__message">Нучно сдкелать та</div>
+          <h4 className="card-message__email">{email}</h4>
+          <div className="card-message__message">{message}</div>
           <div className="card-message__buttons">
             <button className="button card-message__button card-message__button_add">
               1
@@ -28,10 +43,6 @@ function CardMessage({ data, hour }: { data?: null; hour?: number }) {
               3
             </button>
           </div>
-        </React.Fragment>
-      ) : (
-        <div className="card-message__message">Добавить заметку...</div>
-      )}
     </div>
   );
 }

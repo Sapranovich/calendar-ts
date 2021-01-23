@@ -11,6 +11,7 @@ export interface IStateSignInForm {
 
  export interface ISignInFormProps {
   handleToggleButtonClick: () => void
+  registerUserEmail:string
 }
 
 

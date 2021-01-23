@@ -9,6 +9,7 @@ export type InitialStateDataType = {
 export type InitialStateType = {
   data: Array<InitialStateDataType[]> | null;
   currentDate: Date | null;
+  currentHour:number | null,
   basicDate: Date | null;
   selectedDate: Date | null;
   selectedWeek: number | null;
@@ -19,6 +20,7 @@ const initialState: InitialStateType = {
   data: null,
   basicDate: null,
   currentDate: null,
+  currentHour:null,
   selectedWeek: null,
   selectedDate: null,
   idSelectedDate: null,
@@ -49,6 +51,11 @@ export default function calendar(
           action.payload.getMonth()
         ),
         basicDate: action.payload,
+      };
+      case constants.SET_CURRENT_HOUR:
+      return {
+        ...state,
+        currentHour: action.payload
       };
     case constants.UPDATE_SELECTED_DATE:
       return {

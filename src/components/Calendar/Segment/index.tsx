@@ -1,6 +1,9 @@
 import React from "react";
 import CardMessage from "../CardMessage";
 import { useSelector } from "react-redux";
+import SegmentGroup from "./SegmentGroup";
+
+import {IGroupProps } from './SegmentGroup';
 
 function Segment() {
   const { isNoMessages, isLoadedMessages, messages } = useSelector(
@@ -10,9 +13,7 @@ function Segment() {
   return (
     <div className="segment">
       <div className="segment__header border_bottom">
-        <h3 className="segment__header-title">
-          Все заметки
-        </h3>
+        <h3 className="segment__header-title">Все заметки</h3>
         {!isNoMessages && (
           <div className="filter">
             <input className="filter__input" type="text" />
@@ -23,30 +24,9 @@ function Segment() {
       </div>
       {!isNoMessages && (
         <React.Fragment>
-          <div className="segment__group">
-            <h3 className="segment__date">12.12.2020</h3>
-            <CardMessage />
-            <CardMessage />
-            <CardMessage />
-          </div>
-          <div className="segment__group">
-            <h3 className="segment__date">12.12.2020</h3>
-            <CardMessage />
-            <CardMessage />
-            <CardMessage />
-          </div>
-          <div className="segment__group">
-            <h3 className="segment__date">12.12.2020</h3>
-            <CardMessage />
-            <CardMessage />
-            <CardMessage />
-          </div>
-          <div className="segment__group">
-            <h3 className="segment__date">12.12.2020</h3>
-            <CardMessage />
-            <CardMessage />
-            <CardMessage />
-          </div>
+          {messages.map((group:IGroupProps, index:number) => (
+            <SegmentGroup group={group} index= {index}/>
+          ))}
         </React.Fragment>
       )}
     </div>

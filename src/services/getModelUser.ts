@@ -1,21 +1,23 @@
 import { IStateSignUpForm } from "../types/signUpFormTypes";
 
-interface IGetModelUser {
-  name: string;
-  email: string;
-  password: string;
+
+
+export interface IGetModelUser {
+  id: number,
+  name: string,
+  email: string,
   role: string
 }
 
-function getModelUser(stateSignUpForm: IStateSignUpForm):IGetModelUser {
-  const { name, email, password } = stateSignUpForm;
-  const user = {
-    name: name,
-    email: email,
-    password: password,
+function getModelUser(stateSignUpForm: IStateSignUpForm, userId:number):IGetModelUser {
+  const { name, email } = stateSignUpForm;
+  const modelUser = {
+    id: userId,
+    name,
+    email,
     role: 'user'
-  };
-  return user;
+  }
+  return  modelUser;
 }
 
 export default getModelUser;

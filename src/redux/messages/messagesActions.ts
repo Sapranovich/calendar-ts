@@ -16,11 +16,62 @@ export const requestAllMessages = () => (dispatch: any) => {
     })
 };
 
+// const currentHour = 4;
+//         const userMessageData = {
+//           userId: id,
+//           message: inputText,
+//           email,
+//           role,
+//         }
+//         dispatch(addMessage(userMessageData, currentHour
 
-export const addMessage = () => (dispatch: any) => {
-  return {
-  
-  }
+export interface IUserMessageDataProps{
+  id:number,
+  userId:number,
+  message: string,
+  currentHour:number,
+  email: string,
+  role: string        
+}
+export interface IUserMessageData{
+  id: number
+  messages:IUserMessageDataProps[]
+}
+
+
+export const addMessage = (userMessageData:IUserMessageDataProps, idSelectedDate:number)=> (dispatch:any) => {
+  axios.get(`${URL_DB}/messages/${idSelectedDate}`)
+  .then(res=> {
+    const data = res.data;
+    const index =  data.find((message:IUserMessageDataProps) => message.currentHour === userMessageData.currentHour).id;
+    if(index){
+      data.messages[index] = userMessageData;
+    }else{
+      data.messages.push(userMessageData)
+    }
+    axios.post(`${URL_DB}/messages`, data)
+  })
+  .catch(()=> {
+    const data = {
+      id: idSelectedDate,
+      messages:[userMessageData]
+    }
+    axios.post(`${URL_DB}/messages`, data).then(res=>console.log(res))
+  }).then(()=>{
+    dispatch(requestAllMessages())
+  })
+    // .then(res => {
+      // const messages = res.data;
+      // if (!messages.hasOwnProperty(idSelectedDate)) {
+      //   messages[idSelectedDate] = Array(24).fill(undefined);
+      // }
+
+    // })
+  // if (!store.hasOwnProperty(key)) {
+  //   store[key] = Array(CONSTANTS.HOURS_DAY).fill(undefined);
+  // }
+  // store[key][hour] = data ? data : undefined;
+  // axios.post(`${URL_DB}/messages`)
 };
 export const updateMessage = () => (dispatch: any) => {
   return {
