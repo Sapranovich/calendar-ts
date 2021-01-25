@@ -1,30 +1,30 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { openModal, setCurrentHour, updateSelectedDate } from "../../../redux/actions";
 import getTimeInFormat from "../../../services/getTimeInFormat";
 import  {IUserMessageDataProps} from '../../../redux/messages/messagesActions';
+
 export interface ICardMessageProps{
   message:IUserMessageDataProps
   groupId?: number
 }
-function CardMessage({ groupId, message:{message, email, currentHour, role} }:ICardMessageProps) {
+function CardMessage({ groupId, message:{message, email, currentHour, role, userId} }:ICardMessageProps) {
+  const {id} = useSelector((store:any)=> store.authReducer.user)
   const dispatch = useDispatch();
   const handleOpenModalClick = () => {
-    if(groupId){
-      const date = new Date(groupId);
+
+    if(id === userId){
+      if(groupId){
+        const date = new Date(groupId);
+        dispatch(updateSelectedDate(date))
+      }
       dispatch(setCurrentHour(currentHour))
-      dispatch(updateSelectedDate(date))
+      dispatch(openModal());
+    }else{
+      console.log('нет доступа к изменению данного сообщения')
     }
-    dispatch(openModal());
   };
   return (
-
-    // userId:number,
-    // message: string,
-    // currentHour:number,
-    // email: string,
-    // role: string  
-    // {getTimeInFormat(hour)}
     <div className="card-message border_bottom">
       <h3 className="card-message__time" onClick={handleOpenModalClick}>{getTimeInFormat(currentHour)}</h3>
           <div className={`card-message__marker card-message__marker_${role}`}>

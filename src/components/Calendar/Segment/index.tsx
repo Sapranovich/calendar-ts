@@ -1,15 +1,10 @@
 import React from "react";
-import CardMessage from "../CardMessage";
 import { useSelector } from "react-redux";
-import SegmentGroup from "./SegmentGroup";
-
-import {IGroupProps } from './SegmentGroup';
+import SegmentGroup, { IGroupProps } from "./SegmentGroup";
 
 function Segment() {
-  const { isNoMessages, isLoadedMessages, messages } = useSelector(
-    (store: any) => store.messages
-  );
-  console.log(isNoMessages, isLoadedMessages, messages);
+  const { isNoMessages, messages } = useSelector((store: any) => store.messages);
+
   return (
     <div className="segment">
       <div className="segment__header border_bottom">
@@ -24,8 +19,8 @@ function Segment() {
       </div>
       {!isNoMessages && (
         <React.Fragment>
-          {messages.map((group:IGroupProps, index:number) => (
-            <SegmentGroup group={group} index= {index}/>
+          {messages.map((group: IGroupProps, index: number) => (
+            <SegmentGroup key={index} group={group} index={index} />
           ))}
         </React.Fragment>
       )}
@@ -34,3 +29,4 @@ function Segment() {
 }
 
 export default Segment;
+

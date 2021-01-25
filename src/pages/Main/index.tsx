@@ -1,7 +1,9 @@
 import React from "react";
-import { MainWrapper, Calendar, Header, SideBar } from "../../components";
 import { useSelector } from "react-redux";
+
 import Modal from "../Modal";
+import { MainWrapper, Calendar, Header, SideBar } from "../../components";
+
 
 const Main = () => {
   const { isOpenModal } = useSelector((state: any) => state.modal);

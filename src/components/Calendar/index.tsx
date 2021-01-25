@@ -10,9 +10,9 @@ function Calendar() {
   return (
     <div className="calendar">
       <Switch>
-          {/* <Route exact path="/calendar" component={Month} /> */}
+          <Route exact path="/calendar" component={Month} />
           <Route exact path="/calendar/segment" component={Segment} />
-          {/* <Route exact path="/calendar/week" component={Week} /> */}
+          <Route exact path="/calendar/week" component={Week} />
           <Route exact path="/calendar/day" component={Day} />
           {/* <Route component={NotFound} /> */}
         </Switch>

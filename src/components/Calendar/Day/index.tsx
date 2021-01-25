@@ -1,13 +1,19 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import CardMessage from "../CardMessage";
-import CardEmpty from '../CardEmpty';
+import {
+  IUserMessageData,
+  IUserMessageDataProps,
+} from "../../../redux/messages/messagesActions";
+import CardEmpty from "../CardEmpty";
 function Day({ isWeek }: { isWeek?: boolean }) {
   const { idSelectedDate, selectedDate } = useSelector(
     (store: any) => store.calendar
   );
-  const { isNoMessages, isLoadedMessages, messages } = useSelector(
-    (store: any) => store.messages
+  const { messages } = useSelector((store: any) => store.messages);
+
+  const messagesTargetDay = messages.find(
+    (messagesDay: IUserMessageData) => messagesDay.id === idSelectedDate
   );
 
   return (
@@ -18,16 +24,19 @@ function Day({ isWeek }: { isWeek?: boolean }) {
         </div>
       </div>
       <div className="day-list__group">
-        {/* {idSelectedDate in messages
-          ? messages[idSelectedDate].map((data: any, index: number) => (
-              <CardMessage />
-            ))
-          : Array(24)
-              .fill(null)
-              .map((data, index) => <CardMessage data={data} hour={index}/> )} */}
-              {Array(24)
-              .fill(null)
-              .map((data, index) => <CardEmpty currentHour={index}/> )}
+        {messagesTargetDay &&
+          messagesTargetDay.messages.map((message: any, index: number) =>
+            message ? (
+              <CardMessage key={index} message={message} />
+            ) : (
+              <CardEmpty key={index} currentHour={index} />
+            )
+          )}
+
+        {!messagesTargetDay &&
+          Array(24)
+            .fill(null)
+            .map((el, index) => <CardEmpty key={index} currentHour={index} />)}
       </div>
     </div>
   );

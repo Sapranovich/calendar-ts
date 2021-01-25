@@ -1,14 +1,16 @@
 import React from "react";
-import { useSelector, useDispatch} from "react-redux";
+import axios from "axios";
+import jwt_decode from "jwt-decode";
+import { useSelector, useDispatch } from "react-redux";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import { Landing, Login, Logout, NotFound, Main, Modal } from "./pages";
-import {setAuthUser} from './redux/actions';
-import setAuthToken from './services/setAuthToken';
-import axios from 'axios';
-import jwt_decode from 'jwt-decode';
-import {IDecodedToken} from './types/decodedTokenTypes';
-import './scss/style.scss';
-const URL_DB = "http://localhost:3001";
+
+import { Landing, Login, Logout, NotFound, Main } from "./pages";
+import setAuthToken from "./services/setAuthToken";
+import { setAuthUser } from "./redux/actions";
+import { IDecodedToken } from "./types/decodedTokenTypes";
+import * as CONSTANTS from "./constants";
+
+import "./scss/style.scss";
 
 
 function App() {
@@ -27,7 +29,7 @@ function App() {
       } else {
         setAuthToken(localStorage.accessToken);
         axios
-          .get(`${URL_DB}/data-users/${idUser}`)
+          .get(`${CONSTANTS.BACKEND_URL}/data-users/${idUser}`)
           .then((res: any) => dispatch(setAuthUser(res.data)))
           .catch((err) => {
             // localStorage.removeItem("accessToken");

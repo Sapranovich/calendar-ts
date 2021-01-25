@@ -25,14 +25,15 @@ export const requestAllMessages = () => (dispatch: any) => {
 //         }
 //         dispatch(addMessage(userMessageData, currentHour
 
+
 export interface IUserMessageDataProps{
-  id:number,
   userId:number,
   message: string,
   currentHour:number,
   email: string,
   role: string        
 }
+
 export interface IUserMessageData{
   id: number
   messages:IUserMessageDataProps[]
