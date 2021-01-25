@@ -38,8 +38,6 @@ export default function calendar(state = initialState, action: ActionTypes): Ini
         data: monthData(action.payload.getFullYear(), action.payload.getMonth()),
         currentDate: action.payload,
         basicDate: action.payload,
-        // selectedDate: action.payload,
-        // idSelectedDate: action.payload.getTime(),
       };
     case constants.UPDATE_DATA_MONTH:
       return {

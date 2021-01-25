@@ -8,6 +8,7 @@ export const setAllMessages = (messages:any) => {
   
   }
 };
+
 export const requestAllMessages = () => (dispatch: any) => {
   axios.get(`${URL_DB}/messages`)
     .then(res => {
@@ -15,15 +16,6 @@ export const requestAllMessages = () => (dispatch: any) => {
       dispatch(setAllMessages(messages))
     })
 };
-
-// const currentHour = 4;
-//         const userMessageData = {
-//           userId: id,
-//           message: inputText,
-//           email,
-//           role,
-//         }
-//         dispatch(addMessage(userMessageData, currentHour
 
 
 export interface IUserMessageDataProps{

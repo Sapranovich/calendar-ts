@@ -16,7 +16,7 @@ function Month() {
         ))}
       </div>
       {data.map((week: InitialStateDataType[], index: number) => (
-        <WeekOfTheMonth weekData={week} weekNumber={index} />
+        <WeekOfTheMonth key={index} weekData={week} weekNumber={index} />
       ))}
     </div>
   );
