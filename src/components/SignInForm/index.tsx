@@ -1,20 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setAuthUser } from "../../redux/actions";
-import validationSignIn from "../../services/validationSignIn";
-
-import setAuthToken from "../../services/setAuthToken";
-import jwt_decode from "jwt-decode";
 import axios from "axios";
-import {
-  IErrorsSignInForm,
-  IStateSignInForm,
-  ISignInFormProps,
-} from "../../types/signInFormTypes";
-import { IDecodedToken } from "../../types/decodedTokenTypes";
+import jwt_decode from "jwt-decode";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
-const URL_DB = "http://localhost:3001";
+import validationSignIn from "../../services/validationSignIn";
+import setAuthToken from "../../services/setAuthToken";
+import { setAuthUser } from "../../redux/actions";
+import { IErrorsSignInForm, IStateSignInForm, ISignInFormProps } from "../../types/signInFormTypes";
+import { IDecodedToken } from "../../types/decodedTokenTypes";
+import * as CONSTANTS from '../../constants';
 
 const SignInForm = ({ handleToggleButtonClick, registerUserEmail }: ISignInFormProps) => {
   const dispatch = useDispatch();
@@ -44,8 +39,9 @@ const SignInForm = ({ handleToggleButtonClick, registerUserEmail }: ISignInFormP
     event.preventDefault();
     const { isValid, errors } = validationSignIn(stateForm);
     if (isValid) {
+      // Возможно стоит перенести в action
       axios
-        .post(`${URL_DB}/signin`, stateForm)
+        .post(`${CONSTANTS.BACKEND_URL}/signin`, stateForm)
         .then((res: any) => {
           const { accessToken } = res.data;
           localStorage.setItem("accessToken", accessToken);
@@ -53,10 +49,13 @@ const SignInForm = ({ handleToggleButtonClick, registerUserEmail }: ISignInFormP
           const decodedToken: IDecodedToken = jwt_decode(accessToken);
           const idUser = decodedToken.sub;
           axios
-            .get(`${URL_DB}/data-users/${idUser}`)
-            .then((res: any) => dispatch(setAuthUser(res.data)));
+            .get(`${CONSTANTS.BACKEND_URL}/data-users/${idUser}`)
+            .then((res: any) => dispatch(setAuthUser(res.data)))
+            // .catch((err: any) => setErrorsForm({ request: err.response.data }))
         })
-        .catch((err: any) => setErrorsForm({ request: err.response.data }));
+        .catch((err: any) => {
+          setErrorsForm({ request: err.response.data })
+        })
     } else {
       setErrorsForm(errors);
     }

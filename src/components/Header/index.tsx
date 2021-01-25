@@ -16,7 +16,7 @@ const Header = ({ isOpenSideBar, setIsOpenSideBar }: IHeaderProps) => {
   const { basicDate, currentDate } = useSelector(
     (store: any) => store.calendar
   );
-  const { email } = useSelector((store: any) => store.authReducer.user);
+  const { email } = useSelector((store: any) => store.auth.user);
 
 
   const handleCurrentDateButtonClick = () => {
@@ -39,8 +39,7 @@ const Header = ({ isOpenSideBar, setIsOpenSideBar }: IHeaderProps) => {
         </button>
         <MonthToggle />
         <h2 className="header__date">
-          {CONSTANTS.MONTH_NAMES[basicDate.getMonth()]}{" "}
-          {basicDate.getFullYear()}
+          {CONSTANTS.MONTH_NAMES[basicDate.getMonth()]} {basicDate.getFullYear()}
         </h2>
         <Link to='/calendar/segment'>Все заметки</Link>
       </div>

@@ -1,10 +1,14 @@
 import * as constants from "./calendarConstants";
+import * as actions from "./calendarActions";
 import monthData from "../../services/monthData";
 
 export type InitialStateDataType = {
   date: Date;
   isCurrentMonth: boolean;
 };
+
+type InferValueTypes<T> = T extends { [key: string]: infer U } ? U : never;
+type ActionTypes = ReturnType<InferValueTypes<typeof actions>>;
 
 export type InitialStateType = {
   data: Array<InitialStateDataType[]> | null;
@@ -26,18 +30,12 @@ const initialState: InitialStateType = {
   idSelectedDate: null,
 };
 
-export default function calendar(
-  state = initialState,
-  action: any
-): InitialStateType {
+export default function calendar(state = initialState, action: ActionTypes): InitialStateType {
   switch (action.type) {
     case constants.SET_ALL_START_DATES:
       return {
         ...state,
-        data: monthData(
-          action.payload.getFullYear(),
-          action.payload.getMonth()
-        ),
+        data: monthData(action.payload.getFullYear(), action.payload.getMonth()),
         currentDate: action.payload,
         basicDate: action.payload,
         // selectedDate: action.payload,
@@ -63,8 +61,8 @@ export default function calendar(
         selectedDate: action.payload,
         idSelectedDate: action.payload.getTime(),
       };
-    case constants.CLEAR_DATES:
-      return initialState;
+    // case constants.CLEAR_DATES:
+    //   return initialState;
     default:
       return state;
   }

@@ -23,7 +23,7 @@ function Modal() {
     (store: any) => store.calendar
   );
   const { email, id, role } = useSelector(
-    (store: any) => store.authReducer.user
+    (store: any) => store.auth.user
   );
   const { messages, isLoadedMessages } = useSelector(
     (store: any) => store.messages
@@ -31,9 +31,7 @@ function Modal() {
   const { typeModal } = useSelector((store: any) => store.modal);
   const dispatch = useDispatch();
 
-  const [modelMessageObj, setModelMessageObj] = React.useState<
-    IUserMessageDataProps
-  >({
+  const [modelMessageObj, setModelMessageObj] = React.useState<IUserMessageDataProps>({
     userId: id,
     message: "",
     currentHour,
@@ -41,9 +39,7 @@ function Modal() {
     role,
   });
 
-  const messagesTargetDay = messages.find(
-    (messagesDay: IUserMessageData) => messagesDay.id === idSelectedDate
-  );
+  const messagesTargetDay = messages.find((messagesDay: IUserMessageData) => messagesDay.id === idSelectedDate);
 
   React.useEffect(() => {
     if (messagesTargetDay && messagesTargetDay.messages[currentHour]) {
@@ -65,23 +61,17 @@ function Modal() {
     dispatch(closeModal());
   };
 
-  const handleChangeInputText = (
-    event: React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
+  const handleChangeInputText = ( event: React.ChangeEvent<HTMLTextAreaElement> ) => {
     setModelMessageObj({ ...modelMessageObj, message: event.target.value });
-    console.log(event.target.value);
+
   };
 
   const handleAddButtonClick = (event: React.SyntheticEvent) => {
     if (!isEmpty(modelMessageObj.message)) {
       if (messagesTargetDay) {
         messagesTargetDay.messages[currentHour] = modelMessageObj;
-
         axios
-          .put(
-            `${constants.BACKEND_URL}/messages/${idSelectedDate}`,
-            messagesTargetDay
-          )
+          .put(`${constants.BACKEND_URL}/messages/${idSelectedDate}`,messagesTargetDay)
           .then((res) => {
             dispatch(requestAllMessages());
             dispatch(setCurrentHour(null));

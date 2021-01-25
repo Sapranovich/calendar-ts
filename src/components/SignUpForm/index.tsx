@@ -1,23 +1,16 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import validationSignUp from "../../services/validationSignUp";
 import axios from "axios";
-import getModelUser from "../../services/getModelUser";
 import jwt_decode from "jwt-decode";
+import { Link } from "react-router-dom";
+
+import getModelUser from "../../services/getModelUser";
+import validationSignUp from "../../services/validationSignUp";
 import { IDecodedToken } from "../../types/decodedTokenTypes";
-import {
-  IErrorsSignUpForm,
-  IStateSignUpForm,
-  ISignUpFormProps,
-} from "../../types/signUpFormTypes";
+import { IErrorsSignUpForm, IStateSignUpForm, ISignUpFormProps } from "../../types/signUpFormTypes";
 
-const URL_DB = "http://localhost:3001";
+import * as CONSTANTS from '../../constants';
 
-const SignUpForm = ({
-  handleToggleButtonClick,
-  setRegisterUserEmail,
-}: ISignUpFormProps) => {
+const SignUpForm = ({ handleToggleButtonClick, setRegisterUserEmail }: ISignUpFormProps) => {
   const [stateForm, setStateForm] = React.useState<IStateSignUpForm>({
     name: "",
     email: "",
@@ -39,10 +32,8 @@ const SignUpForm = ({
     });
   };
   React.useEffect(() => {
-    if (!stateForm.email) {
-      setRegisterUserEmail("");
-    }
-  });
+    setRegisterUserEmail("");
+  },[setRegisterUserEmail]);
 
   const handleSubmitForm = (event: React.FormEvent) => {
     event.preventDefault();
@@ -54,14 +45,14 @@ const SignUpForm = ({
         password: stateForm.password,
       };
       axios
-        .post(`${URL_DB}/signup`, user)
+        .post(`${CONSTANTS.BACKEND_URL}/signup`, user)
         .then((res) => {
           const { accessToken } = res.data;
           const decodedToken: IDecodedToken = jwt_decode(accessToken);
           const userId = +decodedToken.sub;
           const modelUser = getModelUser(stateForm, userId);
           axios
-            .post(`${URL_DB}/data-users`, modelUser)
+            .post(`${CONSTANTS.BACKEND_URL}/data-users`, modelUser)
             .catch((err: any) => setErrorsForm({ request: err.response.data }));
         })
         .then(() => {
@@ -153,5 +144,3 @@ const SignUpForm = ({
 };
 
 export default SignUpForm;
-
-// {"data":{"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IlNhcHJhbm8zMnZpY2hBbmRyZWlAeWFuZGV4LnJ1IiwiaWF0IjoxNjExMzA4NTQxLCJleHAiOjE2MTEzMTIxNDEsInN1YiI6IjcifQ.3jtYhPTSTzTBaTA3tKR5W6wxJWTLV_5D6X1Op7DNP6s"},"status":201,"statusText":"Created","headers":{"cache-control":"no-cache","content-length":"218","content-type":"application/json; charset=utf-8","expires":"-1","pragma":"no-cache"},"config":{"url":"http://localhost:3001/signup","method":"post","data":"{\"name\":\"fsdf\",\"email\":\"Saprano32vichAndrei@yandex.ru\",\"password\":\"123123\",\"role\":\"user\"}","headers":{"Accept":"application/json, text/plain, */*","Content-Type":"application/json;charset=utf-8"},"transformRequest":[null],"transformResponse":[null],"timeout":0,"xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN","maxContentLength":-1,"maxBodyLength":-1},"request":{}}

@@ -8,7 +8,7 @@ import {
 } from "../../redux/actions";
 
 const MainWrapper = ({ children }: { children: any }) => {
-  const { isLoaded } = useSelector((store: any) => store.authReducer);
+  const { isLoaded } = useSelector((store: any) => store.auth);
   const dispatch = useDispatch();
   const date = new Date();
   const currentDate = new Date(

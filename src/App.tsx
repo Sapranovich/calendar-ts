@@ -15,7 +15,7 @@ import "./scss/style.scss";
 
 function App() {
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector( (state: any) => state.authReducer.isAuthenticated );
+  const isAuthenticated = useSelector( (state: any) => state.auth.isAuthenticated );
   React.useEffect(() => {
     //  возможно нужно всю логику перенести в actions redux, services или создать свой хук???
     if (localStorage.accessToken) {

@@ -9,7 +9,7 @@ export interface ICardMessageProps{
   groupId?: number
 }
 function CardMessage({ groupId, message:{message, email, currentHour, role, userId} }:ICardMessageProps) {
-  const {id} = useSelector((store:any)=> store.authReducer.user)
+  const {id} = useSelector((store:any)=> store.auth.user)
   const dispatch = useDispatch();
   const handleOpenModalClick = () => {
 

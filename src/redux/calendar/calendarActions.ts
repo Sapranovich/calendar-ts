@@ -15,13 +15,11 @@ type SetCurrentHourActionType = {
   type: typeof constants.SET_CURRENT_HOUR;
   payload: number | null;
 };
-
 export function setCurrentHour (currentHour: number | null):SetCurrentHourActionType{
   return {
     type: constants.SET_CURRENT_HOUR,
     payload: currentHour,
   };
-
 }
 
 type UpdateSelectedDateActionType = {
