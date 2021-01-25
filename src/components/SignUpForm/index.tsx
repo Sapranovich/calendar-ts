@@ -1,53 +1,76 @@
 import React from "react";
+import axios from "axios";
+import jwt_decode from "jwt-decode";
 import { Link } from "react-router-dom";
-import validationSignUp from "../../services/validationSignUp";
-import {
-  IStateSignUpForm,
-  ISignUpFormProps,
-} from "../../typesQuestions/signUpFormTypes";
 
-const SignUpForm = ({ handleToggleButtonClick }: ISignUpFormProps) => {
+import getModelUser from "../../services/getModelUser";
+import validationSignUp from "../../services/validationSignUp";
+import { IDecodedToken } from "../../types/decodedTokenTypes";
+import { IErrorsSignUpForm, IStateSignUpForm, ISignUpFormProps } from "../../types/signUpFormTypes";
+
+import * as CONSTANTS from '../../constants';
+
+const SignUpForm = ({ handleToggleButtonClick, setRegisterUserEmail }: ISignUpFormProps) => {
   const [stateForm, setStateForm] = React.useState<IStateSignUpForm>({
     name: "",
     email: "",
     password: "",
     password_confirmed: "",
-    errors: {},
   });
+
+  const [errorsForm, setErrorsForm] = React.useState<IErrorsSignUpForm>({});
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setStateForm({
       ...stateForm,
       [event.target.name]: event.target.value,
-      errors: {
-        [event.target.name]: "",
-      },
+    });
+    setErrorsForm({
+      ...errorsForm,
+      request: "",
+      [event.target.name]: "",
     });
   };
+  React.useEffect(() => {
+    setRegisterUserEmail("");
+  },[setRegisterUserEmail]);
 
   const handleSubmitForm = (event: React.FormEvent) => {
     event.preventDefault();
-    const user = {
-      name: stateForm.name,
-      email: stateForm.email,
-      password: stateForm.password,
-      password_confirmed: stateForm.password_confirmed,
-    };
-    const { isValid, errors } = validationSignUp(user);
+    const { isValid, errors } = validationSignUp(stateForm);
     if (isValid) {
-      console.log(user);
+      // очень много логики, возможно нужно перенести в action или в services
+      const user = {
+        email: stateForm.email,
+        password: stateForm.password,
+      };
+      axios
+        .post(`${CONSTANTS.BACKEND_URL}/signup`, user)
+        .then((res) => {
+          const { accessToken } = res.data;
+          const decodedToken: IDecodedToken = jwt_decode(accessToken);
+          const userId = +decodedToken.sub;
+          const modelUser = getModelUser(stateForm, userId);
+          axios
+            .post(`${CONSTANTS.BACKEND_URL}/data-users`, modelUser)
+            .catch((err: any) => setErrorsForm({ request: err.response.data }));
+        })
+        .then(() => {
+          handleToggleButtonClick();
+          setRegisterUserEmail(user.email);
+        })
+        .catch((err: any) => setErrorsForm({ request: err.response.data }));
     } else {
-      setStateForm({
-        ...stateForm,
-        errors,
-      });
+      setErrorsForm(errors);
     }
   };
 
   return (
     <form className="sign-up-form" onSubmit={handleSubmitForm}>
       <h2 className="sign-up-form__title">SignUpForm</h2>
-
+      {errorsForm.request && (
+        <div className="error-request-feedback">{errorsForm.request}</div>
+      )}
       <div className="sign-up-form__group">
         <input
           type="text"
@@ -57,8 +80,8 @@ const SignUpForm = ({ handleToggleButtonClick }: ISignUpFormProps) => {
           value={stateForm.name}
           onChange={handleInputChange}
         />
-        {stateForm.errors.name && (
-          <div className="error-feedback">{stateForm.errors.name}</div>
+        {errorsForm.name && (
+          <div className="error-feedback">{errorsForm.name}</div>
         )}
       </div>
 
@@ -71,8 +94,8 @@ const SignUpForm = ({ handleToggleButtonClick }: ISignUpFormProps) => {
           value={stateForm.email}
           onChange={handleInputChange}
         />
-        {stateForm.errors.email && (
-          <div className="error-feedback">{stateForm.errors.email}</div>
+        {errorsForm.email && (
+          <div className="error-feedback">{errorsForm.email}</div>
         )}
       </div>
 
@@ -85,8 +108,8 @@ const SignUpForm = ({ handleToggleButtonClick }: ISignUpFormProps) => {
           value={stateForm.password}
           onChange={handleInputChange}
         />
-        {stateForm.errors.password && (
-          <div className="error-feedback">{stateForm.errors.password}</div>
+        {errorsForm.password && (
+          <div className="error-feedback">{errorsForm.password}</div>
         )}
       </div>
 
@@ -99,18 +122,19 @@ const SignUpForm = ({ handleToggleButtonClick }: ISignUpFormProps) => {
           value={stateForm.password_confirmed}
           onChange={handleInputChange}
         />
-        {stateForm.errors.password_confirmed && (
-          <div className="error-feedback">
-            {stateForm.errors.password_confirmed}
-          </div>
+        {errorsForm.password_confirmed && (
+          <div className="error-feedback">{errorsForm.password_confirmed}</div>
         )}
       </div>
 
       <div className="sign-up-form__group">
-        <button type="submit" className="button">
+        <button
+          type="submit"
+          className="button"
+        >
           Регистрация
         </button>
-        <button onClick={handleToggleButtonClick}> перейти к Signin</button>
+        <button type ='button' onClick={handleToggleButtonClick}> перейти к Signin</button>
         <Link to="/">
           <button> на главную</button>
         </Link>

@@ -1,0 +1,10 @@
+.month-list__week{
+  display: flex;
+  &-group{
+    display: flex;
+    width: 100%;
+    >*{
+      width: 100%;
+    }
+  }
+}

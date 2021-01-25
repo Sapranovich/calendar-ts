@@ -1,0 +1,25 @@
+.header {
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // background-color: $color-dark-xl;
+  // color: $color-light-l;
+}
+.header__group{
+  display: flex;
+  align-items: center;
+  >*{
+    margin-right: 40px;
+    &:last-child{
+      margin-right: 0;
+    }
+  }
+}
+.header__email{
+
+}
+.header__date{
+
+}
+

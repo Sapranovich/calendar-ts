@@ -1,0 +1,53 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html{
+  font-size: 10px;
+}
+
+body {
+  @extend %font-prim;
+  @include font($size: 1.6rem, $height: 2.6rem, $weight:normal);
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; 
+  }
+}
+
+h1 {
+  @extend %font-add;
+  @include font($size: 4.4rem, $height: 5.4rem);
+}
+h2 {
+  @include font($size: 2.4rem, $weight:300);
+}
+h3 {
+  @include font($size: 2.4rem, $weight:300);
+}
+h4 {
+  @include font($size: 2.2rem, $height: 3.0rem, $weight:600);
+}
+h5 {
+  @include font($size: 1.6rem, $height: 2.6rem);
+}
+
+li {
+  list-style-type: none; 
+ }
+
+
+.border_bottom{
+  border-bottom: solid  1px  $color-light-l;
+}
+
+.main__wrapper{
+  display: flex;
+  position: relative;
+  height: calc(100vh - 73px);
+}

@@ -1,50 +1,72 @@
 import React from "react";
+import axios from "axios";
+import jwt_decode from "jwt-decode";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import validationSignIn from "../../services/validationSignIn";
-import {
-  IStateSignInForm,
-  ISignInFormProps,
-} from "../../typesQuestions/signInFormTypes";
 
-const SignInForm = ({ handleToggleButtonClick }: ISignInFormProps) => {
+import validationSignIn from "../../services/validationSignIn";
+import setAuthToken from "../../services/setAuthToken";
+import { setAuthUser } from "../../redux/actions";
+import { IErrorsSignInForm, IStateSignInForm, ISignInFormProps } from "../../types/signInFormTypes";
+import { IDecodedToken } from "../../types/decodedTokenTypes";
+import * as CONSTANTS from '../../constants';
+
+const SignInForm = ({ handleToggleButtonClick, registerUserEmail }: ISignInFormProps) => {
+  const dispatch = useDispatch();
   //возможно стоит перенести ошибки в redux хранилище
   const [stateForm, setStateForm] = React.useState<IStateSignInForm>({
     email: "",
     password: "",
-    errors: {},
   });
+  const [errorsForm, setErrorsForm] = React.useState<IErrorsSignInForm>({});
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setStateForm({
       ...stateForm,
       [event.target.name]: event.target.value,
-      errors: {
-        [event.target.name]: "",
-      },
+    });
+    setErrorsForm({
+      ...errorsForm,
+      request: "",
+      [event.target.name]: "",
     });
   };
+  React.useEffect(()=>{
+    setStateForm({...stateForm, email: registerUserEmail})
+  },[registerUserEmail])
 
   const handleSubmitForm = (event: React.FormEvent) => {
     event.preventDefault();
-    const user = {
-      email: stateForm.email,
-      password: stateForm.password,
-    };
-    const { isValid, errors } = validationSignIn(user);
+    const { isValid, errors } = validationSignIn(stateForm);
     if (isValid) {
-      console.log(user);
+      // Возможно стоит перенести в action
+      axios
+        .post(`${CONSTANTS.BACKEND_URL}/signin`, stateForm)
+        .then((res: any) => {
+          const { accessToken } = res.data;
+          localStorage.setItem("accessToken", accessToken);
+          setAuthToken(accessToken);
+          const decodedToken: IDecodedToken = jwt_decode(accessToken);
+          const idUser = decodedToken.sub;
+          axios
+            .get(`${CONSTANTS.BACKEND_URL}/data-users/${idUser}`)
+            .then((res: any) => dispatch(setAuthUser(res.data)))
+            // .catch((err: any) => setErrorsForm({ request: err.response.data }))
+        })
+        .catch((err: any) => {
+          setErrorsForm({ request: err.response.data })
+        })
     } else {
-      setStateForm({
-        ...stateForm,
-        errors,
-      });
+      setErrorsForm(errors);
     }
   };
 
   return (
     <form className="sign-in-form" onSubmit={handleSubmitForm}>
       <h2 className="sign-in-form__title">SignInForm</h2>
-
+      {errorsForm.request && (
+        <div className="error-request-feedback">{errorsForm.request}</div>
+      )}
       <div className="sign-in-form__group">
         <input
           type="text"
@@ -54,8 +76,8 @@ const SignInForm = ({ handleToggleButtonClick }: ISignInFormProps) => {
           value={stateForm.email}
           onChange={handleInputChange}
         />
-        {stateForm.errors.email && (
-          <div className="error-feedback">{stateForm.errors.email}</div>
+        {errorsForm.email && (
+          <div className="error-feedback">{errorsForm.email}</div>
         )}
       </div>
 
@@ -68,16 +90,16 @@ const SignInForm = ({ handleToggleButtonClick }: ISignInFormProps) => {
           value={stateForm.password}
           onChange={handleInputChange}
         />
-        {stateForm.errors.password && (
-          <div className="error-feedback">{stateForm.errors.password}</div>
+        {errorsForm.password && (
+          <div className="error-feedback">{errorsForm.password}</div>
         )}
       </div>
 
       <div className="sign-in-form__group">
-        <button type="submit" className="button">
+        <button type='submit' className="button">
           Вход
         </button>
-        <button onClick={handleToggleButtonClick}>перейти к SignUp</button>
+        <button type='button' onClick={handleToggleButtonClick}>перейти к SignUp</button>
         <Link to="/">
           <button> на главную</button>
         </Link>

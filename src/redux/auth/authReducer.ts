@@ -1,36 +1,34 @@
 import * as constants from "./authConstants";
+import * as actions from "./authActions";
+import isEmpty from "../../services/isEmpty";
+import {IGetModelUser} from '../../services/getModelUser';
 
-const initialState = {
-  isAuthenticated: true,
-  isLoaded: false,
-  user:{
-    name:'Sapranovich Andrey',
-    email: 'SapranovichAndrey@yandex.ru',
-    role: ['admin', 'user', 'trainee'],
-    id: 13,
-  }
+type InferValueTypes<T> = T extends { [key: string]: infer U } ? U : never;
+type ActionTypes = ReturnType<InferValueTypes<typeof actions>>;
+
+export type InitialStateType = {
+  isAuthenticated: boolean
+  isLoaded: boolean
+  user: IGetModelUser | {}
 };
 
-// const initialState = {
-//   isAuthenticated: false,
-//   user:{}
-// };
+const initialState = {
+  isAuthenticated: false,
+  isLoaded: false,
+  user: {},
+};
 
-export default function authReducer(state = initialState, action: any) {
+export default function auth(state = initialState, action: ActionTypes):InitialStateType {
   switch (action.type) {
-    case constants.AUTH_LOGIN:
+    case constants.SET_AUTH_USER:
       return {
         ...state,
-        isAuthenticated: action.payload,
-      };
-    case constants.AUTH_LOGOUT:
-      return {
-        ...initialState,
-        isAuthenticated: action.payload,
+        isAuthenticated: !isEmpty(action.payload),
+        user: action.payload,
       };
     case constants.SET_LOADED:
       return {
-        ...initialState,
+        ...state,
         isLoaded: action.payload,
       };
     default:

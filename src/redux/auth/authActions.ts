@@ -1,23 +1,24 @@
 import * as constants from "./authConstants";
+import { IAuthUser } from "../../types/decodedTokenTypes";
 
-export function authLogin() {
+type SetAuthUserActionType = {
+  type: typeof constants.SET_AUTH_USER;
+  payload: IAuthUser | {};
+};
+export function setAuthUser(user: IAuthUser | {}): SetAuthUserActionType {
   return {
-    type: constants.AUTH_LOGIN,
-    payload: true
+    type: constants.SET_AUTH_USER,
+    payload: user,
   };
 }
 
-export function authLogout() {
-  return {
-    type: constants.AUTH_LOGOUT,
-    payload: false
-  };
-}
-
-
-export function setLoaded(boolean:boolean){
+type SetLoadedActionType = {
+  type: typeof constants.SET_LOADED;
+  payload: boolean;
+};
+export function setLoaded(boolean: boolean): SetLoadedActionType {
   return {
     type: constants.SET_LOADED,
-    payload: boolean
-  }
+    payload: boolean,
+  };
 }

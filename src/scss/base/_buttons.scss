@@ -1,0 +1,16 @@
+.button {
+  @extend %font-prim;
+  @extend %transition;
+  padding: 5px 15px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 2.2rem;
+  background-color: $color-bg-button;
+  border: none;
+  outline: none;
+  color: $color-text-button;
+  cursor: pointer;
+  &:hover{
+    background-color: $color-bg-button-hover;
+  }
+}

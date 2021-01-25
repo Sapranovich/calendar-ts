@@ -20,3 +20,6 @@ export const DAYS_WEEK = 7;
 export const HOURS_DAY = 24;
 
 export const DAYS_IN_MONTH = [31,28,31,30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+
+export const BACKEND_URL = 'http://localhost:3001';

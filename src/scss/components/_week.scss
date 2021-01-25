@@ -1,0 +1,16 @@
+.week-list {
+}
+.week-list__header {
+  display: flex;
+  padding-top: 10px;
+}
+.week-list__day-name {
+  text-align: center;
+  width: 100%;
+}
+.week-list__group {
+  display: flex;
+  > * {
+    flex-grow: 3;
+  }
+}
