@@ -1,7 +1,8 @@
 import * as constants from './messagesConstants';
+import * as CONSTANTS from '../../constants';
 import axios from 'axios';
-const URL_DB = "http://localhost:3001";
-export const setAllMessages = (messages:any) => {
+
+export const setAllMessages = (messages:Array<IUserMessageDataProps | null>) => {
   return {
     type: constants.SET_ALL_MESSAGES,
     payload: messages
@@ -9,22 +10,12 @@ export const setAllMessages = (messages:any) => {
   }
 };
 export const requestAllMessages = () => (dispatch: any) => {
-  axios.get(`${URL_DB}/messages`)
+  axios.get(`${CONSTANTS.BACKEND_URL}/messages`)
     .then(res => {
       const messages = res.data;
       dispatch(setAllMessages(messages))
     })
 };
-
-// const currentHour = 4;
-//         const userMessageData = {
-//           userId: id,
-//           message: inputText,
-//           email,
-//           role,
-//         }
-//         dispatch(addMessage(userMessageData, currentHour
-
 
 export interface IUserMessageDataProps{
   userId:number,
@@ -36,12 +27,12 @@ export interface IUserMessageDataProps{
 
 export interface IUserMessageData{
   id: number
-  messages:IUserMessageDataProps[]
+  messages:Array<IUserMessageDataProps | null>
 }
 
 
 export const addMessage = (userMessageData:IUserMessageDataProps, idSelectedDate:number)=> (dispatch:any) => {
-  axios.get(`${URL_DB}/messages/${idSelectedDate}`)
+  axios.get(`${CONSTANTS.BACKEND_URL}/messages/${idSelectedDate}`)
   .then(res=> {
     const data = res.data;
     const index =  data.find((message:IUserMessageDataProps) => message.currentHour === userMessageData.currentHour).id;
@@ -50,30 +41,20 @@ export const addMessage = (userMessageData:IUserMessageDataProps, idSelectedDate
     }else{
       data.messages.push(userMessageData)
     }
-    axios.post(`${URL_DB}/messages`, data)
+    axios.post(`${CONSTANTS.BACKEND_URL}/messages`, data)
   })
   .catch(()=> {
     const data = {
       id: idSelectedDate,
       messages:[userMessageData]
     }
-    axios.post(`${URL_DB}/messages`, data).then(res=>console.log(res))
+    axios.post(`${CONSTANTS.BACKEND_URL}/messages`, data).then(res=>console.log(res))
   }).then(()=>{
     dispatch(requestAllMessages())
   })
-    // .then(res => {
-      // const messages = res.data;
-      // if (!messages.hasOwnProperty(idSelectedDate)) {
-      //   messages[idSelectedDate] = Array(24).fill(undefined);
-      // }
-
-    // })
-  // if (!store.hasOwnProperty(key)) {
-  //   store[key] = Array(CONSTANTS.HOURS_DAY).fill(undefined);
-  // }
-  // store[key][hour] = data ? data : undefined;
-  // axios.post(`${URL_DB}/messages`)
 };
+
+//  Возможно это не понядобится ...
 export const updateMessage = () => (dispatch: any) => {
   return {
   

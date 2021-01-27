@@ -32,9 +32,7 @@ function App() {
           .get(`${CONSTANTS.BACKEND_URL}/data-users/${idUser}`)
           .then((res: any) => dispatch(setAuthUser(res.data)))
           .catch((err) => {
-            // localStorage.removeItem("accessToken");
-            // setAuthToken(false);
-            // dispatch(setAuthUser({}));
+            console.log('В данный момент имеются проблеммы с сервером, попробуйдте зайти позже...')
           });
       }
     }

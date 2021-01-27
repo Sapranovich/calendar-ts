@@ -11,7 +11,7 @@ type InferValueTypes<T> = T extends { [key: string]: infer U } ? U : never;
 type ActionTypes = ReturnType<InferValueTypes<typeof actions>>;
 
 export type InitialStateType = {
-  data: Array<InitialStateDataType[]> | null;
+  data: InitialStateDataType[][] | null;
   currentDate: Date | null;
   currentHour:number | null,
   basicDate: Date | null;
@@ -38,8 +38,6 @@ export default function calendar(state = initialState, action: ActionTypes): Ini
         data: monthData(action.payload.getFullYear(), action.payload.getMonth()),
         currentDate: action.payload,
         basicDate: action.payload,
-        // selectedDate: action.payload,
-        // idSelectedDate: action.payload.getTime(),
       };
     case constants.UPDATE_DATA_MONTH:
       return {

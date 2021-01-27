@@ -1,19 +1,15 @@
-import * as constants from './usersConstants';
-import axios from 'axios';
+import * as constants from "./usersConstants";
+import { IGetModelUser } from "../../services/getModelUser";
 
-const URL_DB = "http://localhost:3001";
-export const allUsers = ()=>(dispatch:any)=>{
-    axios.get(`${URL_DB}/users`)
-    .then(res=> {
-      const allUsers  = res.data;
-      dispatch(setAllUsers(allUsers))
-    })
-}
-export const setAllUsers = (arrayUsers:any)=>{
+
+//  в данный момент все пользователи сохранаются в компоненте UsersList... Возможно лучше эти данные перенести сюда 
+type SetAllUsersActionType = {
+  type: typeof constants.SET_ALL_USERS;
+  payload: IGetModelUser[];
+};
+export const setAllUsers = (arrayUsers: IGetModelUser[]): SetAllUsersActionType => {
   return {
     type: constants.SET_ALL_USERS,
-    payload: arrayUsers
-  }
-}
-
-
+    payload: arrayUsers,
+  };
+};

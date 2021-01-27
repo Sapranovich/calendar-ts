@@ -2,7 +2,6 @@ import React from "react";
 import UserItem from "./UserItem";
 import *as CONSTANTS from '../../constants';
 import {IGetModelUser} from '../../services/getModelUser';
-import { allUsers } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import axios from 'axios';
 
