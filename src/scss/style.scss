@@ -7,6 +7,15 @@
 @import './base/hamburger';
 @import './base/logo';
 
+// pages
+@import './pages/login';
+
+
+// components
+@import './components/signInForm';
+@import './components/signUpForm';
+
+
 @import './components/month';
 @import './components/sideBar';
 @import './components/widgetMonth';

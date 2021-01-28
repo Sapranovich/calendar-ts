@@ -59,7 +59,7 @@ function Segment() {
   return (
     <div className="segment">
       <div className="segment__header border_bottom">
-      {/* возможно нужно разбить на доп компоненты ??? */}
+      {/* возможно нужно вынести filter в отдельный компонент ??? */}
       <h3 className="segment__header-title">
         {messagesLocalStorage.length > 1  && `Заметки в период с ${getDateInFormat(messagesLocalStorage[0].id)} по ${getDateInFormat(messagesLocalStorage[messagesLocalStorage.length-1].id)}`}
         {messagesLocalStorage.length === 1  && `Заметки за ${getDateInFormat(messagesLocalStorage[0].id)} число`}
@@ -79,9 +79,10 @@ function Segment() {
                 name="startParam"
                 value={paramsFilter.startParam}
                 onChange={handleInputChange}
+                placeholder='дд/мм/гггг'
               />
               {errorsFilter.startParam && (
-              <div className="filter-messages-form__worning-feedback">
+              <div className="filter-messages-form__error-feedback">
                 {errorsFilter.startParam}
               </div>
             )}
@@ -93,9 +94,10 @@ function Segment() {
                 name="endParam"
                 value={paramsFilter.endParam}
                 onChange={handleInputChange}
+                placeholder='дд/мм/гггг'
               />
               {errorsFilter.endParam && (
-              <div className="filter-messages-form__worning-feedback">
+              <div className="filter-messages-form__error-feedback">
                 {errorsFilter.endParam}
               </div>
             )}

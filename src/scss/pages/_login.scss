@@ -1,0 +1,23 @@
+.login {
+  background-color: $background-login-page;
+}
+.login__wrapper {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.login__button {
+  text-transform: uppercase;
+  position: absolute;
+  top: 20px;
+  right: 0;
+  background-color: $color-button-text;
+  color: $background-button-hover;
+  &:hover {
+    background-color: $color-button-text-hover;
+    color: $background-button;
+  }
+}

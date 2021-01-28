@@ -67,10 +67,10 @@ const SignUpForm = ({ handleToggleButtonClick, setRegisterUserEmail }: ISignUpFo
 
   return (
     <form className="sign-up-form" onSubmit={handleSubmitForm}>
-      <h2 className="sign-up-form__title">SignUpForm</h2>
-      {errorsForm.request && (
-        <div className="error-request-feedback">{errorsForm.request}</div>
-      )}
+      <h2 className="sign-up-form__title">Sign Up</h2>
+      {
+        <div className="sign-up-form__error-request-feedback">{errorsForm.request && errorsForm.request}</div>
+      }
       <div className="sign-up-form__group">
         <input
           type="text"
@@ -80,9 +80,9 @@ const SignUpForm = ({ handleToggleButtonClick, setRegisterUserEmail }: ISignUpFo
           value={stateForm.name}
           onChange={handleInputChange}
         />
-        {errorsForm.name && (
-          <div className="error-feedback">{errorsForm.name}</div>
-        )}
+      
+          <div className="sign-up-form__error-feedback">{errorsForm.name && errorsForm.name}</div>
+        
       </div>
 
       <div className="sign-up-form__group">
@@ -94,9 +94,9 @@ const SignUpForm = ({ handleToggleButtonClick, setRegisterUserEmail }: ISignUpFo
           value={stateForm.email}
           onChange={handleInputChange}
         />
-        {errorsForm.email && (
-          <div className="error-feedback">{errorsForm.email}</div>
-        )}
+        
+          <div className="sign-up-form__error-feedback">{errorsForm.email && errorsForm.email}</div>
+        
       </div>
 
       <div className="sign-up-form__group">
@@ -108,9 +108,9 @@ const SignUpForm = ({ handleToggleButtonClick, setRegisterUserEmail }: ISignUpFo
           value={stateForm.password}
           onChange={handleInputChange}
         />
-        {errorsForm.password && (
-          <div className="error-feedback">{errorsForm.password}</div>
-        )}
+        
+          <div className="sign-up-form__error-feedback">{errorsForm.password && errorsForm.password}</div>
+        
       </div>
 
       <div className="sign-up-form__group">
@@ -122,22 +122,21 @@ const SignUpForm = ({ handleToggleButtonClick, setRegisterUserEmail }: ISignUpFo
           value={stateForm.password_confirmed}
           onChange={handleInputChange}
         />
-        {errorsForm.password_confirmed && (
-          <div className="error-feedback">{errorsForm.password_confirmed}</div>
-        )}
+        
+          <div className="sign-up-form__error-feedback">{errorsForm.password_confirmed &&  errorsForm.password_confirmed}</div>
+        
       </div>
 
-      <div className="sign-up-form__group">
+      <div className="sign-up-form__group-buttons">
         <button
           type="submit"
           className="button"
         >
-          Регистрация
+          Sign Up
         </button>
-        <button type ='button' onClick={handleToggleButtonClick}> перейти к Signin</button>
-        <Link to="/">
-          <button> на главную</button>
-        </Link>
+        <p className="sign-up-form__group-buttons-text">
+                Already have account? <a onClick={handleToggleButtonClick}>Login</a>
+        </p>
       </div>
     </form>
   );

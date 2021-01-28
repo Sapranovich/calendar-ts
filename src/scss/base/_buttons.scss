@@ -1,16 +1,17 @@
 .button {
-  @extend %font-prim;
+  // @extend %font-prim;
   @extend %transition;
-  padding: 5px 15px;
-  font-weight: 600;
-  font-size: 1.2rem;
-  line-height: 2.2rem;
-  background-color: $color-bg-button;
+  padding: 10px 15px;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  background-color: $background-button;
   border: none;
   outline: none;
-  color: $color-text-button;
+  color: $color-button-text;
   cursor: pointer;
   &:hover{
-    background-color: $color-bg-button-hover;
+    background-color: $background-button-hover;
+    color: $color-button-text-hover;
   }
 }

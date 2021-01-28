@@ -1,0 +1,49 @@
+.sign-up-form {
+  background-color: $background-sign-up-form;
+  padding: 40px 30px;
+  width: 500px;
+  &__error-feedback {
+    height: 26px;
+    margin-bottom: 5px;
+    color: $color-error-text;
+  }
+  &__error-request-feedback {
+    height: 26px;
+    margin-bottom: 5px;
+    color: $color-error-text;
+  }
+}
+.sign-up-form__title {
+  text-transform: uppercase;
+}
+
+.sign-up-form__group {
+  &-buttons {
+    margin-top: 15px;
+    button {
+      width: 100%;
+      text-transform: uppercase;
+    }
+    &-text {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      a {
+        cursor: pointer;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: $color-link-text;
+        &:hover{
+          color:$color-link-text-hover;
+        }
+      }
+    }
+  }
+}
+.sign-up-form__input {
+  border: none;
+  border-bottom: solid 2px $background-login-page;
+  width: 100%;
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  outline: none;
+}

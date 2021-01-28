@@ -1,4 +1,4 @@
-$color-light-s:#c5c5c5;
+$color-light-s: #c5c5c5;
 $color-light-l: #eaeaea;
 $color-light-xl: #ffffff;
 
@@ -7,17 +7,28 @@ $color-bg-button-hover: #c5c5c5;
 $color-text-button: #3e4255;
 
 $color-dark-s: #8f8f8f;
-$color-dark-l:#5e616f;
-$color-dark-xl:#3e4255;
-
+$color-dark-l: #5e616f;
+$color-dark-xl: #3e4255;
 
 // $color-hover: #a08383;
 // $color-current: #c84949;
 // $color-selected: #b58282;
-
 
 $content-big-width: 1440px;
 $content-width: 1280px;
 $tablet-width: 768px;
 $mobile-big-width: 414px;
 $mobile-small-width: 320px;
+
+$background-login-page: #077f7b;
+$background-button: #077f7b;
+$background-button-hover: #169895;
+$background-sign-in-form: #ffffff;
+$background-sign-up-form: #ffffff;
+
+
+$color-error-text: #e05050;
+$color-button-text: #ffffff;
+$color-button-text-hover: #ffffff;
+$color-link-text: #077f7b;
+$color-link-text-hover:#169895;

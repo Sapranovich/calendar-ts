@@ -34,14 +34,15 @@ const Header = ({ isOpenSideBar, setIsOpenSideBar }: IHeaderProps) => {
           <span className="hamburger__line"></span>
         </span>
         <h2 className="header__email">{email}</h2>
-        <button className="button" onClick={handleCurrentDateButtonClick}>
-          Сегодня
-        </button>
         <MonthToggle />
         <h2 className="header__date">
           {CONSTANTS.MONTH_NAMES[basicDate.getMonth()]} {basicDate.getFullYear()}
         </h2>
-        <Link to='/calendar/segment'>Все заметки</Link>
+        <Link to='/calendar/day' className="button" onClick={handleCurrentDateButtonClick}>
+          Сегодня
+        </Link>
+        <Link to='/calendar/segment' className="button">Все заметки</Link>
+        <Link to='/calendar' className="button">Календарь</Link>
       </div>
 
       <Link to="/logout" className="button">

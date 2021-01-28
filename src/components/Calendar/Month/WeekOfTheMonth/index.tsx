@@ -17,11 +17,11 @@ const WeekOfTheMonth = ({history, weekData, weekNumber }: WeekOfTheMonthPropType
 
   const handleSelectedWeekButtonClick =()=>{
     // dispatch(updateSelectedDate(date))
-    history.push(`${path}/week`);
+    // history.push(`${path}/week`);
   }
   return (
     <div key={weekNumber} className="month-list__week">
-      <button className='month-list__button' onClick ={handleSelectedWeekButtonClick}>1</button>
+      {/* <button className='month-list__button' onClick ={handleSelectedWeekButtonClick}>1</button> */}
       <div className='month-list__week-group'>
       {weekData.map((day, index) => (
         <DayOfTheWeek key = {index} dayData={day} />
