@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { BASIC_ROLES } from '../../constants';
 import WidgetMonth from '../Calendar/WidgetMonth';
 import UsersList from "../UsersList";
 const SideBar = ({ isOpenSideBar }: { isOpenSideBar: boolean }) => {
@@ -9,7 +9,7 @@ const SideBar = ({ isOpenSideBar }: { isOpenSideBar: boolean }) => {
   return (
     <div className={`side-bar ${isOpenSideBar ? "side-bar_visible" : ""}`}>
       <WidgetMonth />
-      {role === "admin" ? <UsersList /> : null}
+      {role === BASIC_ROLES.ADMIN ? <UsersList /> : null}
     </div>
   );
 };

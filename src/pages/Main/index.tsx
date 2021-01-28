@@ -7,7 +7,7 @@ import { MainWrapper, Calendar, Header, SideBar } from "../../components";
 
 const Main = () => {
   const { isOpenModal } = useSelector((state: any) => state.modal);
-  const [isOpenSideBar, setIsOpenSideBar] = React.useState(false);
+  const [isOpenSideBar, setIsOpenSideBar] = React.useState(true);
 
   return (
     <MainWrapper>

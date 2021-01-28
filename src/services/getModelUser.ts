@@ -1,5 +1,5 @@
 import { IStateSignUpForm } from "../types/signUpFormTypes";
-
+import { BASIC_ROLES } from '../constants';
 
 
 export interface IGetModelUser {
@@ -15,7 +15,7 @@ function getModelUser(stateSignUpForm: IStateSignUpForm, userId:number):IGetMode
     id: userId,
     name,
     email,
-    role: 'user'
+    role: BASIC_ROLES.USER
   }
   return  modelUser;
 }

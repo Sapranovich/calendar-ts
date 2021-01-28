@@ -10,7 +10,8 @@ export const setAllMessages = (messages:Array<IUserMessageDataProps | null>) => 
   }
 };
 export const requestAllMessages = () => (dispatch: any) => {
-  axios.get(`${CONSTANTS.BACKEND_URL}/messages`)
+  // axios.get(`${CONSTANTS.BACKEND_URL}/messages?_sort=id&_order=asc`) сортировка в обратном порядке
+  axios.get(`${CONSTANTS.BACKEND_URL}/messages?_sort=id&_order=desc`)
     .then(res => {
       const messages = res.data;
       dispatch(setAllMessages(messages))

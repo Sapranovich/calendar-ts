@@ -14,7 +14,7 @@ const UsersList = () => {
   
   React.useEffect(() => {
     // Скорее всего нужно перенести в redux, так как сложно взаимодействовать из UserItem, так как при изменении роли нужно обновить ввесь лист
-    if(role === 'admin'){
+    if(role === CONSTANTS.BASIC_ROLES.ADMIN){
       axios.get(`${CONSTANTS.BACKEND_URL}/data-users/?id_ne=${id}`)
       .then((res)=>{
         const listUsers = res.data;
