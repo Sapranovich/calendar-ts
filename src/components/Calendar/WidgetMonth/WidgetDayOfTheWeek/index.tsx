@@ -26,7 +26,7 @@ const WidgetDayOfTheWeek = ({
       className={`widget-month__day 
       ${!isCurrentMonth ? "widget-month__day_shadowed" : ""} 
       ${isCurrentDate ? "widget-month__day_current" : ""}
-      ${isSelectedDate ? "widget-month___selected" : ""}`}
+      ${isSelectedDate ? "widget-month__day_selected" : ""}`}
       onClick={handleSelectedDateClick}
     >
       <span className="widget-month__day__number">{date.getDate()}</span>

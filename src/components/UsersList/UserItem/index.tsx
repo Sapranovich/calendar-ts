@@ -18,18 +18,18 @@ const UserItem = ({ user }: { user: IGetModelUser }) => {
       <h4 className="user__email">{user.email}</h4>
       {isVisibleButttons && (
         <div className="user__buttons">
-          <button
-            className={`user__button ${user.role === BASIC_ROLES.USER ? "disabled" : ""}`}
-            onClick={() => handleUpdateRoleClick("user")}
+          <div
+            className={`button user__button ${user.role === BASIC_ROLES.USER ? "user__button_selected" : ""}`}
+            onClick={() => handleUpdateRoleClick(BASIC_ROLES.USER)}
           >
             user
-          </button>
-          <button
-            className={`user__button ${user.role === BASIC_ROLES.VIEWER ? "disabled" : ""}`}
-            onClick={() => handleUpdateRoleClick("viewer")}
+          </div>
+          <div
+            className={`button user__button ${user.role === BASIC_ROLES.VIEWER ? "user__button_selected" : ""}`}
+            onClick={() => handleUpdateRoleClick(BASIC_ROLES.VIEWER)}
           >
             viewer
-          </button>
+          </div>
         </div>
       )}
     </li>

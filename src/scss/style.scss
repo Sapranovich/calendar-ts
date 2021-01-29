@@ -1,7 +1,9 @@
+// abstracts
 @import './abstracts/constants';
 @import './abstracts/mixins';
 @import './abstracts/placeholders';
 
+// base
 @import './base/base';
 @import './base/buttons';
 @import './base/hamburger';
@@ -10,18 +12,22 @@
 // pages
 @import './pages/login';
 
-
 // components
 @import './components/signInForm';
 @import './components/signUpForm';
+@import './components/monthToggle';
+@import './components/sideBar';
+@import './components/widgetMonth';
+@import './components/usersList';
+@import './components/userItem';
+// layout
+@import './layout/header';
 
 
 @import './components/month';
-@import './components/sideBar';
-@import './components/widgetMonth';
 @import './components/day';
 @import './components/week';
-@import './components/segment';
+
 @import './components/card';
 @import './components/list';
 @import './components/user';
@@ -31,4 +37,3 @@
 @import './pages/modal';
 // @import './components/widgetCalendar';
 
-@import './layout/header';

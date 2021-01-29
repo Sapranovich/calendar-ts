@@ -18,13 +18,19 @@ $content-big-width: 1440px;
 $content-width: 1280px;
 $tablet-width: 768px;
 $mobile-big-width: 414px;
-$mobile-small-width: 320px;
+$mobile-small-width: 370px;
 
 $background-login-page: #077f7b;
 $background-button: #077f7b;
 $background-button-hover: #169895;
 $background-sign-in-form: #ffffff;
 $background-sign-up-form: #ffffff;
+$background-header:#077f7b;
+$background-sideBar:#077f7b;
+
+
+$background-widget-day-current:#ffffff;
+$background-widget-day-selected:#dc8383bd;
 
 
 $color-error-text: #e05050;
@@ -32,3 +38,10 @@ $color-button-text: #ffffff;
 $color-button-text-hover: #ffffff;
 $color-link-text: #077f7b;
 $color-link-text-hover:#169895;
+$color-toggle-text:#ffffff;
+$color-toggle-text-hover:#eaeaea;
+$color-header-text:#ffffff;
+$color-hamburger:#ffffff;
+
+$color-widget-month-text:#ffffff;
+$color-widget-day-shadowed:#979797ba;

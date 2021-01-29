@@ -27,10 +27,10 @@ const UsersList = () => {
   }, []);
 
   return (
-    <div className="list">
-      <h3 className="list__title border_bottom">All users</h3>
+    <div className="users-list">
+      <h2 className="users-list__title border_bottom">All users</h2>
       {isLoaded ? (
-        <ul className="list__users">
+        <ul className="users-list__users border_bottom">
           {listUsers.map((user: IGetModelUser, index: number) => (
             <UserItem key={index} user={user} />
           ))}

@@ -16,7 +16,7 @@ function MonthToggle() {
     dispatch(updateDataMonth(date));
   };
   return (
-    <div className="month-toggle__buttons">
+    <div className="month-toggle">
       <button
         className="month-toggle__button"
         onClick={handlePrevMonthButtonClick}
