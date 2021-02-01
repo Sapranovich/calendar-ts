@@ -39,22 +39,22 @@ const Header = ({ isOpenSideBar, setIsOpenSideBar }: IHeaderProps) => {
               {CONSTANTS.MONTH_NAMES[basicDate.getMonth()]}{" "}
               {basicDate.getFullYear()}
             </h2>
-            <Link to="/calendar" className="button header__button">
+            <Link to="/calendar" className="button header__button button__add">
               Calendar
             </Link>
-            <Link to="/calendar/segment" className="button header__button">
+            <Link to="/calendar/segment" className="button header__button button__add">
               All notes
             </Link>
             <Link
               to="/calendar/day"
-              className="button header__button"
+              className="button header__button button__add"
               onClick={handleCurrentDateButtonClick}
             >
               Today
             </Link>
           </div>
 
-          <Link to="/logout" className="button header__button">
+          <Link to="/logout" className="button button__add">
             logout
           </Link>
         </div>

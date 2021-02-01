@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import {Loading} from '../../pages';
 import {
   setAllStartDates,
   setLoaded,
@@ -25,12 +25,9 @@ const MainWrapper = ({ children }: { children: any }) => {
     return () => dispatch(setLoaded(false));
   }, []);
 
-  const location = useLocation();
   return (
     <React.Fragment>
-      {/* MainWrapper = {location.pathname}
-      <Link to="/">на главную</Link> */}
-      {isLoaded ? children : <div>Загрузка</div>}
+      {isLoaded ? children : <Loading />}
     </React.Fragment>
   );
 };

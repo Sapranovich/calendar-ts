@@ -18,16 +18,16 @@ export interface IReturnvalidationFilterForm {
 function validationFilterForm(data:IValidationFilterFormProps):IReturnvalidationFilterForm {
   let errors:IValidationFilterFormErrors = {};
   if (!data.startParam.match(REG_EXP_CHECK_DATE)) {
-    errors.startParam = "Дата введена не в том формате";
+    errors.startParam = "Date entered in the wrong format";
   }
   if (!data.endParam.match(REG_EXP_CHECK_DATE)) {
-    errors.endParam = "Дата введена не в том формате";
+    errors.endParam = "Date entered in the wrong format";
   }
   if (isEmpty(data.startParam)) {
-    errors.startParam = "Введите дату";
+    errors.startParam = "Enter the date";
   }
   if (isEmpty(data.endParam)) {
-    errors.endParam = "Введите дату";
+    errors.endParam = "Enter the date";
   }
   return {
     errors,

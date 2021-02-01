@@ -4,5 +4,6 @@ import SignUpForm from "./SignUpForm";
 import Calendar from "./Calendar";
 import SideBar from './SideBar';
 import Header from './Header';
+import Modal from './Modal';
 
-export { MainWrapper, SignInForm, SignUpForm, Calendar, SideBar, Header};
+export { MainWrapper, SignInForm, SignUpForm, Calendar, SideBar, Header, Modal};

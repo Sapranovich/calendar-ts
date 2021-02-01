@@ -17,19 +17,19 @@ function validationSignIn(data: IValidationSignInProps): IReturnvalidationSignIn
   let errors: IValidationSignInErrors = {};
 
   if (!Validator.isEmail(data.email)) {
-    errors.email = "Электронная почта введена не корректно";
+    errors.email = "Email entered incorrectly";
   }
 
   if (Validator.isEmpty(data.email)) {
-    errors.email = "Введите адрес электронной почты";
+    errors.email = "Enter your email";
   }
 
   if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
-    errors.password = "Пароль должен состоять не менее чем из 6 симоволов";
+    errors.password = "The password must be at least 6 characters long";
   }
 
   if (Validator.isEmpty(data.password)) {
-    errors.password = "Введите пароль";
+    errors.password = "Enter password";
   }
 
   return {

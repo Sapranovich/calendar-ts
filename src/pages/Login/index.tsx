@@ -1,25 +1,27 @@
 import React from "react";
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
+import {useSelector} from 'react-redux';
 import { SignInForm, SignUpForm } from "../../components";
 
 const Login = () => {
   const [isSignUpForm, toggleIsSignUpForm] = React.useState(false);
-  const [redirect, setRedirect] = React.useState(false);
+
   const [registerUserEmail, setRegisterUserEmail] = React.useState('');
+  const isAuthenticated = useSelector(
+    (state: any) => state.auth.isAuthenticated
+  );
   const handleToggleButtonClick = () => {
     toggleIsSignUpForm(!isSignUpForm);
   };
-  const handleRedirectButtonClick = () => {
-    setRedirect(true);
-  };
 
-  return redirect ? (
-    <Redirect exact to='/' />
+
+  return isAuthenticated ? (
+    <Redirect exact to='/calendar' />
   ) : (
     <div className="login">
       <div className='wrapper'>
       <div className="login__wrapper">
-      <button className="button login__button" onClick={handleRedirectButtonClick}>landing page</button>
+      <Link to ='/' className="button login__button button__add">landing page</Link>
         {isSignUpForm ? (
           <SignUpForm handleToggleButtonClick={handleToggleButtonClick} setRegisterUserEmail={setRegisterUserEmail}/>
         ) : (

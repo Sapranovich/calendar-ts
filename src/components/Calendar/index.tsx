@@ -1,10 +1,9 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
-import { NotFound } from "../../pages";
-import Week from "./Week";
 import Day from "./Day";
 import Segment from "./Segment";
 import Month from "./Month";
+import { Switch, Route } from "react-router-dom";
+
 
 function Calendar() {
   return (
@@ -12,7 +11,6 @@ function Calendar() {
       <Switch>
         <Route exact path="/calendar" component={Month} />
         <Route exact path="/calendar/segment" component={Segment} />
-        {/* <Route exact path="/calendar/week" component={Week} /> */}
         <Route exact path="/calendar/day" component={Day} />
         {/* <Route component={NotFound} /> */}
       </Switch>

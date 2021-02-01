@@ -1,12 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import CardMessage from "../CardMessage";
-import {
-  IUserMessageData,
-  IUserMessageDataProps,
-} from "../../../redux/messages/messagesActions";
+import { IUserMessageData } from "../../../redux/messages/messagesActions";
 import CardEmpty from "../CardEmpty";
-function Day({ isWeek }: { isWeek?: boolean }) {
+function Day() {
   const { idSelectedDate, selectedDate } = useSelector(
     (store: any) => store.calendar
   );

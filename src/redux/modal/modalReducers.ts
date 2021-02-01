@@ -6,10 +6,12 @@ type ActionTypes = ReturnType<InferValueTypes<typeof actions>>;
 
 type InitialStateType = {
   isOpenModal:boolean
+  modalType:string | null
 }
 
 const initialState = {
   isOpenModal: false,
+  modalType: null
 };
 
 export default function modal(state = initialState, action: ActionTypes):InitialStateType {
@@ -17,13 +19,11 @@ export default function modal(state = initialState, action: ActionTypes):Initial
     case constants.OPEN_MODAL:
       return {
         ...state,
-        isOpenModal: true
+        isOpenModal: true,
+        modalType: action.payload
       };
     case constants.CLOSE_MODAL:
-      return {
-        ...state,
-        isOpenModal: false
-      };
+      return initialState
     default:
       return state;
   }

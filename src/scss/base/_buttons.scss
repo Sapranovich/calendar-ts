@@ -1,17 +1,33 @@
 .button {
   // @extend %font-prim;
   @extend %transition;
-  padding: 10px 15px;
+  padding: 15px 20px;
   font-weight: 400;
   font-size: 1.4rem;
   line-height: 1.6rem;
-  background-color: $background-button;
   border: none;
   outline: none;
-  color: $color-button-text;
   cursor: pointer;
-  &:hover{
-    background-color: $background-button-hover;
-    color: $color-button-text-hover;
+  text-transform: uppercase;
+  text-decoration: none;
+  &__prim {
+    background-color: $background-button-prim;
+    color: $color-button-text-prim;
+    &:hover {
+      background-color: $background-button-prim-hover;
+      color: $color-button-text-prim-hover;
+    }
+  }
+  &__add {
+    background-color: $background-button-add;
+    color: $color-button-text-add;
+    &:hover {
+      background-color: $background-button-add-hover;
+      color: $color-button-text-add-hover;
+    }
+  }
+  &_selected{
+    background-color: $background-button-selected;
+    pointer-events: none;
   }
 }

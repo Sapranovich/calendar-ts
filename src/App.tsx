@@ -15,7 +15,6 @@ import "./scss/style.scss";
 
 function App() {
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector( (state: any) => state.auth.isAuthenticated );
   React.useEffect(() => {
     //  возможно нужно всю логику перенести в actions redux, services или создать свой хук???
     if (localStorage.accessToken) {
@@ -44,8 +43,8 @@ function App() {
       <BrowserRouter>
           <Switch>
             <Route exact path="/" component={Landing} />
-            <Route path="/calendar" component={() => isAuthenticated ? <Main /> : <Redirect to="/login" /> } />
-            <Route exact path="/login" component={() => !isAuthenticated ? <Login /> : <Redirect to="/calendar" />} />
+            <Route path="/calendar" component={Main} />
+            <Route exact path="/login" component={Login} />
             <Route exact path="/logout" component={Logout} />
             <Route component={NotFound} />
           </Switch>

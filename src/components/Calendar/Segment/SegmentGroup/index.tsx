@@ -14,8 +14,8 @@ export interface ISegmentGroupProps {
 }
 function SegmentGroup({ group, index }: ISegmentGroupProps) {
   return (
-    <div className="segment__group">
-      <h3 className="segment__date">{getDateInFormat(group.id)}</h3>
+    <div className="segment-group">
+      <h3 className="segment-group__date">{getDateInFormat(group.id)}</h3>
       {group.messages.map((message, index) => message && (
         <CardMessage key={index} message={message} groupId={group.id}/>
       ))}

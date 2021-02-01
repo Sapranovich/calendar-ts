@@ -14,10 +14,4 @@
   position: absolute;
   top: 20px;
   right: 0;
-  background-color: $color-button-text;
-  color: $background-button-hover;
-  &:hover {
-    background-color: $color-button-text-hover;
-    color: $background-button;
-  }
 }

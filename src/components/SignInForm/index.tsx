@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 
 import validationSignIn from "../../services/validationSignIn";
 import setAuthToken from "../../services/setAuthToken";
@@ -92,7 +91,7 @@ const SignInForm = ({ handleToggleButtonClick, registerUserEmail }: ISignInFormP
       </div>
 
       <div className="sign-in-form__group-buttons">
-        <button type='submit' className="button">
+        <button type='submit' className="button button__prim">
         Sign In
         </button>
         <p className="sign-in-form__group-buttons-text">You are new? <a onClick={handleToggleButtonClick}>Create new</a></p>

@@ -39,7 +39,7 @@ const DayOfTheWeek = ({history,dayData: { date, isCurrentMonth }}:DayOfTheWeekPr
         <div className="month-list__day-number">{date.getDate()}</div>
       </div>
       <ul className="month-list__day-tasks">
-      {localStorage.map((el:any, index:number)=> el && <li className="month-list__day-task">
+      {localStorage.map((el:any, index:number)=> el && <li key={index} className="month-list__day-task">
       <h3 className="month-list__day-task-time">{getTimeInFormat(el.currentHour)}</h3>
       <p className="month-list__day-task-text">{el.message}</p>
         </li>)}

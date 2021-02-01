@@ -1,5 +1,5 @@
 .user {
-  border: solid 1px $color-light-l;
+  border: solid 1px $color-border-user-item;
   padding: 10px;
   margin: 5px 0;
   text-align: center;
@@ -19,16 +19,12 @@
   &_decor-viewer {
   }
 }
-.user__buttons{
+.user__buttons {
   width: 100%;
   display: flex;
   flex-wrap: nowrap;
   margin-top: 10px;
-  >*{
+  > * {
     width: 100%;
   }
-}
-.user__button_selected{
-  background-color: $color-link-text-hover;
-  pointer-events: none;
 }

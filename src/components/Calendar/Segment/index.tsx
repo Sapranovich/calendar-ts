@@ -27,6 +27,9 @@ function Segment() {
       worning:''
     })
   };
+  React.useEffect(()=>{
+    setMessagesLocalStorage(messages);
+  },[messages])
 
   const handleSubmitForm = (event: React.FormEvent) => {
     event.preventDefault();
@@ -46,7 +49,7 @@ function Segment() {
         })
         setErrorsFilter({
           ...errorsFilter,
-          worning:'Даты были поменяны местами'
+          worning:'Dates are swapped'
         });
       }
       const filteredData = messages.filter((el:IUserMessageData)=>  el.id <= indexStartParam && el.id >= indexEndParam);
@@ -60,32 +63,29 @@ function Segment() {
     <div className="segment">
       <div className="segment__header border_bottom">
       {/* возможно нужно вынести filter в отдельный компонент ??? */}
-      <h3 className="segment__header-title">
-        {messagesLocalStorage.length > 1  && `Заметки в период с ${getDateInFormat(messagesLocalStorage[0].id)} по ${getDateInFormat(messagesLocalStorage[messagesLocalStorage.length-1].id)}`}
-        {messagesLocalStorage.length === 1  && `Заметки за ${getDateInFormat(messagesLocalStorage[0].id)} число`}
-        {messagesLocalStorage.length === 0  && `Заметки отсутствуют`}
-        </h3>
+      <h2 className="segment__header-title">
+        {messagesLocalStorage.length > 1  && `Notes from ${getDateInFormat(messagesLocalStorage[0].id)} to ${getDateInFormat(messagesLocalStorage[messagesLocalStorage.length-1].id)}`}
+        {messagesLocalStorage.length === 1  && `Notes for the ${getDateInFormat(messagesLocalStorage[0].id)}`}
+        {messagesLocalStorage.length === 0  && `No notes`}
+        </h2>
         {!isNoMessages && (
           <form className="filter-messages-form" onSubmit={handleSubmitForm}>
-            {errorsFilter.worning && (
               <div className="filter-messages-form__worning-feedback">
-                {errorsFilter.worning}
+                {errorsFilter.worning && errorsFilter.worning}
               </div>
-            )}
-            <div className="filter-messages-form__group">
+               <div className="filter-messages-form__wrapper">
+               <div className="filter-messages-form__group">
               <input
                 className="filter-messages-form__input"
                 type="text"
                 name="startParam"
                 value={paramsFilter.startParam}
                 onChange={handleInputChange}
-                placeholder='дд/мм/гггг'
+                placeholder='dd/mm/yyyy'
               />
-              {errorsFilter.startParam && (
               <div className="filter-messages-form__error-feedback">
-                {errorsFilter.startParam}
+                {errorsFilter.startParam && errorsFilter.startParam}
               </div>
-            )}
             </div>
             <div className="filter-messages-form__group">
               <input
@@ -94,15 +94,15 @@ function Segment() {
                 name="endParam"
                 value={paramsFilter.endParam}
                 onChange={handleInputChange}
-                placeholder='дд/мм/гггг'
+                placeholder='dd/mm/yyyy'
               />
-              {errorsFilter.endParam && (
               <div className="filter-messages-form__error-feedback">
-                {errorsFilter.endParam}
+
+                {errorsFilter.endParam && errorsFilter.endParam}
               </div>
-            )}
             </div>
-            <button className="filter-messages-form__button">filter</button>
+               </div>
+               <button className="button button__prim filter-messages-form__button">filter</button>
           </form>
         )}
       </div>

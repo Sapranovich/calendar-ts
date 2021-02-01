@@ -1,8 +1,9 @@
 .card-message {
   display: flex;
-  flex-wrap: wrap;
-  width: 100%;
+  flex-wrap: nowrap;
+  justify-content: space-between;
   align-items: center;
+  width: 100%;
   padding: 5px;
   > * {
     margin-right: 20px;
@@ -26,24 +27,30 @@
   border-radius: 100%;
   text-align: center;
   &_user {
-    background-color: yellowgreen;
+    background-color: $background-card-marker-user;
   }
   &_admin {
-    background-color: grey;
+    background-color: $background-card-marker-admin;
   }
   &_viewer {
-    background-color: hotpink;
+    background-color: $background-card-marker-viewer;
   }
 }
 .card-message__email {
   font-size: 1.6rem;
 }
 .card-message__message {
+  flex: 1;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-height: 50px;
 }
 .card-message__buttons {
-  display: none;
-  // display: flex;
+  display: flex;
+  > * {
+    margin-right: 5px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 }

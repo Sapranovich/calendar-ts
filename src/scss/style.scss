@@ -7,10 +7,12 @@
 @import './base/base';
 @import './base/buttons';
 @import './base/hamburger';
-@import './base/logo';
 
 // pages
 @import './pages/login';
+@import './pages/landing';
+@import './pages/loading';
+@import './pages/notFound';
 
 // components
 @import './components/signInForm';
@@ -20,20 +22,18 @@
 @import './components/widgetMonth';
 @import './components/usersList';
 @import './components/userItem';
-// layout
-@import './layout/header';
-
-
+@import './components/segment';
+@import './components/segmentGroup';
+@import './components/addUpdateMessageCard';
+@import './components/viewMessageCard';
+@import './components/card';
 @import './components/month';
 @import './components/day';
-@import './components/week';
-
-@import './components/card';
-@import './components/list';
-@import './components/user';
 @import './components/calendar';
-
-@import './layout/wrapper';
 @import './pages/modal';
-// @import './components/widgetCalendar';
+
+// layout
+@import './layout/header';
+@import './layout/wrapper';
+
 

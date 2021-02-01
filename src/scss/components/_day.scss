@@ -1,12 +1,12 @@
-.day-list {
-}
 .day-list__header {
   display: flex;
   justify-content: center;
   padding: 10px 0;
 }
+.day-list__group{
+  margin-left: 50px;
+}
 .day-list__day-name {
-  cursor: pointer;
   width: 40px;
   height: 40px;
   border-radius: 100%;
@@ -15,9 +15,4 @@
   justify-content: center;
   align-items: center;
   font-size: 2.5rem;
-  &:hover {
-    background-color: blue;
-  }
-}
-.day-list__group {
 }

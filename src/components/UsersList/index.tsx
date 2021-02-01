@@ -2,7 +2,7 @@ import React from "react";
 import UserItem from "./UserItem";
 import *as CONSTANTS from '../../constants';
 import {IGetModelUser} from '../../services/getModelUser';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import axios from 'axios';
 
 const UsersList = () => {

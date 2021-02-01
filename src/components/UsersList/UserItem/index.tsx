@@ -19,13 +19,13 @@ const UserItem = ({ user }: { user: IGetModelUser }) => {
       {isVisibleButttons && (
         <div className="user__buttons">
           <div
-            className={`button user__button ${user.role === BASIC_ROLES.USER ? "user__button_selected" : ""}`}
+            className={`button button__add ${user.role === BASIC_ROLES.USER ? "button_selected" : ""}`}
             onClick={() => handleUpdateRoleClick(BASIC_ROLES.USER)}
           >
             user
           </div>
           <div
-            className={`button user__button ${user.role === BASIC_ROLES.VIEWER ? "user__button_selected" : ""}`}
+            className={`button button__add ${user.role === BASIC_ROLES.VIEWER ? "button_selected" : ""}`}
             onClick={() => handleUpdateRoleClick(BASIC_ROLES.VIEWER)}
           >
             viewer

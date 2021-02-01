@@ -1,62 +1,63 @@
-import Validator from 'validator';
-import  isEmpty from './isEmpty';
+import Validator from "validator";
+import isEmpty from "./isEmpty";
 
 interface IValidationSignUpProps {
-  name:string
-  email:string
-  password: string
-  password_confirmed:string
-
+  name: string;
+  email: string;
+  password: string;
+  password_confirmed: string;
 }
 interface IValidationSignUpErrors {
-  name?:string
-  email?:string
-  password?: string
-  password_confirmed?:string
+  name?: string;
+  email?: string;
+  password?: string;
+  password_confirmed?: string;
 }
 interface IReturnvalidationSignUp {
-  errors: IValidationSignUpErrors
-  isValid: boolean
+  errors: IValidationSignUpErrors;
+  isValid: boolean;
 }
 
+function validationSignUp(
+  data: IValidationSignUpProps
+): IReturnvalidationSignUp {
+  let errors: IValidationSignUpErrors = {};
 
-function validationSignUp(data:IValidationSignUpProps): IReturnvalidationSignUp {
-  let errors:IValidationSignUpErrors = {};
-  
   if (!Validator.isLength(data.name, { min: 2, max: 30 })) {
-    errors.name = "Имя должно содержать от 2 до 30 символов";
+    errors.name = "Name must be between 2 and 30 characters";
   }
 
   if (Validator.isEmpty(data.name)) {
-    errors.name = "Введите имя";
+    errors.name = "Enter your name";
   }
 
   if (!Validator.isEmail(data.email)) {
-    errors.email = "Электронная почта введена не корректно";
+    errors.email = "Email entered incorrectly";
   }
 
   if (Validator.isEmpty(data.email)) {
-    errors.email = "Введите адрес электронной почты";
+    errors.email = "Enter your email";
   }
 
   if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
-    errors.password = "Пароль должен состоять не менее чем из 6 симоволов";
+    errors.password = "The password must be at least 6 characters long";
   }
 
   if (Validator.isEmpty(data.password)) {
-    errors.password = "Введите пароль";
+    errors.password = "Enter password";
   }
 
   if (!Validator.isLength(data.password_confirmed, { min: 6, max: 30 })) {
-    errors.password_confirmed = "Пароль должен состоять не менее чем из 6 симоволов";
+    errors.password_confirmed =
+      "The password must be at least 6 characters long";
   }
 
   if (!Validator.equals(data.password, data.password_confirmed)) {
-    errors.password_confirmed = "Пароль и Подтверждение пароля должны совпадать";
+    errors.password_confirmed = "Password and confirm password must match";
   }
 
   if (Validator.isEmpty(data.password_confirmed)) {
-    errors.password_confirmed = "Введите пароль";
+    errors.password_confirmed = "Enter password";
   }
 
   return {

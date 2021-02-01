@@ -1,11 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import {
-  RouteComponentProps,
-  withRouter,
-  Link,
-  useRouteMatch,
-} from "react-router-dom";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 import { InitialStateDataType } from "../../../../redux/calendar/calendarReducers";
 import DayOfTheWeek from "../DayOfTheWeek";
 
@@ -14,12 +8,7 @@ export interface WeekOfTheMonthPropTypes extends RouteComponentProps<any> {
   weekNumber: number;
 }
 
-const WeekOfTheMonth = ({
-  history,
-  weekData,
-  weekNumber,
-}: WeekOfTheMonthPropTypes) => {
-  console.log(weekData)
+const WeekOfTheMonth = ({ weekData, weekNumber }: WeekOfTheMonthPropTypes) => {
   return (
     <div key={weekNumber} className="month-list__week border_bottom">
       {weekData.map((day, index) => (

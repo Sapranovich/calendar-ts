@@ -1,32 +1,28 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import * as CONSTANTS from '../../../constants';
 import { openModal, setCurrentHour } from "../../../redux/actions";
 import getTimeInFormat from "../../../services/getTimeInFormat";
 import { IUserMessageDataProps } from "../../../redux/messages/messagesActions";
 export interface ICardMessageProps {
   message: IUserMessageDataProps;
 }
+
 function CardEmpty({ currentHour }: { currentHour: number }) {
   const dispatch = useDispatch();
   const handleOpenModalClick = () => {
     dispatch(setCurrentHour(currentHour));
-    dispatch(openModal());
+    dispatch(openModal(CONSTANTS.MODAL_TYPES.ADD));
   };
   return (
     <div className="card-message border_bottom">
-      <h3 className="card-message__time" onClick={handleOpenModalClick}>
+      <h3 className="card-message__time">
         {getTimeInFormat(currentHour)}
       </h3>
-      <div className="card-message__message">Добавить заметку...</div>
+      <div className="card-message__message">Add note...</div>
       <div className="card-message__buttons">
-        <button className="button card-message__button card-message__button_add">
-          1
-        </button>
-        <button className="button card-message__button card-message__button_update">
-          2
-        </button>
-        <button className="button card-message__button card-message__button_remove">
-          3
+        <button className="button button__prim" onClick={handleOpenModalClick}>
+          Add
         </button>
       </div>
     </div>

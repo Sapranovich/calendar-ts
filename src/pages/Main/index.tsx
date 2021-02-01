@@ -1,15 +1,25 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 
-import Modal from "../Modal";
-import { MainWrapper, Calendar, Header, SideBar } from "../../components";
-
+import {
+  MainWrapper,
+  Calendar,
+  Header,
+  SideBar,
+  Modal,
+} from "../../components";
 
 const Main = () => {
+  const isAuthenticated = useSelector(
+    (state: any) => state.auth.isAuthenticated
+  );
   const { isOpenModal } = useSelector((state: any) => state.modal);
   const [isOpenSideBar, setIsOpenSideBar] = React.useState(true);
 
-  return (
+  return !isAuthenticated ? (
+    <Redirect to="/login" />
+  ) : (
     <MainWrapper>
       <Header
         isOpenSideBar={isOpenSideBar}

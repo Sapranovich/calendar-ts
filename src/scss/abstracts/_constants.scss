@@ -1,47 +1,68 @@
-$color-light-s: #c5c5c5;
-$color-light-l: #eaeaea;
-$color-light-xl: #ffffff;
-
-$color-bg-button: #eaeaea;
-$color-bg-button-hover: #c5c5c5;
-$color-text-button: #3e4255;
-
-$color-dark-s: #8f8f8f;
-$color-dark-l: #5e616f;
-$color-dark-xl: #3e4255;
-
-// $color-hover: #a08383;
-// $color-current: #c84949;
-// $color-selected: #b58282;
-
 $content-big-width: 1440px;
 $content-width: 1280px;
 $tablet-width: 768px;
 $mobile-big-width: 414px;
 $mobile-small-width: 370px;
 
+
+// button
+$background-button-prim: #077f7b;
+$color-button-text-prim: #ffffff;
+$background-button-prim-hover: #169895;
+$color-button-text-prim-hover: #eaeaea;
+
+$background-button-add: #ffffff;
+$color-button-text-add: #3e4255;
+$background-button-add-hover: #eaeaea;
+$color-button-text-add-hover: #3e4255;
+
+$background-button-selected: #169895;
+// ====================================================
+// landing
+$background-landing-page: #077f7b;
+$color-landing-page: #ffffff;
+// ====================================================
+// login
 $background-login-page: #077f7b;
-$background-button: #077f7b;
-$background-button-hover: #169895;
-$background-sign-in-form: #ffffff;
-$background-sign-up-form: #ffffff;
-$background-header:#077f7b;
-$background-sideBar:#077f7b;
+$background-sign-form: #ffffff;
+$color-link-form: #077f7b;
+$color-link-form-hover: #169895;
+$color-error-form: #e05050;
+$color-border-input-form: #077f7b;
+// ===================================================
+// header
+$background-header: #077f7b;
+$color-header-text: #ffffff;
+// ==================================================
+// sideBar
+$background-sideBar: #077f7b;
+// =================================================
+// widgetMonth
+$background-widget-day-current: #ffffff;
+$background-widget-day-selected: #dc8383bd;
+$color-widget-month-text: #ffffff;
+$color-widget-day-shadowed: #979797ba;
+// ==================================================
+// month
+$color-month-cell-header-text: #ffffff;
+$background-month-cell-header: #077f7b;
+$background-month-cell-header-other: #dc8383bd;
+$background-month-cell-header-hover: #169895;
+// ================================================
+// card
+$background-card-marker-user: yellowgreen;
+$background-card-marker-admin: grey;
+$background-card-marker-viewer: hotpink;
+// =====================================================
+// modal
+$background-modal: #5e616f;
+$background-modal-wrapper: #ffffff;
+$background-modal-close-button: #5e616f;
+// ==============================================
+// loading
 
 
-$background-widget-day-current:#ffffff;
-$background-widget-day-selected:#dc8383bd;
-
-
-$color-error-text: #e05050;
-$color-button-text: #ffffff;
-$color-button-text-hover: #ffffff;
-$color-link-text: #077f7b;
-$color-link-text-hover:#169895;
-$color-toggle-text:#ffffff;
-$color-toggle-text-hover:#eaeaea;
-$color-header-text:#ffffff;
-$color-hamburger:#ffffff;
-
-$color-widget-month-text:#ffffff;
-$color-widget-day-shadowed:#979797ba;
+$color-border-user-item: #ffffff;
+$color-light-l: #eaeaea;
+$color-hamburger: #ffffff;
+$color-toggle-text: #ffffff;

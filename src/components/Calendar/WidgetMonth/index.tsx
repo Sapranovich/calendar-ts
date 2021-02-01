@@ -23,7 +23,7 @@ const WidgetMonth = () => {
           ))}
             </div>
             {data.map((week: InitialStateDataType[], index: number) => (
-          <WidgetWeekOfTheMonth weekData={week} weekNumber={index} />
+          <WidgetWeekOfTheMonth key={index} weekData={week} weekNumber={index} />
           
         ))}
             </div>

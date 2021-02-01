@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import { Link } from "react-router-dom";
 
 import getModelUser from "../../services/getModelUser";
 import validationSignUp from "../../services/validationSignUp";
@@ -130,7 +129,7 @@ const SignUpForm = ({ handleToggleButtonClick, setRegisterUserEmail }: ISignUpFo
       <div className="sign-up-form__group-buttons">
         <button
           type="submit"
-          className="button"
+          className="button button__prim"
         >
           Sign Up
         </button>

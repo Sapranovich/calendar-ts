@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { BASIC_ROLES } from '../../constants';
 import WidgetMonth from '../Calendar/WidgetMonth';
 import UsersList from "../UsersList";

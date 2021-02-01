@@ -9,7 +9,7 @@
   align-items: center;
   visibility: hidden;
   opacity: 0;
-  background-color: rgba($color-dark-xl, 0.95);
+  background-color: rgba($background-modal, 0.4);
   z-index: 10;
   @extend %transition;
   &_visibility {
@@ -21,7 +21,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: $color-light-xl;
+  background-color: $background-modal-wrapper;
   padding: 65px 30px 30px;
 }
 
@@ -43,7 +43,7 @@
     content: " ";
     height: 20px;
     width: 2px;
-    background-color: $color-dark-l;
+    background-color: $background-modal-close-button;
   }
   &:before {
     transform: rotate(45deg);

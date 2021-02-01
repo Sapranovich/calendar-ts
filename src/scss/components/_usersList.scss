@@ -7,8 +7,8 @@
   font-size: 2rem;
   padding-bottom: 10px;
 }
-.users-list__users{
+.users-list__users {
   overflow-y: scroll;
   padding: 20px 0;
-  height: 250px;
+  max-height: 250px;
 }

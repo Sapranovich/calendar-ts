@@ -20,6 +20,7 @@ export const requestAllMessages = () => (dispatch: any) => {
 
 export interface IUserMessageDataProps{
   userId:number,
+  title:string,
   message: string,
   currentHour:number,
   email: string,

@@ -1,8 +1,5 @@
-.month-list {
-}
 .month-list__header {
   display: flex;
-  // flex-wrap: nowrap;
 }
 .month-list__day-name {
   padding: 10px 0;
@@ -23,15 +20,15 @@
   padding: 3px 10px;
   text-align: right;
   cursor: pointer;
-  color: $color-header-text;
+  color: $color-month-cell-header-text;
   &:hover {
-    background-color: $background-button-hover;
+    background-color: $background-month-cell-header-hover;
   }
   &_current {
-    background-color: $background-button;
+    background-color: $background-month-cell-header;
   }
   &_other {
-    background-color: $background-widget-day-selected;
+    background-color: $background-month-cell-header-other;
   }
 }
 .month-list__day-number {
