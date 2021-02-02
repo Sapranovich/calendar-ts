@@ -3,10 +3,10 @@ import { BASIC_ROLES } from '../constants';
 
 
 export interface IGetModelUser {
-  id: number,
-  name: string,
-  email: string,
-  role: string
+  id?: number,
+  name?: string,
+  email?: string,
+  role?: string
 }
 
 function getModelUser(stateSignUpForm: IStateSignUpForm, userId:number):IGetModelUser {

@@ -1,4 +1,5 @@
 import React from "react";
+
 import CardMessage from "../../CardMessage";
 import getDateInFormat from '../../../../services/getDateInFormat';
 import { IUserMessageDataProps } from "../../../../redux/messages/messagesActions";
@@ -12,7 +13,8 @@ export interface ISegmentGroupProps {
   group: IGroupProps;
   index: number;
 }
-function SegmentGroup({ group, index }: ISegmentGroupProps) {
+
+const SegmentGroup = ({ group }: ISegmentGroupProps): JSX.Element => {
   return (
     <div className="segment-group">
       <h3 className="segment-group__date">{getDateInFormat(group.id)}</h3>

@@ -1,17 +1,17 @@
 import React from "react";
-import UserItem from "./UserItem";
-import *as CONSTANTS from '../../constants';
-import {IGetModelUser} from '../../services/getModelUser';
 import { useSelector } from "react-redux";
 import axios from 'axios';
 
-const UsersList = () => {
+import UserItem from "./UserItem";
+import * as CONSTANTS from '../../constants';
+import {IGetModelUser} from '../../services/getModelUser';
+
+
+const UsersList = (): JSX.Element => {
   const {id, role} = useSelector((store:any)=> store.auth.user)
   const [isLoaded, setIsLoaded] =React.useState(false);
   const [listUsers, setListUsers] = React.useState<IGetModelUser[]>([]);
-  // const { users, isLoaded } = useSelector((store: any) => store.users);
-  // const dispatch = useDispatch();
-  
+
   React.useEffect(() => {
     // Скорее всего нужно перенести в redux, так как сложно взаимодействовать из UserItem, так как при изменении роли нужно обновить ввесь лист
     if(role === CONSTANTS.BASIC_ROLES.ADMIN){
@@ -36,7 +36,7 @@ const UsersList = () => {
           ))}
         </ul>
       ) : (
-        <div>Загрузка...</div>
+        <div>Loading</div>
       )}
     </div>
   );

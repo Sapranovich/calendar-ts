@@ -1,20 +1,25 @@
 import React from "react";
 import { useSelector } from "react-redux";
+
 import SegmentGroup, { IGroupProps } from "./SegmentGroup";
 import verificationFilterInput from "../../../services/verificationFilterInput";
 import getDateInFormat from '../../../services/getDateInFormat';
 import validationFilterForm, {IValidationFilterFormErrors, IValidationFilterFormProps } from "../../../services/validationFilterForm";
 import { IUserMessageData } from "../../../redux/messages/messagesActions";
 
-function Segment() {
+const Segment = (): JSX.Element => {
   const { isNoMessages, messages } = useSelector((store: any) => store.messages);
-
   const [messagesLocalStorage, setMessagesLocalStorage] = React.useState(messages);
+
   const [errorsFilter, setErrorsFilter] = React.useState<IValidationFilterFormErrors>({});
   const [paramsFilter, setParamFilter] = React.useState<IValidationFilterFormProps>({
     startParam: "",
     endParam: "",
   });
+  
+  React.useEffect(()=>{
+    setMessagesLocalStorage(messages);
+  },[messages])
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setParamFilter({
@@ -27,9 +32,6 @@ function Segment() {
       worning:''
     })
   };
-  React.useEffect(()=>{
-    setMessagesLocalStorage(messages);
-  },[messages])
 
   const handleSubmitForm = (event: React.FormEvent) => {
     event.preventDefault();

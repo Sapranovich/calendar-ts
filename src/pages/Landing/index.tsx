@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Landing = () => {
+const Landing = (): JSX.Element => {
   return (
     <div className="landing">
       <div className="wrapper">

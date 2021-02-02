@@ -1,10 +1,13 @@
 import React from "react";
-import * as CONSTANTS from "../../../constants";
-import { InitialStateDataType } from "../../../redux/calendar/calendarReducers";
 import { useSelector } from 'react-redux';
+
+import { InitialStateDataType } from "../../../redux/calendar/calendarReducers";
 import WeekOfTheMonth from './WeekOfTheMonth';
-function Month() {
+
+import * as CONSTANTS from "../../../constants";
+const Month = (): JSX.Element => {
   const { data } = useSelector((store: any) => store.calendar);
+  
   return (
     <div className="month-list">
       <div className="month-list__header border_bottom">

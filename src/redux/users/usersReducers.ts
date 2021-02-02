@@ -5,7 +5,7 @@ import { IGetModelUser } from "../../services/getModelUser";
 type InferValueTypes<T> = T extends { [key: string]: infer U } ? U : never;
 type ActionTypes = ReturnType<InferValueTypes<typeof actions>>;
 
-type InitialSatateType = {
+export type InitialSatateType = {
   isLoaded: boolean
   users: IGetModelUser[],
 }

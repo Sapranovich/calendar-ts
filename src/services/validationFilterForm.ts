@@ -16,7 +16,7 @@ export interface IReturnvalidationFilterForm {
 }
 
 function validationFilterForm(data:IValidationFilterFormProps):IReturnvalidationFilterForm {
-  let errors:IValidationFilterFormErrors = {};
+  const errors:IValidationFilterFormErrors = {};
   if (!data.startParam.match(REG_EXP_CHECK_DATE)) {
     errors.startParam = "Date entered in the wrong format";
   }

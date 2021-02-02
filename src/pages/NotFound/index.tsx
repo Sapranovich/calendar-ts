@@ -1,7 +1,8 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import { useRouteMatch } from "react-router-dom";
-const NotFound = () => {
+
+const NotFound = (): JSX.Element => {
   const [redirect, setRedirect] = React.useState(false);
   const match = useRouteMatch();
 

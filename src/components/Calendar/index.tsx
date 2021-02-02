@@ -1,11 +1,12 @@
 import React from "react";
+import { Switch, Route } from "react-router-dom";
+
 import Day from "./Day";
 import Segment from "./Segment";
 import Month from "./Month";
-import { Switch, Route } from "react-router-dom";
 
 
-function Calendar() {
+const Calendar = (): JSX.Element => {
   return (
     <div className="calendar">
       <Switch>

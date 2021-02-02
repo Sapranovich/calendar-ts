@@ -1,11 +1,11 @@
 import * as constants from "./authConstants";
-import { IAuthUser } from "../../types/decodedTokenTypes";
 
+import {IGetModelUser} from '../../services/getModelUser';
 type SetAuthUserActionType = {
   type: typeof constants.SET_AUTH_USER;
-  payload: IAuthUser | {};
+  payload: IGetModelUser;
 };
-export function setAuthUser(user: IAuthUser | {}): SetAuthUserActionType {
+export function setAuthUser(user: IGetModelUser ): SetAuthUserActionType {
   return {
     type: constants.SET_AUTH_USER,
     payload: user,

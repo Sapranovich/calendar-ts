@@ -9,7 +9,7 @@ import { IErrorsSignUpForm, IStateSignUpForm, ISignUpFormProps } from "../../typ
 
 import * as CONSTANTS from '../../constants';
 
-const SignUpForm = ({ handleToggleButtonClick, setRegisterUserEmail }: ISignUpFormProps) => {
+const SignUpForm = ({ handleToggleButtonClick, setRegisterUserEmail }: ISignUpFormProps):JSX.Element => {
   const [stateForm, setStateForm] = React.useState<IStateSignUpForm>({
     name: "",
     email: "",

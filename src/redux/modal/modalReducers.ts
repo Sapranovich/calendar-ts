@@ -4,7 +4,7 @@ import * as actions from './modalActions';
 type InferValueTypes<T> = T extends { [key: string]: infer U } ? U : never;
 type ActionTypes = ReturnType<InferValueTypes<typeof actions>>;
 
-type InitialStateType = {
+export type InitialStateType = {
   isOpenModal:boolean
   modalType:string | null
 }

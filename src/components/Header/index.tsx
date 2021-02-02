@@ -1,26 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import * as CONSTANTS from "../../constants";
+
 import { updateDataMonth, updateSelectedDate } from "../../redux/actions";
 import MonthToggle from "../Calendar/MonthToggle";
+
+import * as CONSTANTS from "../../constants";
 
 interface IHeaderProps {
   isOpenSideBar: boolean;
   setIsOpenSideBar: React.Dispatch<boolean>;
 }
 
-const Header = ({ isOpenSideBar, setIsOpenSideBar }: IHeaderProps) => {
+const Header = ({ isOpenSideBar, setIsOpenSideBar }: IHeaderProps):JSX.Element => {
   const dispatch = useDispatch();
-  const { basicDate, currentDate } = useSelector(
-    (store: any) => store.calendar
-  );
+  const { basicDate, currentDate } = useSelector((store: any) => store.calendar);
   const { email } = useSelector((store: any) => store.auth.user);
 
   const handleCurrentDateButtonClick = () => {
     dispatch(updateSelectedDate(currentDate));
     dispatch(updateDataMonth(currentDate));
   };
+  
   const handleToggleAsideButtonClick = () => {
     setIsOpenSideBar(!isOpenSideBar);
   };

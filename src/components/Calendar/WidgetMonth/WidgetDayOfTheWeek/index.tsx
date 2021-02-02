@@ -5,15 +5,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { DayOfTheWeekPropsType } from "../../Month/DayOfTheWeek";
 import { updateSelectedDate } from "../../../../redux/actions";
 
-const WidgetDayOfTheWeek = ({
-  history,
-  dayData: { date, isCurrentMonth },
-}: DayOfTheWeekPropsType) => {
-  const {path} = useRouteMatch();
+const WidgetDayOfTheWeek = ({ history, dayData: { date, isCurrentMonth } }: DayOfTheWeekPropsType): JSX.Element => {
+  const { path } = useRouteMatch();
   const dispatch = useDispatch();
-  const { selectedDate, currentDate } = useSelector(
-    (store: any) => store.calendar
-  );
+  const { selectedDate, currentDate } = useSelector((store: any) => store.calendar);
+
   const isCurrentDate = currentDate.getTime() === date.getTime();
   const isSelectedDate = selectedDate && selectedDate.getTime() === date.getTime();
   
@@ -21,6 +17,7 @@ const WidgetDayOfTheWeek = ({
     dispatch(updateSelectedDate(date))
     history.push(`${path}/day`);
   }
+
   return (
     <div
       className={`widget-month__day 

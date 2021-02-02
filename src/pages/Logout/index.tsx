@@ -3,7 +3,8 @@ import { Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setAuthUser } from "../../redux/actions";
 import setAuthToken from "../../services/setAuthToken";
-const Logout = () => {
+
+const Logout = (): JSX.Element => {
   const dispatch = useDispatch();
   React.useEffect(() => {
     localStorage.removeItem("accessToken");

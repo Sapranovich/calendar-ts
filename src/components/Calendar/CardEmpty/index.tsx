@@ -1,29 +1,38 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import * as CONSTANTS from '../../../constants';
+import { useDispatch, useSelector } from "react-redux";
+
 import { openModal, setCurrentHour } from "../../../redux/actions";
 import getTimeInFormat from "../../../services/getTimeInFormat";
 import { IUserMessageDataProps } from "../../../redux/messages/messagesActions";
+
+import * as CONSTANTS from "../../../constants";
+
 export interface ICardMessageProps {
   message: IUserMessageDataProps;
 }
 
-function CardEmpty({ currentHour }: { currentHour: number }) {
+const CardEmpty = ({ currentHour }: { currentHour: number }): JSX.Element => {
+  const { role } = useSelector((store: any) => store.auth.user);
   const dispatch = useDispatch();
+
   const handleOpenModalClick = () => {
     dispatch(setCurrentHour(currentHour));
     dispatch(openModal(CONSTANTS.MODAL_TYPES.ADD));
   };
+
   return (
     <div className="card-message border_bottom">
-      <h3 className="card-message__time">
-        {getTimeInFormat(currentHour)}
-      </h3>
+      <h3 className="card-message__time">{getTimeInFormat(currentHour)}</h3>
       <div className="card-message__message">Add note...</div>
       <div className="card-message__buttons">
-        <button className="button button__prim" onClick={handleOpenModalClick}>
-          Add
-        </button>
+        {CONSTANTS.BASIC_ROLES.VIEWER !== role && (
+          <button
+            className="button button__prim"
+            onClick={handleOpenModalClick}
+          >
+            Add
+          </button>
+        )}
       </div>
     </div>
   );

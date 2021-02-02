@@ -13,16 +13,8 @@ export const MONTH_NAMES = [
   "December",
 ];
 
-export const WEEK_DAY_NAMES = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
-export const WEEK_DAY_FULL_NAMES = [
-  "Понедельник",
-  "Вторник",
-  "Среда",
-  "Четверг",
-  "Пятница",
-  "Субота",
-  "Воскресенье",
-];
+export const WEEK_DAY_NAMES = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
 
 export const DAYS_WEEK = 7;
 export const HOURS_DAY = 24;

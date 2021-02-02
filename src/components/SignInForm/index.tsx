@@ -8,9 +8,10 @@ import setAuthToken from "../../services/setAuthToken";
 import { setAuthUser } from "../../redux/actions";
 import { IErrorsSignInForm, IStateSignInForm, ISignInFormProps } from "../../types/signInFormTypes";
 import { IDecodedToken } from "../../types/decodedTokenTypes";
+
 import * as CONSTANTS from '../../constants';
 
-const SignInForm = ({ handleToggleButtonClick, registerUserEmail }: ISignInFormProps) => {
+const SignInForm = ({ handleToggleButtonClick, registerUserEmail }: ISignInFormProps):JSX.Element => {
   const dispatch = useDispatch();
   //возможно стоит перенести ошибки в redux хранилище
   const [stateForm, setStateForm] = React.useState<IStateSignInForm>({

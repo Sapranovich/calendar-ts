@@ -14,7 +14,7 @@ interface IReturnvalidationSignIn {
   isValid: boolean;
 }
 function validationSignIn(data: IValidationSignInProps): IReturnvalidationSignIn {
-  let errors: IValidationSignInErrors = {};
+  const errors: IValidationSignInErrors = {};
 
   if (!Validator.isEmail(data.email)) {
     errors.email = "Email entered incorrectly";

@@ -1,9 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { BASIC_ROLES } from '../../constants';
+
 import WidgetMonth from '../Calendar/WidgetMonth';
 import UsersList from "../UsersList";
-const SideBar = ({ isOpenSideBar }: { isOpenSideBar: boolean }) => {
+
+import { BASIC_ROLES } from '../../constants';
+const SideBar = ({ isOpenSideBar }: { isOpenSideBar: boolean }):JSX.Element => {
   const { role } = useSelector((store: any) => store.auth.user);
 
   return (

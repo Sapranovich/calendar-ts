@@ -6,6 +6,6 @@ export interface IDecodedToken {
 }
 
 export interface IAuthUser {
-  email: string;
-  sub: string;
+  email?: string;
+  sub?: string;
 }

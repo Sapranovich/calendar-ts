@@ -9,7 +9,7 @@ type ActionTypes = ReturnType<InferValueTypes<typeof actions>>;
 export type InitialStateType = {
   isAuthenticated: boolean
   isLoaded: boolean
-  user: IGetModelUser | {}
+  user: IGetModelUser
 };
 
 const initialState = {

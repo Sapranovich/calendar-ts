@@ -1,17 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
+
 import CardMessage from "../CardMessage";
 import { IUserMessageData } from "../../../redux/messages/messagesActions";
 import CardEmpty from "../CardEmpty";
-function Day() {
-  const { idSelectedDate, selectedDate } = useSelector(
-    (store: any) => store.calendar
-  );
-  const { messages } = useSelector((store: any) => store.messages);
 
-  const messagesTargetDay = messages.find(
-    (messagesDay: IUserMessageData) => messagesDay.id === idSelectedDate
-  );
+const Day = (): JSX.Element => {
+  const { idSelectedDate, selectedDate } = useSelector((store: any) => store.calendar);
+  const { messages } = useSelector((store: any) => store.messages);
+  const messagesTargetDay = messages.find((messagesDay: IUserMessageData) => messagesDay.id === idSelectedDate);
 
   return (
     <div className="day-list">
@@ -37,6 +34,6 @@ function Day() {
       </div>
     </div>
   );
-}
+};
 
 export default Day;
