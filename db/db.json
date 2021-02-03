@@ -1,0 +1,62 @@
+{
+  "users": [
+    {
+      "email": "admin@admin.admin",
+      "password": "$2a$10$YNT5Q5diVQfVvvoexE4TN.T42GE4Ub86XfI9NwRE4/Qs3cKWU2jHi",
+      "id": 1
+    }
+  ],
+  "data-users": [
+    {
+      "id": 1,
+      "name": "fsdf",
+      "email": "admin@admin.admin",
+      "role": "admin"
+    }
+  ],
+  "messages": [
+    {
+      "id": 1612386000000,
+      "messages": [
+        null,
+        null,
+        null,
+        {
+          "userId": 1,
+          "title": "",
+          "message": " ап sfdg ыва vxcb ",
+          "currentHour": 3,
+          "email": "admin@admin.admin",
+          "role": "user"
+        },
+        null,
+        null,
+        {
+          "userId": 1,
+          "title": "",
+          "message": "fdsg fdg vx ",
+          "currentHour": 6,
+          "email": "admin@admin.admin",
+          "role": "user"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    }
+  ]
+}

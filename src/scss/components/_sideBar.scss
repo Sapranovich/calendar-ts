@@ -1,9 +1,0 @@
-.side-bar {
-  @extend %transition;
-  overflow: hidden;
-  background-color: $background-sideBar;
-  width: $mobile-small-width;
-  &_visible {
-    margin-left: -$mobile-small-width;
-  }
-}
