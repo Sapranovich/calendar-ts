@@ -1,0 +1,14 @@
+.users-list {
+  width: 100%;
+  padding: 20px;
+  color: $color-widget-month-text;
+}
+.users-list__title {
+  font-size: 2rem;
+  padding-bottom: 10px;
+}
+.users-list__users {
+  overflow-y: scroll;
+  padding: 20px 0;
+  max-height: 250px;
+}

@@ -1,0 +1,26 @@
+.header {
+  padding: 20px 0;
+  background-color: $background-header;
+  color: $color-header-text;
+}
+.header__wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header__email{
+  margin:0 30px;
+}
+.header__date{
+  text-align: center;
+  width: 270px;
+}
+.header__group{
+  display: flex;
+  align-items: center;
+}
+.header__group > .header__button{
+  margin: 0 5px;
+}
+
+

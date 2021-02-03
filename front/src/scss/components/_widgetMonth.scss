@@ -1,0 +1,62 @@
+.widget-month {
+  width: 100%;
+  padding: 20px;
+  color: $color-widget-month-text;
+}
+.widget-month__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+.widget-month__date {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.widget-month__list {
+  padding: 20px 0;
+}
+.widget-month__list-header {
+  display: flex;
+  margin-bottom: 10px;
+  > * {
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
+  }
+}
+.widget-month__week {
+  display: flex;
+  > * {
+    text-align: center;
+    width: 100%;
+    height: 32px;
+    margin: 2px;
+    border-radius: 100%;
+  }
+}
+.widget-month__day {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  &:hover {
+    background-color: #d9c3c3bd;
+  }
+  &_shadowed {
+    color: $color-widget-day-shadowed;
+    font-weight: 400;
+    &:hover {
+      color: $color-widget-month-text;
+    }
+  }
+  &_current {
+    border: solid 1px $background-widget-day-current;
+  }
+  &_selected {
+    background-color: $background-widget-day-selected;
+    pointer-events: none;
+  }
+}

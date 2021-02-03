@@ -1,0 +1,54 @@
+.month-list__header {
+  display: flex;
+}
+.month-list__day-name {
+  padding: 10px 0;
+  font-size: 2rem;
+  width: 100%;
+  text-align: center;
+}
+
+.month-list__week {
+  display: flex;
+  width: 100%;
+}
+.month-list__day {
+  padding: 0 1px;
+  width: calc(100% / 7);
+}
+.month-list__day-header {
+  padding: 3px 10px;
+  text-align: right;
+  cursor: pointer;
+  color: $color-month-cell-header-text;
+  &:hover {
+    background-color: $background-month-cell-header-hover;
+  }
+  &_current {
+    background-color: $background-month-cell-header;
+  }
+  &_other {
+    background-color: $background-month-cell-header-other;
+  }
+}
+.month-list__day-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.month-list__day-tasks {
+  padding: 5px 10px;
+  height: 85px;
+}
+.month-list__day-task {
+  display: flex;
+  align-items: center;
+  &-time {
+    font-size: 1.6rem;
+    margin-right: 10px;
+  }
+  &-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
