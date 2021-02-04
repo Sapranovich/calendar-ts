@@ -8,10 +8,11 @@ import setAuthToken from "../../services/setAuthToken";
 import { setAuthUser } from "../../redux/actions";
 import { IErrorsSignInForm, IStateSignInForm, ISignInFormProps } from "../../types/signInFormTypes";
 import { IDecodedToken } from "../../types/decodedTokenTypes";
+import { IGetModelUser } from '../../services/getModelUser'; 
 
 import * as CONSTANTS from '../../constants';
 
-const SignInForm = ({ handleToggleButtonClick, registerUserEmail }: ISignInFormProps):JSX.Element => {
+const SignInForm = ({ handleToggleButtonClick, registerUserEmail }: ISignInFormProps): JSX.Element => {
   const dispatch = useDispatch();
   //возможно стоит перенести ошибки в redux хранилище
   const [stateForm, setStateForm] = React.useState<IStateSignInForm>({
@@ -31,8 +32,10 @@ const SignInForm = ({ handleToggleButtonClick, registerUserEmail }: ISignInFormP
       [event.target.name]: "",
     });
   };
+
   React.useEffect(()=>{
-    setStateForm({...stateForm, email: registerUserEmail})
+    if(registerUserEmail) setStateForm({...stateForm, email: registerUserEmail});
+    //  не могу понять, в чем тут ошибка 
   },[registerUserEmail])
 
   const handleSubmitForm = (event: React.FormEvent) => {
@@ -42,7 +45,7 @@ const SignInForm = ({ handleToggleButtonClick, registerUserEmail }: ISignInFormP
       // Возможно стоит перенести в action
       axios
         .post(`${CONSTANTS.BACKEND_URL}/signin`, stateForm)
-        .then((res: any) => {
+        .then((res: { data: { accessToken: string } }) => {
           const { accessToken } = res.data;
           localStorage.setItem("accessToken", accessToken);
           setAuthToken(accessToken);
@@ -50,10 +53,10 @@ const SignInForm = ({ handleToggleButtonClick, registerUserEmail }: ISignInFormP
           const idUser = decodedToken.sub;
           axios
             .get(`${CONSTANTS.BACKEND_URL}/data-users/${idUser}`)
-            .then((res: any) => dispatch(setAuthUser(res.data)))
-            // .catch((err: any) => setErrorsForm({ request: err.response.data }))
+            .then((res: { data: IGetModelUser }) => dispatch(setAuthUser(res.data)))
+            // .catch((err: { response: { data: string } }) => setErrorsForm({ request: err.response.data }))
         })
-        .catch((err: any) => {
+        .catch((err: { response: { data: string } }) => {
           setErrorsForm({ request: err.response.data })
         })
     } else {
@@ -95,7 +98,7 @@ const SignInForm = ({ handleToggleButtonClick, registerUserEmail }: ISignInFormP
         <button type='submit' className="button button__prim">
         Sign In
         </button>
-        <p className="sign-in-form__group-buttons-text">You are new? <a onClick={handleToggleButtonClick}>Create new</a></p>
+        <p className="sign-in-form__group-buttons-text">You are new? <span onClick={handleToggleButtonClick}>Create new</span></p>
       </div>
     </form>
   );

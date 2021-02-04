@@ -8,6 +8,8 @@ import { Landing, Login, Logout, NotFound, Main } from "./pages";
 import setAuthToken from "./services/setAuthToken";
 import { setAuthUser } from "./redux/actions";
 import { IDecodedToken } from "./types/decodedTokenTypes";
+import { IGetModelUser } from './services/getModelUser'; 
+
 import * as CONSTANTS from "./constants";
 
 import "./scss/style.scss";
@@ -29,7 +31,9 @@ const App = (): JSX.Element => {
         setAuthToken(localStorage.accessToken);
         axios
           .get(`${CONSTANTS.BACKEND_URL}/data-users/${idUser}`)
-          .then((res: any) => dispatch(setAuthUser(res.data)))
+          .then((res: { data: IGetModelUser }) => {
+            dispatch(setAuthUser(res.data))
+          })
           .catch(() => {
             console.log(
               "В данный момент имеются проблеммы с сервером, попробуйдте зайти позже..."
@@ -37,7 +41,7 @@ const App = (): JSX.Element => {
           });
       }
     }
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App">

@@ -1,4 +1,6 @@
-.button, .side-bar, .modal {
+.button,
+.side-bar,
+.modal {
   -webkit-transition: all .3s ease-out;
   transition: all .3s ease-out;
 }
@@ -13,7 +15,7 @@ h1 {
 
 * {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -105,7 +107,9 @@ li {
   color: #ffffff;
 }
 
-.hamburger::before, .hamburger::after, .hamburger__line {
+.hamburger::before,
+.hamburger::after,
+.hamburger__line {
   content: '';
   position: absolute;
   display: inline-block;
@@ -149,14 +153,14 @@ li {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .login__button {
@@ -209,7 +213,7 @@ li {
   font-size: 1.2rem;
 }
 
-.sign-in-form__group-buttons-text a {
+.sign-in-form__group-buttons-text span {
   font-size: 1.4rem;
   font-weight: 700;
   color: #077f7b;
@@ -260,7 +264,7 @@ li {
   font-size: 1.2rem;
 }
 
-.sign-up-form__group-buttons-text a {
+.sign-up-form__group-buttons-text span {
   font-size: 1.4rem;
   font-weight: 700;
   color: #077f7b;
@@ -288,7 +292,7 @@ li {
   width: 100%;
 }
 
-.month-list__week-group > * {
+.month-list__week-group>* {
   width: 100%;
 }
 
@@ -310,8 +314,8 @@ li {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .widget-month__list-header {
@@ -339,8 +343,8 @@ li {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   padding: 10px 0;
 }
 
@@ -354,14 +358,14 @@ li {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   font-size: 2.5rem;
 }
 
@@ -387,10 +391,10 @@ li {
   display: flex;
 }
 
-.week-list__group > * {
+.week-list__group>* {
   -webkit-box-flex: 3;
-      -ms-flex-positive: 3;
-          flex-grow: 3;
+  -ms-flex-positive: 3;
+  flex-grow: 3;
 }
 
 .segment__header {
@@ -398,11 +402,11 @@ li {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   padding: 20px 30px;
 }
 
@@ -419,19 +423,19 @@ li {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   width: 100%;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   padding: 5px;
 }
 
-.card-message > * {
+.card-message>* {
   margin-right: 20px;
 }
 
-.card-message > *:last-child {
+.card-message>*:last-child {
   margin-right: 0;
 }
 
@@ -449,14 +453,14 @@ li {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   border-radius: 100%;
   text-align: center;
 }
@@ -537,11 +541,11 @@ li {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   visibility: hidden;
   opacity: 0;
   background-color: rgba(62, 66, 85, 0.95);
@@ -560,8 +564,8 @@ li {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   background-color: #ffffff;
   padding: 65px 30px 30px;
 }
@@ -580,7 +584,8 @@ li {
   opacity: 1;
 }
 
-.modal__close-button:before, .modal__close-button:after {
+.modal__close-button:before,
+.modal__close-button:after {
   position: absolute;
   left: 15px;
   content: " ";
@@ -591,12 +596,12 @@ li {
 
 .modal__close-button:before {
   -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .modal__close-button:after {
   -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 .header {
@@ -605,11 +610,11 @@ li {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .header__group {
@@ -617,15 +622,16 @@ li {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.header__group > * {
+.header__group>* {
   margin-right: 40px;
 }
 
-.header__group > *:last-child {
+.header__group>*:last-child {
   margin-right: 0;
 }
+
 /*# sourceMappingURL=style.css.map */

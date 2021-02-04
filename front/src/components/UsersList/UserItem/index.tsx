@@ -5,7 +5,7 @@ import { IGetModelUser } from "../../../services/getModelUser";
 
 import * as CONSTANTS from "../../../constants";
 
-const UserItem = ({ user }: { user: IGetModelUser }): JSX.Element => {
+const UserItem = ({ user, allUsers }: { user: IGetModelUser, allUsers: () => void }): JSX.Element => {
   const [isVisibleButttons, setIsVisibleButttons] = React.useState(false);
 
   const handleUpdateRoleClick = (role: string) => {
@@ -15,7 +15,7 @@ const UserItem = ({ user }: { user: IGetModelUser }): JSX.Element => {
     }
     axios.put(`${CONSTANTS.BACKEND_URL}/data-users/${user.id}`, updateDataUser)
     .then(()=>{
-      console.log(updateDataUser, user)
+      allUsers();
     })
     console.log(
       user,

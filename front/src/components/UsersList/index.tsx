@@ -9,24 +9,23 @@ import IStore from "../../redux/interfaceStore";
 import * as CONSTANTS from "../../constants";
 
 const UsersList = (): JSX.Element => {
-  const { id, role } = useSelector((store: IStore) => store.auth.user);
+  const { id } = useSelector((store: IStore) => store.auth.user);
   const [isLoaded, setIsLoaded] = React.useState(false);
   const [listUsers, setListUsers] = React.useState<IGetModelUser[]>([]);
 
+  const allUsers = React.useCallback(() => { 
+    axios
+      .get(`${CONSTANTS.BACKEND_URL}/data-users/?id_ne=${id}`)
+      .then((res) => {
+        const listUsers = res.data;
+        setListUsers(listUsers);
+        setIsLoaded(true);
+      });
+  },[id]);
+
   React.useEffect(() => {
-    // Скорее всего нужно перенести в redux, так как сложно взаимодействовать из UserItem, так как при изменении роли нужно обновить ввесь лист
-    if (role === CONSTANTS.BASIC_ROLES.ADMIN) {
-      axios
-        .get(`${CONSTANTS.BACKEND_URL}/data-users/?id_ne=${id}`)
-        .then((res) => {
-          const listUsers = res.data;
-          setListUsers(listUsers);
-          setIsLoaded(true);
-        });
-      // .catch((e)=> console.log)
-    }
-    // dispatch(allUsers());
-  }, []);
+    allUsers();
+  }, [allUsers]);
 
   return (
     <div className="users-list">
@@ -34,7 +33,7 @@ const UsersList = (): JSX.Element => {
       {isLoaded ? (
         <ul className="users-list__users border_bottom">
           {listUsers.map((user: IGetModelUser, index: number) => (
-            <UserItem key={index} user={user} />
+            <UserItem key={index} user={user} allUsers={allUsers} />
           ))}
         </ul>
       ) : (

@@ -52,13 +52,13 @@ const SignUpForm = ({ handleToggleButtonClick, setRegisterUserEmail }: ISignUpFo
           const modelUser = getModelUser(stateForm, userId);
           axios
             .post(`${CONSTANTS.BACKEND_URL}/data-users`, modelUser)
-            .catch((err: any) => setErrorsForm({ request: err.response.data }));
+            .catch((err: { response: { data: string } }) => setErrorsForm({ request: err.response.data }));
         })
         .then(() => {
           handleToggleButtonClick();
           setRegisterUserEmail(user.email);
         })
-        .catch((err: any) => setErrorsForm({ request: err.response.data }));
+        .catch((err: { response: { data: string } }) => setErrorsForm({ request: err.response.data }));
     } else {
       setErrorsForm(errors);
     }
@@ -134,7 +134,7 @@ const SignUpForm = ({ handleToggleButtonClick, setRegisterUserEmail }: ISignUpFo
           Sign Up
         </button>
         <p className="sign-up-form__group-buttons-text">
-                Already have account? <a onClick={handleToggleButtonClick}>Login</a>
+                Already have account? <span onClick={handleToggleButtonClick}>Login</span>
         </p>
       </div>
     </form>
