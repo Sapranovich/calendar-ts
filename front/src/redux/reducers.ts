@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 
 import auth from './auth/authReducer';
-import calendar from './calendar/calendarReducers';
-import messages from './messages/messagesReducers';
-import users from './users/usersReducers';
-import modal from './modal/modalReducers';
+import calendar from './calendar/calendarReducer';
+import messages from './messages/messagesReducer';
+import users from './users/usersReducer';
+import modal from './modal/modalReducer';
 
 
 

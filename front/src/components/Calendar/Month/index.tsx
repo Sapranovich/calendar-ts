@@ -1,14 +1,14 @@
 import React from "react";
 import { useSelector } from 'react-redux';
-
-import { InitialStateDataType } from "../../../redux/calendar/calendarReducers";
+import IStore from "../../../redux/interfaceStore";
+import { DayDataType } from "../../../redux/calendar/calendarReducer";
 import WeekOfTheMonth from './WeekOfTheMonth';
 
 import * as CONSTANTS from "../../../constants";
 const Month = (): JSX.Element => {
-  const { data } = useSelector((store: any) => store.calendar);
+  const { data } = useSelector((store: IStore) => store.calendar);
   
-  return (
+  return  (
     <div className="month-list">
       <div className="month-list__header border_bottom">
         {CONSTANTS.WEEK_DAY_NAMES.map((name, index) => (
@@ -17,7 +17,7 @@ const Month = (): JSX.Element => {
           </span>
         ))}
       </div>
-      {data.map((week: InitialStateDataType[], index: number) => (
+      {data?.map((week: DayDataType[], index: number) => (
         <WeekOfTheMonth key={index} weekData={week} weekNumber={index} />
       ))}
     </div>

@@ -2,20 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
+import IStore from "../../redux/interfaceStore";
 import { updateDataMonth, updateSelectedDate } from "../../redux/actions";
 import MonthToggle from "../Calendar/MonthToggle";
 
 import * as CONSTANTS from "../../constants";
 
-interface IHeaderProps {
+type HeaderPropsType = {
   isOpenSideBar: boolean;
   setIsOpenSideBar: React.Dispatch<boolean>;
 }
 
-const Header = ({ isOpenSideBar, setIsOpenSideBar }: IHeaderProps):JSX.Element => {
+const Header = ({ isOpenSideBar, setIsOpenSideBar }: HeaderPropsType):JSX.Element => {
+    // Не знаю как решить данную проблему, связанную с вариативностью(или отсутствием ключей) типов basicDate, currentDate
   const dispatch = useDispatch();
   const { basicDate, currentDate } = useSelector((store: any) => store.calendar);
-  const { email } = useSelector((store: any) => store.auth.user);
+  const { email } = useSelector((store: IStore) => store.auth.user);
 
   const handleCurrentDateButtonClick = () => {
     dispatch(updateSelectedDate(currentDate));

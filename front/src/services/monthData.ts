@@ -36,11 +36,7 @@ function monthData(year: number, month: number): Array<IDataItem[]> {
   const monthStartsOn = getDayOfWeek(date);
   let day = 1;
 
-  for (
-    let i = 0;
-    i < (daysInMonth + monthStartsOn) / CONSTANTS.DAYS_WEEK;
-    i++
-  ) {
+  for (let i = 0; i < (daysInMonth + monthStartsOn) / CONSTANTS.DAYS_WEEK; i++) {
     data[i] = [];
     for (let j = 0; j < CONSTANTS.DAYS_WEEK; j++) {
       if (i === 0 && j < monthStartsOn) {

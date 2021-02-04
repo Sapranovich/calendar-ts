@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+
+import IStore from "../../redux/interfaceStore";
 import {
   MainWrapper,
   Calendar,
@@ -10,8 +12,8 @@ import {
 } from "../../components";
 
 const Main = ():JSX.Element => {
-  const { isAuthenticated } = useSelector((state: any) => state.auth);
-  const { isOpenModal } = useSelector((state: any) => state.modal);
+  const { isAuthenticated } = useSelector((state: IStore) => state.auth);
+  const { isOpenModal } = useSelector((state: IStore) => state.modal);
   const [isOpenSideBar, setIsOpenSideBar] = React.useState(true);
 
   return !isAuthenticated ? (

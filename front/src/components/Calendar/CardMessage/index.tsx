@@ -5,12 +5,13 @@ import axios from "axios";
 import isEmpty from "../../../services/isEmpty";
 import { openModal, setCurrentHour, updateSelectedDate } from "../../../redux/actions";
 import getTimeInFormat from "../../../services/getTimeInFormat";
-import { IUserMessageDataProps, requestAllMessages } from "../../../redux/messages/messagesActions";
+import { requestAllMessages } from "../../../redux/messages/messagesActions";
+import { UserMessageDataType } from '../../../types/messagesDataTypes';
 
 import * as CONSTANTS from "../../../constants";
 
 export interface ICardMessageProps {
-  message: IUserMessageDataProps;
+  message: UserMessageDataType;
   groupId?: number;
 }
 const CardMessage = ({ groupId, message: { message, email, currentHour, role, userId }}: ICardMessageProps): JSX.Element => {

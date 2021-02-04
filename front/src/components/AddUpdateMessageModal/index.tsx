@@ -2,22 +2,24 @@ import React from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 
+import IStore from "../../redux/interfaceStore";
 import isEmpty from "../../services/isEmpty";
 import getDateInFormat from "../../services/getDateInFormat";
 import getTimeInFormat from "../../services/getTimeInFormat";
+import { UserMessageDataType, MessagesSpecificDateType } from '../../types/messagesDataTypes';
 import { requestAllMessages, setCurrentHour, closeModal } from "../../redux/actions";
-import { IUserMessageData, IUserMessageDataProps } from "../../redux/messages/messagesActions";
 
 import * as CONSTANTS from "../../constants";
 
 function AddUpdateMessageModal(): JSX.Element {
+  // Не знаю как решить данную проблему, связанную с вариативностью(или отсутствием ключей) типов currentHour, email, id, role
   const { idSelectedDate, currentHour } = useSelector((store: any) => store.calendar);
   const { email, id, role } = useSelector((store: any) => store.auth.user);
-  const { messages } = useSelector((store: any) => store.messages);
-  const { modalType } = useSelector((store: any) => store.modal);
+  const { messages } = useSelector((store: IStore) => store.messages);
+  const { modalType } = useSelector((store: IStore) => store.modal);
   const dispatch = useDispatch();
-
-  const [stateMessageModal,setStateMessageModal] = React.useState<IUserMessageDataProps>({
+   
+  const [stateMessageModal,setStateMessageModal] = React.useState<UserMessageDataType>({
     userId: id,
     title: "",
     message: "",
@@ -26,12 +28,12 @@ function AddUpdateMessageModal(): JSX.Element {
     role,
   });
 
-  const messagesTargetDay = messages.find((messagesDay: IUserMessageData) => messagesDay.id === idSelectedDate);
+  const messagesTargetDay = messages.find((messagesDay: MessagesSpecificDateType) => messagesDay.id === idSelectedDate);
   
   React.useEffect(() => {
     if (messagesTargetDay && messagesTargetDay.messages[currentHour]) {
       const targetMessage = messagesTargetDay.messages[currentHour];
-      setStateMessageModal(targetMessage);
+      targetMessage  && setStateMessageModal(targetMessage);
     }
   }, [currentHour, messagesTargetDay]);
 

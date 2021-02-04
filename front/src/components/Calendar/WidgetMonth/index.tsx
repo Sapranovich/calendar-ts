@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { InitialStateDataType } from "../../../redux/calendar/calendarReducers";
+import { DayDataType } from "../../../redux/calendar/calendarReducer";
 import WidgetWeekOfTheMonth from "./WidgetWeekOfTheMonth";
 import MonthToggle from "../MonthToggle";
 
@@ -14,7 +14,7 @@ const WidgetMonth = (): JSX.Element => {
     <div className="widget-month border_bottom">
       <div className="widget-month__header border_bottom">
         <h3 className="widget-month__date">
-          {CONSTANTS.MONTH_NAMES[basicDate.getMonth()]}
+          {CONSTANTS.MONTH_NAMES[basicDate.getMonth()]}{" "}
           {basicDate.getFullYear()}
         </h3>
         <MonthToggle />
@@ -27,7 +27,7 @@ const WidgetMonth = (): JSX.Element => {
             </span>
           ))}
         </div>
-        {data.map((week: InitialStateDataType[], index: number) => (
+        {data.map((week: DayDataType[], index: number) => (
           <WidgetWeekOfTheMonth
             key={index}
             weekData={week}

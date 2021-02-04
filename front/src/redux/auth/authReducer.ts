@@ -1,7 +1,9 @@
+import isEmpty from "../../services/isEmpty";
+
+import {IGetModelUser} from '../../services/getModelUser';
+
 import * as constants from "./authConstants";
 import * as actions from "./authActions";
-import isEmpty from "../../services/isEmpty";
-import {IGetModelUser} from '../../services/getModelUser';
 
 type InferValueTypes<T> = T extends { [key: string]: infer U } ? U : never;
 type ActionTypes = ReturnType<InferValueTypes<typeof actions>>;

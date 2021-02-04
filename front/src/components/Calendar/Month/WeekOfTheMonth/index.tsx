@@ -1,11 +1,11 @@
 import React from "react";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 
-import { InitialStateDataType } from "../../../../redux/calendar/calendarReducers";
+import { DayDataType } from "../../../../redux/calendar/calendarReducer";
 import DayOfTheWeek from "../DayOfTheWeek";
 
 export interface WeekOfTheMonthPropTypes extends RouteComponentProps<any> {
-  weekData: InitialStateDataType[];
+  weekData: DayDataType[];
   weekNumber: number;
 }
 

@@ -3,12 +3,14 @@ import { useSelector } from "react-redux";
 
 import getDateInFormat from "../../services/getDateInFormat";
 import getTimeInFormat from "../../services/getTimeInFormat";
-import { IUserMessageData } from "../../redux/messages/messagesActions";
+import { MessagesSpecificDateType } from '../../types/messagesDataTypes';
+// import IStore from "../../redux/interfaceStore";
 
 function ViewMessageModal(): JSX.Element {
+    // Не знаю как решить данную проблему, связанную с вариативностью(или отсутствием ключей) типов idSelectedDate, currentHour, messages
   const { idSelectedDate, currentHour } = useSelector((store: any) => store.calendar);
   const { messages } = useSelector((store: any) => store.messages);
-  const messagesTargetDay = messages.find((messagesDay: IUserMessageData) => messagesDay.id === idSelectedDate);
+  const messagesTargetDay = messages.find((messagesDay: MessagesSpecificDateType) => messagesDay.id === idSelectedDate);
 
   return (
     <div className="view-message-card">

@@ -17,5 +17,5 @@ export interface IUser {
 }
 export interface ISignUpFormProps {
   handleToggleButtonClick: () => void;
-  setRegisterUserEmail:(email:string) => void
+  setRegisterUserEmail: (email: string) => void;
 }

@@ -14,6 +14,7 @@ import "./scss/style.scss";
 
 const App = (): JSX.Element => {
   const dispatch = useDispatch();
+  
   React.useEffect(() => {
     //  возможно нужно всю логику перенести в actions redux, services или создать свой хук???
     if (localStorage.accessToken) {

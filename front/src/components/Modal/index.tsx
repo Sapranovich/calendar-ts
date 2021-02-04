@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import IStore from "../../redux/interfaceStore";
 import AddUpdateMessageModal from "../AddUpdateMessageModal";
 import ViewMessageModal from "../ViewMessageModal";
 import { closeModal, setCurrentHour } from "../../redux/actions";
@@ -8,7 +9,7 @@ import { closeModal, setCurrentHour } from "../../redux/actions";
 import * as CONSTANTS from "../../constants";
 
 function Modal():JSX.Element {
-  const { modalType } = useSelector((store: any) => store.modal);
+  const { modalType } = useSelector((store: IStore) => store.modal);
   const dispatch = useDispatch();
 
   const handleCloseButtonClick = () => {

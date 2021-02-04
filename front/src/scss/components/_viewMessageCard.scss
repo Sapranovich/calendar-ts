@@ -4,7 +4,7 @@
   width: 600px;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
 }
 .view-message-card__header {
   display: flex;
@@ -25,9 +25,9 @@
   width: 100%;
   font-size: 1.6rem;
   line-height: 2.6rem;
-  padding: 5px;
+  padding: 5px 10px;
   margin-bottom: 30px;
   border: solid 2px $background-login-page;
-  max-height: 200px;
+  height: 200px;
   overflow-y: scroll;
 }

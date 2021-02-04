@@ -2,11 +2,11 @@ import React from "react";
 
 import CardMessage from "../../CardMessage";
 import getDateInFormat from '../../../../services/getDateInFormat';
-import { IUserMessageDataProps } from "../../../../redux/messages/messagesActions";
+import { UserMessageDataType } from '../../../../types/messagesDataTypes';
 
 export interface IGroupProps {
   id: number;
-  messages: IUserMessageDataProps[];
+  messages: UserMessageDataType[];
 }
 
 export interface ISegmentGroupProps {

@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { openModal, setCurrentHour } from "../../../redux/actions";
 import getTimeInFormat from "../../../services/getTimeInFormat";
-import { IUserMessageDataProps } from "../../../redux/messages/messagesActions";
+import { UserMessageDataType } from '../../../types/messagesDataTypes';
 
 import * as CONSTANTS from "../../../constants";
 
 export interface ICardMessageProps {
-  message: IUserMessageDataProps;
+  message: UserMessageDataType;
 }
 
 const CardEmpty = ({ currentHour }: { currentHour: number }): JSX.Element => {

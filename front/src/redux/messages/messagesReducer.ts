@@ -1,11 +1,14 @@
-import * as constants from './messagesConstants';
 import isEmpty from '../../services/isEmpty';
-import { IUserMessageData } from './messagesActions';
 
-export type InitialStateDataType = {
+import { SetAllMessagesActionType } from './messagesActions';
+import { MessagesSpecificDateType } from '../../types/messagesDataTypes';
+
+import * as constants from './messagesConstants';
+
+export type InitialStateType = {
   isNoMessages: boolean
   isLoadedMessages: boolean
-  messages: IUserMessageData[]
+  messages: MessagesSpecificDateType[]
 };
 const initialState = {
   isNoMessages: false,
@@ -13,7 +16,7 @@ const initialState = {
   messages: [],
 };
 
-export default function messages(state = initialState, action: any):InitialStateDataType {
+export default function messages(state = initialState, action: SetAllMessagesActionType): InitialStateType {
   switch (action.type) {
     case constants.SET_ALL_MESSAGES:
       return {

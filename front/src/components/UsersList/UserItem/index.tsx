@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 
 import { IGetModelUser } from "../../../services/getModelUser";
+
 import * as CONSTANTS from "../../../constants";
 
 const UserItem = ({ user }: { user: IGetModelUser }): JSX.Element => {

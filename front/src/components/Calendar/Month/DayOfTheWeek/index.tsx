@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps, withRouter, useRouteMatch } from "react-router-dom";
 
 import { updateSelectedDate } from "../../../../redux/actions";
-import { InitialStateDataType } from "../../../../redux/calendar/calendarReducers";
+import { DayDataType } from "../../../../redux/calendar/calendarReducer";
 import getTimeInFormat from "../../../../services/getTimeInFormat";
 
 export interface DayOfTheWeekPropsType extends RouteComponentProps<any> {
-  dayData: InitialStateDataType;
+  dayData: DayDataType;
 }
 
 const DayOfTheWeek = ({ history, dayData: { date, isCurrentMonth }}: DayOfTheWeekPropsType): JSX.Element => {

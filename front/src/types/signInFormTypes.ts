@@ -9,12 +9,7 @@ export interface IStateSignInForm {
   password: string;
 }
 
- export interface ISignInFormProps {
-  handleToggleButtonClick: () => void
-  registerUserEmail:string
+export interface ISignInFormProps {
+  handleToggleButtonClick: () => void;
+  registerUserEmail: string;
 }
-
-
-
-
-

@@ -1,6 +1,5 @@
 import * as constants from "./modalConstants";
 
-
 type OpenModalActionType = {
   type: typeof constants.OPEN_MODAL
   payload: string
