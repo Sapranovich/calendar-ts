@@ -8,7 +8,7 @@ export interface IValidationFilterFormProps {
 export interface IValidationFilterFormErrors {
   startParam?: string
   endParam?: string
-  worning?:string 
+  warning?:string 
 }
 export interface IReturnvalidationFilterForm {
   errors: IValidationFilterFormErrors

@@ -31,7 +31,7 @@ const Segment = (): JSX.Element => {
     setErrorsFilter({
       ...errorsFilter,
       [event.target.name]: "",
-      worning: "",
+      warning: "",
     });
   };
 
@@ -53,7 +53,7 @@ const Segment = (): JSX.Element => {
         });
         setErrorsFilter({
           ...errorsFilter,
-          worning: "Dates are swapped",
+          warning: "Dates are swapped",
         });
       }
       const filteredData = messages.filter((el: MessagesSpecificDateType) => el.id <= indexStartParam && el.id >= indexEndParam);
@@ -62,6 +62,11 @@ const Segment = (): JSX.Element => {
       setErrorsFilter(errors);
     }
   };
+
+  const handleResetButtonClick = () => {
+    setMessagesLocalStorage(messages);
+    setErrorsFilter({});
+  }
 
   return (
     <div className="segment">
@@ -79,7 +84,7 @@ const Segment = (): JSX.Element => {
         {!isNoMessages && (
           <form className="filter-messages-form" onSubmit={handleSubmitForm}>
 
-            <div className="filter-messages-form__warning-feedback">{errorsFilter.worning}</div>
+            <div className="filter-messages-form__warning-feedback">{errorsFilter.warning}</div>
 
             <div className="filter-messages-form__wrapper">
               <div className="filter-messages-form__group">
@@ -109,11 +114,14 @@ const Segment = (): JSX.Element => {
 
               </div>
             </div>
-
+            <div className="filter-messages-form__buttons">
             <button className="button button__prim filter-messages-form__button">
               filter
             </button>
-
+            <button type='button' className="button button__prim filter-messages-form__button" onClick={handleResetButtonClick}>
+              reset
+            </button>
+            </div>
           </form>
         )}
       </div>
