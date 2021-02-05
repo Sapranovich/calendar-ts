@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
+import IStore from "../../../redux/interfaceStore";
 import { DayDataType } from "../../../redux/calendar/calendarReducer";
 import WidgetWeekOfTheMonth from "./WidgetWeekOfTheMonth";
 import MonthToggle from "../MonthToggle";
@@ -8,29 +9,29 @@ import MonthToggle from "../MonthToggle";
 import * as CONSTANTS from "../../../constants";
 
 const WidgetMonth = (): JSX.Element => {
-  const { basicDate, data } = useSelector((store: any) => store.calendar);
+  const { basicDate, data } = useSelector((store: IStore) => store.calendar);
 
   return (
     <div className="widget-month border_bottom">
       <div className="widget-month__header border_bottom">
         <h3 className="widget-month__date">
-          {CONSTANTS.MONTH_NAMES[basicDate.getMonth()]}{" "}
-          {basicDate.getFullYear()}
+          {CONSTANTS.MONTH_NAMES[basicDate!.getMonth()]}{" "}
+          {basicDate!.getFullYear()}
         </h3>
         <MonthToggle />
       </div>
       <div className="widget-month__list border_bottom">
         <div className="widget-month__list-header">
-          {CONSTANTS.WEEK_DAY_NAMES.map((name, index) => (
+          {CONSTANTS.WEEK_DAY_NAMES.map((name: string, index: number) => (
             <span key={index} className="widget-month__day-name">
               {name}
             </span>
           ))}
         </div>
-        {data.map((week: DayDataType[], index: number) => (
+        {data!.map((weekData: DayDataType[], index: number) => (
           <WidgetWeekOfTheMonth
             key={index}
-            weekData={week}
+            weekData={weekData}
             weekNumber={index}
           />
         ))}

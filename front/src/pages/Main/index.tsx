@@ -3,13 +3,7 @@ import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import IStore from "../../redux/interfaceStore";
-import {
-  MainWrapper,
-  Calendar,
-  Header,
-  SideBar,
-  Modal,
-} from "../../components";
+import { MainWrapper, Calendar, Header, SideBar, Modal } from "../../components";
 
 const Main = ():JSX.Element => {
   const { isAuthenticated } = useSelector((state: IStore) => state.auth);

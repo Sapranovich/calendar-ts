@@ -5,7 +5,7 @@ import { IGetModelUser } from "../../../services/getModelUser";
 
 import * as CONSTANTS from "../../../constants";
 
-const UserItem = ({ user, allUsers }: { user: IGetModelUser, allUsers: () => void }): JSX.Element => {
+const UserItem = ({ user, setAllUsers }: { user: IGetModelUser, setAllUsers: () => void }): JSX.Element => {
   const [isVisibleButttons, setIsVisibleButttons] = React.useState(false);
 
   const handleUpdateRoleClick = (role: string) => {
@@ -13,14 +13,12 @@ const UserItem = ({ user, allUsers }: { user: IGetModelUser, allUsers: () => voi
       ...user,
       role
     }
-    axios.put(`${CONSTANTS.BACKEND_URL}/data-users/${user.id}`, updateDataUser)
-    .then(()=>{
-      allUsers();
-    })
-    console.log(
-      user,
-      `Смена роли пользователя ${user.email} с ${user.role} на ${role} с последующим запросом на обновленный лист users`
-    );
+    axios
+      .put(`${CONSTANTS.BACKEND_URL}/data-users/${user.id}`, updateDataUser)
+      .then(()=>{
+        setAllUsers();
+      })
+    console.log(`Смена роли пользователя ${user.email} с ${user.role} на ${role} с последующим запросом на обновленный лист users`);
   };
 
   return (
@@ -35,13 +33,13 @@ const UserItem = ({ user, allUsers }: { user: IGetModelUser, allUsers: () => voi
             className={`button button__add ${user.role === CONSTANTS.BASIC_ROLES.USER ? "button_selected" : ""}`}
             onClick={() => handleUpdateRoleClick(CONSTANTS.BASIC_ROLES.USER)}
           >
-            user
+            User
           </div>
           <div
             className={`button button__add ${user.role === CONSTANTS.BASIC_ROLES.VIEWER ? "button_selected" : ""}`}
             onClick={() => handleUpdateRoleClick(CONSTANTS.BASIC_ROLES.VIEWER)}
           >
-            viewer
+            Viewer
           </div>
         </div>
       )}

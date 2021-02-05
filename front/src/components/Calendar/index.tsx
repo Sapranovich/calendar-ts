@@ -5,7 +5,6 @@ import Day from "./Day";
 import Segment from "./Segment";
 import Month from "./Month";
 
-
 const Calendar = (): JSX.Element => {
   return (
     <div className="calendar">

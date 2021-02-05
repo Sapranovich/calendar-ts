@@ -13,7 +13,7 @@ const UsersList = (): JSX.Element => {
   const [isLoaded, setIsLoaded] = React.useState(false);
   const [listUsers, setListUsers] = React.useState<IGetModelUser[]>([]);
 
-  const allUsers = React.useCallback(() => { 
+  const setAllUsers = React.useCallback(() => {
     axios
       .get(`${CONSTANTS.BACKEND_URL}/data-users/?id_ne=${id}`)
       .then((res) => {
@@ -21,11 +21,11 @@ const UsersList = (): JSX.Element => {
         setListUsers(listUsers);
         setIsLoaded(true);
       });
-  },[id]);
+  }, [id]);
 
   React.useEffect(() => {
-    allUsers();
-  }, [allUsers]);
+    setAllUsers();
+  }, [setAllUsers]);
 
   return (
     <div className="users-list">
@@ -33,7 +33,7 @@ const UsersList = (): JSX.Element => {
       {isLoaded ? (
         <ul className="users-list__users border_bottom">
           {listUsers.map((user: IGetModelUser, index: number) => (
-            <UserItem key={index} user={user} allUsers={allUsers} />
+            <UserItem key={index} user={user} setAllUsers={setAllUsers} />
           ))}
         </ul>
       ) : (

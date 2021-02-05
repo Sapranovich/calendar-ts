@@ -13,15 +13,15 @@ type HeaderPropsType = {
   setIsOpenSideBar: React.Dispatch<boolean>;
 }
 
-const Header = ({ isOpenSideBar, setIsOpenSideBar }: HeaderPropsType):JSX.Element => {
-    // Не знаю как решить данную проблему, связанную с вариативностью(или отсутствием ключей) типов basicDate, currentDate
+const Header = ({ isOpenSideBar, setIsOpenSideBar }: HeaderPropsType): JSX.Element => {
+    // Не знаю как решить данную проблему, связанную с вариативностью типов basicDate, currentDate
   const dispatch = useDispatch();
-  const { basicDate, currentDate } = useSelector((store: any) => store.calendar);
+  const { basicDate, currentDate } = useSelector((store: IStore) => store.calendar);
   const { email } = useSelector((store: IStore) => store.auth.user);
 
   const handleCurrentDateButtonClick = () => {
-    dispatch(updateSelectedDate(currentDate));
-    dispatch(updateDataMonth(currentDate));
+    dispatch(updateSelectedDate(currentDate!));
+    dispatch(updateDataMonth(currentDate!));
   };
   
   const handleToggleAsideButtonClick = () => {
@@ -39,25 +39,25 @@ const Header = ({ isOpenSideBar, setIsOpenSideBar }: HeaderPropsType):JSX.Elemen
             <h2 className="header__email">{email}</h2>
             <MonthToggle />
             <h2 className="header__date">
-              {CONSTANTS.MONTH_NAMES[basicDate.getMonth()]}{" "}
-              {basicDate.getFullYear()}
+              {CONSTANTS.MONTH_NAMES[basicDate!.getMonth()]}{" "}
+              {basicDate!.getFullYear()}
             </h2>
             <Link to="/calendar" className="button header__button button__add">
-              Calendar
+              calendar
             </Link>
             <Link to="/calendar/segment" className="button header__button button__add">
-              All notes
+              all notes
             </Link>
             <Link
               to="/calendar/day"
               className="button header__button button__add"
               onClick={handleCurrentDateButtonClick}
             >
-              Today
+              today
             </Link>
           </div>
 
-          <Link to="/logout" className="button button__add">
+          <Link to="/logout" className="button header__button button__add">
             logout
           </Link>
         </div>

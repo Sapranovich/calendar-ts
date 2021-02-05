@@ -5,9 +5,9 @@ import IStore from "../../redux/interfaceStore";
 import WidgetMonth from '../Calendar/WidgetMonth';
 import UsersList from "../UsersList";
 
-
 import { BASIC_ROLES } from '../../constants';
-const SideBar = ({ isOpenSideBar }: { isOpenSideBar: boolean }):JSX.Element => {
+
+const SideBar = ({ isOpenSideBar }: { isOpenSideBar: boolean }): JSX.Element => {
   const { role } = useSelector((store: IStore) => store.auth.user);
 
   return (

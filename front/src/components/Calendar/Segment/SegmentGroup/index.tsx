@@ -6,7 +6,7 @@ import { UserMessageDataType } from '../../../../types/messagesDataTypes';
 
 export interface IGroupProps {
   id: number;
-  messages: UserMessageDataType[];
+  messages: (UserMessageDataType | null)[];
 }
 
 export interface ISegmentGroupProps {

@@ -68,7 +68,7 @@ const SignInForm = ({ handleToggleButtonClick, registerUserEmail }: ISignInFormP
     <form className="sign-in-form" onSubmit={handleSubmitForm}>
       <h2 className="sign-in-form__title">Sign In</h2>
       
-        <div className="sign-in-form__error-request-feedback">{errorsForm.request && errorsForm.request}</div>
+      <div className="sign-in-form__error-request-feedback">{errorsForm.request}</div>
       
       <div className="sign-in-form__group">
         <input
@@ -79,7 +79,9 @@ const SignInForm = ({ handleToggleButtonClick, registerUserEmail }: ISignInFormP
           value={stateForm.email}
           onChange={handleInputChange}
         />
-          <div className="sign-in-form__error-feedback">{errorsForm.email && errorsForm.email}</div>
+
+        <div className="sign-in-form__error-feedback">{errorsForm.email}</div>
+        
       </div>
 
       <div className="sign-in-form__group">
@@ -91,7 +93,9 @@ const SignInForm = ({ handleToggleButtonClick, registerUserEmail }: ISignInFormP
           value={stateForm.password}
           onChange={handleInputChange}
         />
-          <div className="sign-in-form__error-feedback">{errorsForm.password && errorsForm.password}</div>
+
+        <div className="sign-in-form__error-feedback">{errorsForm.password}</div>
+
       </div>
 
       <div className="sign-in-form__group-buttons">

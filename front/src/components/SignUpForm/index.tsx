@@ -30,6 +30,7 @@ const SignUpForm = ({ handleToggleButtonClick, setRegisterUserEmail }: ISignUpFo
       [event.target.name]: "",
     });
   };
+
   React.useEffect(() => {
     setRegisterUserEmail("");
   },[setRegisterUserEmail]);
@@ -45,7 +46,7 @@ const SignUpForm = ({ handleToggleButtonClick, setRegisterUserEmail }: ISignUpFo
       };
       axios
         .post(`${CONSTANTS.BACKEND_URL}/signup`, user)
-        .then((res) => {
+        .then((res: { data: { accessToken: string } }) => {
           const { accessToken } = res.data;
           const decodedToken: IDecodedToken = jwt_decode(accessToken);
           const userId = +decodedToken.sub;
@@ -67,9 +68,9 @@ const SignUpForm = ({ handleToggleButtonClick, setRegisterUserEmail }: ISignUpFo
   return (
     <form className="sign-up-form" onSubmit={handleSubmitForm}>
       <h2 className="sign-up-form__title">Sign Up</h2>
-      {
-        <div className="sign-up-form__error-request-feedback">{errorsForm.request && errorsForm.request}</div>
-      }
+    
+      <div className="sign-up-form__error-request-feedback">{errorsForm.request}</div>
+    
       <div className="sign-up-form__group">
         <input
           type="text"
@@ -80,7 +81,7 @@ const SignUpForm = ({ handleToggleButtonClick, setRegisterUserEmail }: ISignUpFo
           onChange={handleInputChange}
         />
       
-          <div className="sign-up-form__error-feedback">{errorsForm.name && errorsForm.name}</div>
+        <div className="sign-up-form__error-feedback">{errorsForm.name}</div>
         
       </div>
 
@@ -94,7 +95,7 @@ const SignUpForm = ({ handleToggleButtonClick, setRegisterUserEmail }: ISignUpFo
           onChange={handleInputChange}
         />
         
-          <div className="sign-up-form__error-feedback">{errorsForm.email && errorsForm.email}</div>
+        <div className="sign-up-form__error-feedback">{errorsForm.email}</div>
         
       </div>
 
@@ -108,7 +109,7 @@ const SignUpForm = ({ handleToggleButtonClick, setRegisterUserEmail }: ISignUpFo
           onChange={handleInputChange}
         />
         
-          <div className="sign-up-form__error-feedback">{errorsForm.password && errorsForm.password}</div>
+        <div className="sign-up-form__error-feedback">{errorsForm.password}</div>
         
       </div>
 
@@ -122,7 +123,7 @@ const SignUpForm = ({ handleToggleButtonClick, setRegisterUserEmail }: ISignUpFo
           onChange={handleInputChange}
         />
         
-          <div className="sign-up-form__error-feedback">{errorsForm.password_confirmed &&  errorsForm.password_confirmed}</div>
+        <div className="sign-up-form__error-feedback">{errorsForm.password_confirmed}</div>
         
       </div>
 

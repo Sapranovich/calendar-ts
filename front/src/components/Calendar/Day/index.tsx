@@ -1,21 +1,22 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
+import IStore from "../../../redux/interfaceStore";
 import CardMessage from "../CardMessage";
 import { MessagesSpecificDateType } from '../../../types/messagesDataTypes';
 import getDateInFormat from '../../../services/getDateInFormat';
 import CardEmpty from "../CardEmpty";
 
 const Day = (): JSX.Element => {
-  const { idSelectedDate, selectedDate } = useSelector((store: any) => store.calendar);
-  const { messages } = useSelector((store: any) => store.messages);
+  const { idSelectedDate, selectedDate } = useSelector((store: IStore) => store.calendar);
+  const { messages } = useSelector((store: IStore) => store.messages);
   const messagesTargetDay = messages.find((messagesDay: MessagesSpecificDateType) => messagesDay.id === idSelectedDate);
 
   return (
     <div className="day-list">
       <div className="day-list__header border_bottom">
         <div className="day-list__day-name">
-          {getDateInFormat(selectedDate.getTime())}
+          {getDateInFormat(selectedDate!.getTime())}
         </div>
       </div>
       <div className="day-list__group">

@@ -1,19 +1,20 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
+import IStore from "../../../redux/interfaceStore";
 import { updateDataMonth } from "../../../redux/actions";
 
 const MonthToggle = (): JSX.Element => {
   const dispatch = useDispatch();
-  const { basicDate } = useSelector((store: any) => store.calendar);
+  const { basicDate } = useSelector((store: IStore) => store.calendar);
 
   const handlePrevMonthButtonClick = () => {
-    const date = new Date(basicDate.getFullYear(), basicDate.getMonth() - 1);
+    const date = new Date(basicDate!.getFullYear(), basicDate!.getMonth() - 1);
     dispatch(updateDataMonth(date));
   };
 
   const handleNextMonthButtonClick = () => {
-    const date = new Date(basicDate.getFullYear(), basicDate.getMonth() + 1);
+    const date = new Date(basicDate!.getFullYear(), basicDate!.getMonth() + 1);
     dispatch(updateDataMonth(date));
   };
 

@@ -12,27 +12,26 @@ import { requestAllMessages, setCurrentHour, closeModal } from "../../redux/acti
 import * as CONSTANTS from "../../constants";
 
 function AddUpdateMessageModal(): JSX.Element {
-  // Не знаю как решить данную проблему, связанную с вариативностью(или отсутствием ключей) типов currentHour, email, id, role
-  const { idSelectedDate, currentHour } = useSelector((store: any) => store.calendar);
-  const { email, id, role } = useSelector((store: any) => store.auth.user);
+  const { idSelectedDate, currentHour } = useSelector((store: IStore) => store.calendar);
+  const { email, id, role } = useSelector((store: IStore) => store.auth.user);
   const { messages } = useSelector((store: IStore) => store.messages);
   const { modalType } = useSelector((store: IStore) => store.modal);
   const dispatch = useDispatch();
    
   const [stateMessageModal,setStateMessageModal] = React.useState<UserMessageDataType>({
-    userId: id,
+    userId: id!,
     title: "",
     message: "",
-    currentHour,
-    email,
-    role,
+    currentHour: currentHour!,
+    email: email!,
+    role: role!,
   });
 
   const messagesTargetDay = messages.find((messagesDay: MessagesSpecificDateType) => messagesDay.id === idSelectedDate);
   
   React.useEffect(() => {
-    if (messagesTargetDay && messagesTargetDay.messages[currentHour]) {
-      const targetMessage = messagesTargetDay.messages[currentHour];
+    if (messagesTargetDay && messagesTargetDay.messages[currentHour!]) {
+      const targetMessage = messagesTargetDay.messages[currentHour!];
       targetMessage  && setStateMessageModal(targetMessage);
     }
   }, [currentHour, messagesTargetDay]);
@@ -47,7 +46,7 @@ function AddUpdateMessageModal(): JSX.Element {
   const handleAddUpdateButtonClick = () => {
     if (!isEmpty(stateMessageModal.message)) {
       if (messagesTargetDay) {
-        messagesTargetDay.messages[currentHour] = stateMessageModal;
+        messagesTargetDay.messages[currentHour!] = stateMessageModal;
         axios
           .put( `${CONSTANTS.BACKEND_URL}/messages/${idSelectedDate}`, messagesTargetDay)
           .then(() => {
@@ -57,7 +56,7 @@ function AddUpdateMessageModal(): JSX.Element {
           });
       } else {
         const array = new Array(24);
-        array[currentHour] = stateMessageModal;
+        array[currentHour!] = stateMessageModal;
         const data = {
           id: idSelectedDate,
           messages: array,
@@ -76,14 +75,18 @@ function AddUpdateMessageModal(): JSX.Element {
   return (
     <div className="add-update-message-card">
       <div className="add-update-message-card__header">
+
         <h3 className="add-update-message-card__date">
-          Date: {getDateInFormat(idSelectedDate)} 
+          Date: {getDateInFormat(idSelectedDate!)} 
           <br />
           <br /> 
-          Time: {getTimeInFormat(currentHour)}
+          Time: {getTimeInFormat(currentHour!)}
         </h3>
+
         <h3 className="add-update-message-card__author">{email}</h3>
+
       </div>
+
       <input
         type="text"
         placeholder="title"
@@ -92,6 +95,7 @@ function AddUpdateMessageModal(): JSX.Element {
         value={stateMessageModal.title}
         onChange={handleInputChange}
       />
+
       <textarea
         placeholder="note"
         className="input add-update-message-card__textarea"
@@ -99,6 +103,7 @@ function AddUpdateMessageModal(): JSX.Element {
         value={stateMessageModal.message}
         onChange={handleInputChange}
       />
+
       <div className="add-update-message-card__buttons">
         {CONSTANTS.MODAL_TYPES.UPDATE === modalType && (
           <button
@@ -108,6 +113,7 @@ function AddUpdateMessageModal(): JSX.Element {
             update
           </button>
         )}
+
         {CONSTANTS.MODAL_TYPES.ADD === modalType && (
           <button
             className="button button__prim"
@@ -116,6 +122,7 @@ function AddUpdateMessageModal(): JSX.Element {
             add
           </button>
         )}
+        
       </div>
     </div>
   );

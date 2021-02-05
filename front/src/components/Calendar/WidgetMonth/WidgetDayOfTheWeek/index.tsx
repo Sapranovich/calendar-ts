@@ -2,15 +2,16 @@ import React from "react";
 import { withRouter, useRouteMatch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
+import IStore from "../../../../redux/interfaceStore";
 import { DayOfTheWeekPropsType } from "../../Month/DayOfTheWeek";
 import { updateSelectedDate } from "../../../../redux/actions";
 
 const WidgetDayOfTheWeek = ({ history, dayData: { date, isCurrentMonth } }: DayOfTheWeekPropsType): JSX.Element => {
   const { path } = useRouteMatch();
   const dispatch = useDispatch();
-  const { selectedDate, currentDate } = useSelector((store: any) => store.calendar);
+  const { selectedDate, currentDate } = useSelector((store: IStore) => store.calendar);
 
-  const isCurrentDate = currentDate.getTime() === date.getTime();
+  const isCurrentDate = currentDate!.getTime() === date.getTime();
   const isSelectedDate = selectedDate && selectedDate.getTime() === date.getTime();
   
   const handleSelectedDateClick =()=>{

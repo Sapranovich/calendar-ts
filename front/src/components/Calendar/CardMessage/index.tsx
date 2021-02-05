@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
+import IStore from "../../../redux/interfaceStore";
 import isEmpty from "../../../services/isEmpty";
 import { openModal, setCurrentHour, updateSelectedDate } from "../../../redux/actions";
 import getTimeInFormat from "../../../services/getTimeInFormat";
@@ -15,10 +16,10 @@ export interface ICardMessageProps {
   groupId?: number;
 }
 const CardMessage = ({ groupId, message: { message, email, currentHour, role, userId }}: ICardMessageProps): JSX.Element => {
-  const { id } = useSelector((store: any) => store.auth.user);
-  const roleCurrentUser = useSelector((store: any) => store.auth.user.role);
-  const { messages } = useSelector((store: any) => store.messages);
-  const { idSelectedDate } = useSelector((store: any) => store.calendar);
+  const { id } = useSelector((store: IStore) => store.auth.user);
+  const roleCurrentUser = useSelector((store: IStore) => store.auth.user.role);
+  const { messages } = useSelector((store: IStore) => store.messages);
+  const { idSelectedDate } = useSelector((store: IStore) => store.calendar);
   const dispatch = useDispatch();
 
   const handleOpenModalClick = (modalType: string) => {
@@ -33,8 +34,8 @@ const CardMessage = ({ groupId, message: { message, email, currentHour, role, us
   const handleRemoveButtonClick = () => {
     const currentId = groupId || idSelectedDate;
     const messagesTargetDay = messages.find((el: any) => el.id === currentId);
-    messagesTargetDay.messages[currentHour] = null;
-    const isMessages = !isEmpty(messagesTargetDay.messages.filter((el: any) => el));
+    messagesTargetDay!.messages[currentHour] = null;
+    const isMessages = !isEmpty(messagesTargetDay!.messages.filter((el: any) => el));
     if (isMessages) {
       axios
         .put(`${CONSTANTS.BACKEND_URL}/messages/${currentId}`, messagesTargetDay)
