@@ -1,25 +1,25 @@
 import Validator from "validator";
 import isEmpty from "./isEmpty";
 
-interface IValidationSignUpProps {
+type ValidationSignUpPropsType = {
   name: string;
   email: string;
   password: string;
   password_confirmed: string;
 }
-interface IValidationSignUpErrors {
+type ValidationSignUpErrorsType = {
   name?: string;
   email?: string;
   password?: string;
   password_confirmed?: string;
 }
-interface IReturnvalidationSignUp {
-  errors: IValidationSignUpErrors;
+type ReturnValidationSignUpType = {
+  errors: ValidationSignUpErrorsType;
   isValid: boolean;
 }
 
-function validationSignUp(data: IValidationSignUpProps): IReturnvalidationSignUp {
-  const errors: IValidationSignUpErrors = {};
+function validationSignUp(data: ValidationSignUpPropsType): ReturnValidationSignUpType {
+  const errors: ValidationSignUpErrorsType = {};
 
   if (!Validator.isLength(data.name, { min: 2, max: 30 })) {
     errors.name = "Name must be between 2 and 30 characters";

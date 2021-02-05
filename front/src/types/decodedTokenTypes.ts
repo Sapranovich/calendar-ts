@@ -1,11 +1,6 @@
-export interface IDecodedToken {
+export type DecodedTokenType = {
   email: string;
   exp: number;
   iat: number;
   sub: string;
-}
-
-export interface IAuthUser {
-  email?: string;
-  sub?: string;
 }

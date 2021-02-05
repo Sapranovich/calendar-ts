@@ -2,19 +2,20 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import IStore from "../../../redux/interfaceStore";
-import SegmentGroup, { IGroupProps } from "./SegmentGroup";
+import SegmentGroup from "./SegmentGroup";
 import verificationFilterInput from "../../../services/verificationFilterInput";
 import getDateInFormat from "../../../services/getDateInFormat";
-import validationFilterForm, { IValidationFilterFormErrors, IValidationFilterFormProps } from "../../../services/validationFilterForm";
+import validationFilterForm, { ValidationFilterFormPropsType, ValidationFilterFormErrorsType } from "../../../services/validationFilterForm";
 import { MessagesSpecificDateType } from '../../../types/messagesDataTypes';
+import { GroupPropsType } from '../../../types/segmentGroupTypes';
 
 const Segment = (): JSX.Element => {
   const { isNoMessages, messages } = useSelector((store: IStore) => store.messages);
   const [messagesLocalStorage, setMessagesLocalStorage] = React.useState(messages);
 
-  const [errorsFilter, setErrorsFilter] = React.useState<IValidationFilterFormErrors>({});
+  const [errorsFilter, setErrorsFilter] = React.useState<ValidationFilterFormErrorsType>({});
 
-  const [paramsFilter, setParamFilter] = React.useState<IValidationFilterFormProps>({
+  const [paramsFilter, setParamFilter] = React.useState<ValidationFilterFormPropsType>({
     startParam: "",
     endParam: "",
   });
@@ -127,7 +128,7 @@ const Segment = (): JSX.Element => {
       </div>
       {!isNoMessages && messagesLocalStorage && (
         <React.Fragment>
-          {messagesLocalStorage.map((group: IGroupProps, index: number) => (
+          {messagesLocalStorage.map((group: GroupPropsType, index: number) => (
             <SegmentGroup key={index} group={group} index={index} />
           ))}
         </React.Fragment>

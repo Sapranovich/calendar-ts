@@ -1,11 +1,11 @@
 import React from "react";
 import axios from "axios";
 
-import { IGetModelUser } from "../../../services/getModelUser";
+import { ModelUserType } from "../../../services/getModelUser";
 
 import * as CONSTANTS from "../../../constants";
 
-const UserItem = ({ user, setAllUsers }: { user: IGetModelUser, setAllUsers: () => void }): JSX.Element => {
+const UserItem = ({ user, setAllUsers }: { user: ModelUserType, setAllUsers: () => void }): JSX.Element => {
   const [isVisibleButttons, setIsVisibleButttons] = React.useState(false);
 
   const handleUpdateRoleClick = (role: string) => {

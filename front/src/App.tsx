@@ -7,8 +7,8 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Landing, Login, Logout, NotFound, Main } from "./pages";
 import setAuthToken from "./services/setAuthToken";
 import { setAuthUser } from "./redux/actions";
-import { IDecodedToken } from "./types/decodedTokenTypes";
-import { IGetModelUser } from './services/getModelUser'; 
+import { DecodedTokenType } from "./types/decodedTokenTypes";
+import { ModelUserType } from './services/getModelUser'; 
 
 import * as CONSTANTS from "./constants";
 
@@ -20,7 +20,7 @@ const App = (): JSX.Element => {
   React.useEffect(() => {
     //  возможно нужно всю логику перенести в actions redux, services или создать свой хук???
     if (localStorage.accessToken) {
-      const decodedToken: IDecodedToken = jwt_decode(localStorage.accessToken);
+      const decodedToken: DecodedTokenType = jwt_decode(localStorage.accessToken);
       const idUser = decodedToken.sub;
       const currentTime = Date.now() / 1000;
       if (decodedToken.exp < currentTime) {
@@ -31,7 +31,7 @@ const App = (): JSX.Element => {
         setAuthToken(localStorage.accessToken);
         axios
           .get(`${CONSTANTS.BACKEND_URL}/data-users/${idUser}`)
-          .then((res: { data: IGetModelUser }) => {
+          .then((res: { data: ModelUserType }) => {
             dispatch(setAuthUser(res.data))
           })
           .catch(() => {

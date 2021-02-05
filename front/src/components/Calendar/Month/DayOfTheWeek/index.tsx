@@ -11,7 +11,6 @@ import getTimeInFormat from "../../../../services/getTimeInFormat";
 export interface DayOfTheWeekPropsType extends RouteComponentProps<any> {
   dayData: DayDataType;
 }
-
 const DayOfTheWeek = ({ history, dayData: { date, isCurrentMonth }}: DayOfTheWeekPropsType): JSX.Element => {
   const { messages } = useSelector((store: IStore) => store.messages);
   const dispatch = useDispatch();

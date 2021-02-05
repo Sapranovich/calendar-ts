@@ -1,21 +1,17 @@
-export interface IErrorsSignUpForm {
+export type ErrorsSignUpFormType = {
   name?: string;
   email?: string;
   password?: string;
   password_confirmed?: string;
   request?: string;
 }
-export interface IStateSignUpForm {
+export type StateSignUpFormType = {
   name: string;
   email: string;
   password: string;
   password_confirmed: string;
 }
-export interface IUser {
-  email: string;
-  password: string;
-}
-export interface ISignUpFormProps {
+export type SignUpFormPropsType = {
   handleToggleButtonClick: () => void;
   setRegisterUserEmail: (email: string) => void;
 }

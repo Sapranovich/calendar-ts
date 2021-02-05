@@ -1,22 +1,22 @@
 import isEmpty from "./isEmpty";
 import { REG_EXP_CHECK_DATE } from "../constants";
 
-export interface IValidationFilterFormProps {
+export type ValidationFilterFormPropsType = {
   startParam: string
   endParam: string
 }
-export interface IValidationFilterFormErrors {
+export type ValidationFilterFormErrorsType = {
   startParam?: string
   endParam?: string
   warning?:string 
 }
-export interface IReturnvalidationFilterForm {
-  errors: IValidationFilterFormErrors
+export type ReturnValidationFilterFormType = {
+  errors: ValidationFilterFormErrorsType
   isValid: boolean
 }
 
-function validationFilterForm(data:IValidationFilterFormProps):IReturnvalidationFilterForm {
-  const errors:IValidationFilterFormErrors = {};
+function validationFilterForm(data: ValidationFilterFormPropsType): ReturnValidationFilterFormType {
+  const errors: ValidationFilterFormErrorsType = {};
   if (!data.startParam.match(REG_EXP_CHECK_DATE)) {
     errors.startParam = "Date entered in the wrong format";
   }

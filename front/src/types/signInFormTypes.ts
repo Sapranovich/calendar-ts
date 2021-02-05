@@ -1,15 +1,15 @@
-export interface IErrorsSignInForm {
+export type ErrorsSignInFormType = {
   email?: string;
   password?: string;
   request?: string;
 }
 
-export interface IStateSignInForm {
+export type StateSignInFormType = {
   email: string;
   password: string;
 }
 
-export interface ISignInFormProps {
+export type SignInFormPropsType = {
   handleToggleButtonClick: () => void;
   registerUserEmail: string;
 }

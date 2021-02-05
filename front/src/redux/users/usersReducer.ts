@@ -1,4 +1,4 @@
-import { IGetModelUser } from "../../services/getModelUser";
+import { ModelUserType } from "../../services/getModelUser";
 
 import * as constants from "./usersConstants";
 import * as actions from './usersActions';
@@ -8,7 +8,7 @@ type ActionTypes = ReturnType<InferValueTypes<typeof actions>>;
 
 export type InitialSatateType = {
   isLoaded: boolean
-  users: IGetModelUser[],
+  users: ModelUserType[],
 }
 
 const initialState = {

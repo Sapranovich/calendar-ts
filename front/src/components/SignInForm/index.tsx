@@ -6,20 +6,20 @@ import { useDispatch } from "react-redux";
 import validationSignIn from "../../services/validationSignIn";
 import setAuthToken from "../../services/setAuthToken";
 import { setAuthUser } from "../../redux/actions";
-import { IErrorsSignInForm, IStateSignInForm, ISignInFormProps } from "../../types/signInFormTypes";
-import { IDecodedToken } from "../../types/decodedTokenTypes";
-import { IGetModelUser } from '../../services/getModelUser'; 
+import { StateSignInFormType, SignInFormPropsType, ErrorsSignInFormType } from "../../types/signInFormTypes";
+import { DecodedTokenType } from "../../types/decodedTokenTypes";
+import { ModelUserType } from '../../services/getModelUser'; 
 
 import * as CONSTANTS from '../../constants';
 
-const SignInForm = ({ handleToggleButtonClick, registerUserEmail }: ISignInFormProps): JSX.Element => {
+const SignInForm = ({ handleToggleButtonClick, registerUserEmail }: SignInFormPropsType): JSX.Element => {
   const dispatch = useDispatch();
   //возможно стоит перенести ошибки в redux хранилище
-  const [stateForm, setStateForm] = React.useState<IStateSignInForm>({
+  const [stateForm, setStateForm] = React.useState<StateSignInFormType>({
     email: "",
     password: "",
   });
-  const [errorsForm, setErrorsForm] = React.useState<IErrorsSignInForm>({});
+  const [errorsForm, setErrorsForm] = React.useState<ErrorsSignInFormType>({});
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setStateForm({
@@ -49,11 +49,11 @@ const SignInForm = ({ handleToggleButtonClick, registerUserEmail }: ISignInFormP
           const { accessToken } = res.data;
           localStorage.setItem("accessToken", accessToken);
           setAuthToken(accessToken);
-          const decodedToken: IDecodedToken = jwt_decode(accessToken);
+          const decodedToken: DecodedTokenType = jwt_decode(accessToken);
           const idUser = decodedToken.sub;
           axios
             .get(`${CONSTANTS.BACKEND_URL}/data-users/${idUser}`)
-            .then((res: { data: IGetModelUser }) => dispatch(setAuthUser(res.data)))
+            .then((res: { data: ModelUserType }) => dispatch(setAuthUser(res.data)))
             // .catch((err: { response: { data: string } }) => setErrorsForm({ request: err.response.data }))
         })
         .catch((err: { response: { data: string } }) => {

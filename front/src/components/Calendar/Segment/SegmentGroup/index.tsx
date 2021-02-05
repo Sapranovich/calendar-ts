@@ -2,19 +2,9 @@ import React from "react";
 
 import CardMessage from "../../CardMessage";
 import getDateInFormat from '../../../../services/getDateInFormat';
-import { UserMessageDataType } from '../../../../types/messagesDataTypes';
+import { SegmentGroupPropsType } from '../../../../types/segmentGroupTypes';
 
-export interface IGroupProps {
-  id: number;
-  messages: (UserMessageDataType | null)[];
-}
-
-export interface ISegmentGroupProps {
-  group: IGroupProps;
-  index: number;
-}
-
-const SegmentGroup = ({ group }: ISegmentGroupProps): JSX.Element => {
+const SegmentGroup = ({ group }: SegmentGroupPropsType): JSX.Element => {
   return (
     <div className="segment-group">
       <h3 className="segment-group__date">{getDateInFormat(group.id)}</h3>

@@ -23,14 +23,14 @@ function getDayOfWeek(date: Date): number {
   return dayOfWeek - 1;
 }
 
-interface IDataItem {
+type DataItemType = {
   date: Date;
   isCurrentMonth: boolean;
 }
 
 //  Рассчет сетки текущего(выбранного) месяца
-function monthData(year: number, month: number): Array<IDataItem[]> {
-  const data: Array<IDataItem[]> = [];
+function monthData(year: number, month: number): Array<DataItemType[]> {
+  const data: Array<DataItemType[]> = [];
   const date = new Date(year, month);
   const daysInMonth = getDaysInMonth(date);
   const monthStartsOn = getDayOfWeek(date);

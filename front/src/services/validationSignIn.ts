@@ -1,20 +1,20 @@
 import Validator from "validator";
 import isEmpty from "./isEmpty";
 
-interface IValidationSignInProps {
+type ValidationSignInPropsType = {
   email: string;
   password: string;
 }
-interface IValidationSignInErrors {
+type ValidationSignInErrorsType = {
   email?: string;
   password?: string;
 }
-interface IReturnvalidationSignIn {
-  errors: IValidationSignInErrors;
+type ReturnValidationSignInType = {
+  errors: ValidationSignInErrorsType;
   isValid: boolean;
 }
-function validationSignIn(data: IValidationSignInProps): IReturnvalidationSignIn {
-  const errors: IValidationSignInErrors = {};
+function validationSignIn(data: ValidationSignInPropsType): ReturnValidationSignInType {
+  const errors: ValidationSignInErrorsType = {};
 
   if (!Validator.isEmail(data.email)) {
     errors.email = "Email entered incorrectly";

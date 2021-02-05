@@ -4,20 +4,20 @@ import jwt_decode from "jwt-decode";
 
 import getModelUser from "../../services/getModelUser";
 import validationSignUp from "../../services/validationSignUp";
-import { IDecodedToken } from "../../types/decodedTokenTypes";
-import { IErrorsSignUpForm, IStateSignUpForm, ISignUpFormProps } from "../../types/signUpFormTypes";
+import { DecodedTokenType } from "../../types/decodedTokenTypes";
+import { SignUpFormPropsType, StateSignUpFormType, ErrorsSignUpFormType } from "../../types/signUpFormTypes";
 
 import * as CONSTANTS from '../../constants';
 
-const SignUpForm = ({ handleToggleButtonClick, setRegisterUserEmail }: ISignUpFormProps):JSX.Element => {
-  const [stateForm, setStateForm] = React.useState<IStateSignUpForm>({
+const SignUpForm = ({ handleToggleButtonClick, setRegisterUserEmail }: SignUpFormPropsType):JSX.Element => {
+  const [stateForm, setStateForm] = React.useState<StateSignUpFormType>({
     name: "",
     email: "",
     password: "",
     password_confirmed: "",
   });
 
-  const [errorsForm, setErrorsForm] = React.useState<IErrorsSignUpForm>({});
+  const [errorsForm, setErrorsForm] = React.useState<ErrorsSignUpFormType>({});
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setStateForm({
@@ -48,7 +48,7 @@ const SignUpForm = ({ handleToggleButtonClick, setRegisterUserEmail }: ISignUpFo
         .post(`${CONSTANTS.BACKEND_URL}/signup`, user)
         .then((res: { data: { accessToken: string } }) => {
           const { accessToken } = res.data;
-          const decodedToken: IDecodedToken = jwt_decode(accessToken);
+          const decodedToken: DecodedTokenType = jwt_decode(accessToken);
           const userId = +decodedToken.sub;
           const modelUser = getModelUser(stateForm, userId);
           axios

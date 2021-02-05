@@ -4,13 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import IStore from "../../../redux/interfaceStore";
 import { openModal, setCurrentHour } from "../../../redux/actions";
 import getTimeInFormat from "../../../services/getTimeInFormat";
-import { UserMessageDataType } from '../../../types/messagesDataTypes';
 
 import * as CONSTANTS from "../../../constants";
-
-export interface ICardMessageProps {
-  message: UserMessageDataType;
-}
 
 const CardEmpty = ({ currentHour }: { currentHour: number }): JSX.Element => {
   const { role } = useSelector((store: IStore) => store.auth.user);

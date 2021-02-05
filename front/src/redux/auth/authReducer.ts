@@ -1,6 +1,6 @@
 import isEmpty from "../../services/isEmpty";
 
-import {IGetModelUser} from '../../services/getModelUser';
+import { ModelUserType } from '../../services/getModelUser';
 
 import * as constants from "./authConstants";
 import * as actions from "./authActions";
@@ -11,7 +11,7 @@ type ActionTypes = ReturnType<InferValueTypes<typeof actions>>;
 export type InitialStateType = {
   isAuthenticated: boolean
   isLoaded: boolean
-  user: IGetModelUser
+  user: ModelUserType 
 };
 
 const initialState = {
