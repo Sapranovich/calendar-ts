@@ -5,14 +5,15 @@ import IStore from "../../../redux/interfaceStore";
 import { DayDataType } from "../../../redux/calendar/calendarReducer";
 import WeekOfTheMonth from './WeekOfTheMonth';
 
-import * as CONSTANTS from "../../../constants";
+import { WEEK_DAY_NAMES } from '../../../data';
+
 const Month = (): JSX.Element => {
   const { data } = useSelector((store: IStore) => store.calendar);
   
   return  (
     <div className="month-list">
       <div className="month-list__header border_bottom">
-        {CONSTANTS.WEEK_DAY_NAMES.map((name, index) => (
+        {WEEK_DAY_NAMES.map((name, index) => (
           <span key={index} className="month-list__day-name">
             {name}
           </span>

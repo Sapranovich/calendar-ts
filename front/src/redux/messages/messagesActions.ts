@@ -6,7 +6,7 @@ import { UserMessageDataType, MessagesSpecificDateType } from "../../types/messa
 import IStore from "../interfaceStore";
 
 import * as constants from "./messagesConstants";
-import * as CONSTANTS from "../../constants";
+import { BACKEND_URL } from '../../data';
 
 export type SetAllMessagesActionType = {
   type: typeof constants.SET_ALL_MESSAGES;
@@ -20,9 +20,9 @@ export const setAllMessages = (messages: MessagesSpecificDateType[]): SetAllMess
 };
 
 export const requestAllMessages = (): ThunkAction<void, IStore, unknown, Action<string>> => (dispatch) => {
-  // axios.get(`${CONSTANTS.BACKEND_URL}/messages?_sort=id&_order=asc`) сортировка в обратном порядке
+  // axios.get(`${BACKEND_URL}/messages?_sort=id&_order=asc`) сортировка в обратном порядке
   axios
-    .get(`${CONSTANTS.BACKEND_URL}/messages?_sort=id&_order=desc`)
+    .get(`${BACKEND_URL}/messages?_sort=id&_order=desc`)
     .then((res) => {
       const messages = res.data;
       dispatch(setAllMessages(messages));
@@ -31,7 +31,7 @@ export const requestAllMessages = (): ThunkAction<void, IStore, unknown, Action<
 
 export const addMessage = (userMessageData: UserMessageDataType, idSelectedDate: number): ThunkAction<void, IStore, unknown, Action<string>> => (dispatch) => {
   axios
-    .get(`${CONSTANTS.BACKEND_URL}/messages/${idSelectedDate}`)
+    .get(`${BACKEND_URL}/messages/${idSelectedDate}`)
     .then((res) => {
       const data = res.data;
       const index = data.find((message: UserMessageDataType) => message.currentHour === userMessageData.currentHour).id;
@@ -40,7 +40,7 @@ export const addMessage = (userMessageData: UserMessageDataType, idSelectedDate:
       } else {
         data.messages.push(userMessageData);
       }
-      axios.post(`${CONSTANTS.BACKEND_URL}/messages`, data);
+      axios.post(`${BACKEND_URL}/messages`, data);
     })
     .catch(() => {
       const data = {
@@ -48,7 +48,7 @@ export const addMessage = (userMessageData: UserMessageDataType, idSelectedDate:
         messages: [userMessageData],
       };
       axios
-        .post(`${CONSTANTS.BACKEND_URL}/messages`, data)
+        .post(`${BACKEND_URL}/messages`, data)
         .then((res) => console.log(res));
     })
     .then(() => {

@@ -3,7 +3,7 @@ import axios from "axios";
 
 import { ModelUserType } from "../../../services/getModelUser";
 
-import * as CONSTANTS from "../../../constants";
+import { BACKEND_URL, USER_ROLES } from '../../../data';
 
 const UserItem = ({ user, setAllUsers }: { user: ModelUserType, setAllUsers: () => void }): JSX.Element => {
   const [isVisibleButttons, setIsVisibleButttons] = React.useState(false);
@@ -14,7 +14,7 @@ const UserItem = ({ user, setAllUsers }: { user: ModelUserType, setAllUsers: () 
       role
     }
     axios
-      .put(`${CONSTANTS.BACKEND_URL}/data-users/${user.id}`, updateDataUser)
+      .put(`${BACKEND_URL}/data-users/${user.id}`, updateDataUser)
       .then(()=>{
         setAllUsers();
       })
@@ -30,14 +30,14 @@ const UserItem = ({ user, setAllUsers }: { user: ModelUserType, setAllUsers: () 
       {isVisibleButttons && (
         <div className="user__buttons">
           <div
-            className={`button button__add ${user.role === CONSTANTS.BASIC_ROLES.USER ? "button_selected" : ""}`}
-            onClick={() => handleUpdateRoleClick(CONSTANTS.BASIC_ROLES.USER)}
+            className={`button button__add ${user.role === USER_ROLES.USER ? "button_selected" : ""}`}
+            onClick={() => handleUpdateRoleClick(USER_ROLES.USER)}
           >
             User
           </div>
           <div
-            className={`button button__add ${user.role === CONSTANTS.BASIC_ROLES.VIEWER ? "button_selected" : ""}`}
-            onClick={() => handleUpdateRoleClick(CONSTANTS.BASIC_ROLES.VIEWER)}
+            className={`button button__add ${user.role === USER_ROLES.VIEWER ? "button_selected" : ""}`}
+            onClick={() => handleUpdateRoleClick(USER_ROLES.VIEWER)}
           >
             Viewer
           </div>

@@ -7,7 +7,7 @@ import validationSignUp from "../../services/validationSignUp";
 import { DecodedTokenType } from "../../types/decodedTokenTypes";
 import { SignUpFormPropsType, StateSignUpFormType, ErrorsSignUpFormType } from "../../types/signUpFormTypes";
 
-import * as CONSTANTS from '../../constants';
+import { BACKEND_URL } from '../../data';
 
 const SignUpForm = ({ handleToggleButtonClick, setRegisterUserEmail }: SignUpFormPropsType):JSX.Element => {
   const [stateForm, setStateForm] = React.useState<StateSignUpFormType>({
@@ -45,14 +45,14 @@ const SignUpForm = ({ handleToggleButtonClick, setRegisterUserEmail }: SignUpFor
         password: stateForm.password,
       };
       axios
-        .post(`${CONSTANTS.BACKEND_URL}/signup`, user)
+        .post(`${BACKEND_URL}/signup`, user)
         .then((res: { data: { accessToken: string } }) => {
           const { accessToken } = res.data;
           const decodedToken: DecodedTokenType = jwt_decode(accessToken);
           const userId = +decodedToken.sub;
           const modelUser = getModelUser(stateForm, userId);
           axios
-            .post(`${CONSTANTS.BACKEND_URL}/data-users`, modelUser)
+            .post(`${BACKEND_URL}/data-users`, modelUser)
             .catch((err: { response: { data: string } }) => setErrorsForm({ request: err.response.data }));
         })
         .then(() => {

@@ -6,7 +6,7 @@ import IStore from "../../redux/interfaceStore";
 import { updateDataMonth, updateSelectedDate } from "../../redux/actions";
 import MonthToggle from "../Calendar/MonthToggle";
 
-import * as CONSTANTS from "../../constants";
+import { MONTH_NAMES } from '../../data';
 
 type HeaderPropsType = {
   isOpenSideBar: boolean;
@@ -39,7 +39,7 @@ const Header = ({ isOpenSideBar, setIsOpenSideBar }: HeaderPropsType): JSX.Eleme
             <h2 className="header__email">{email}</h2>
             <MonthToggle />
             <h2 className="header__date">
-              {CONSTANTS.MONTH_NAMES[basicDate!.getMonth()]}{" "}
+              {MONTH_NAMES[basicDate!.getMonth()]}{" "}
               {basicDate!.getFullYear()}
             </h2>
             <Link to="/calendar" className="button header__button button__add">

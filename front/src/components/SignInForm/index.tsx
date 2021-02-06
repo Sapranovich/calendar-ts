@@ -10,7 +10,7 @@ import { StateSignInFormType, SignInFormPropsType, ErrorsSignInFormType } from "
 import { DecodedTokenType } from "../../types/decodedTokenTypes";
 import { ModelUserType } from '../../services/getModelUser'; 
 
-import * as CONSTANTS from '../../constants';
+import { BACKEND_URL } from '../../data';
 
 const SignInForm = ({ handleToggleButtonClick, registerUserEmail }: SignInFormPropsType): JSX.Element => {
   const dispatch = useDispatch();
@@ -44,7 +44,7 @@ const SignInForm = ({ handleToggleButtonClick, registerUserEmail }: SignInFormPr
     if (isValid) {
       // Возможно стоит перенести в action
       axios
-        .post(`${CONSTANTS.BACKEND_URL}/signin`, stateForm)
+        .post(`${BACKEND_URL}/signin`, stateForm)
         .then((res: { data: { accessToken: string } }) => {
           const { accessToken } = res.data;
           localStorage.setItem("accessToken", accessToken);
@@ -52,7 +52,7 @@ const SignInForm = ({ handleToggleButtonClick, registerUserEmail }: SignInFormPr
           const decodedToken: DecodedTokenType = jwt_decode(accessToken);
           const idUser = decodedToken.sub;
           axios
-            .get(`${CONSTANTS.BACKEND_URL}/data-users/${idUser}`)
+            .get(`${BACKEND_URL}/data-users/${idUser}`)
             .then((res: { data: ModelUserType }) => dispatch(setAuthUser(res.data)))
             // .catch((err: { response: { data: string } }) => setErrorsForm({ request: err.response.data }))
         })

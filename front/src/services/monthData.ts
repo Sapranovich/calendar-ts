@@ -1,4 +1,4 @@
-import * as CONSTANTS from "../constants";
+import { DAYS_IN_MONTH, DAYS_WEEK } from '../data';
 
 // Проверка, является ли год высокосным
 function isLeapYear(year: number): boolean {
@@ -10,9 +10,9 @@ function getDaysInMonth(date: Date): number {
   const month = date.getMonth();
   const year = date.getFullYear();
   if (isLeapYear(year) && month === 1) {
-    return CONSTANTS.DAYS_IN_MONTH[month] + 1;
+    return DAYS_IN_MONTH[month] + 1;
   } else {
-    return CONSTANTS.DAYS_IN_MONTH[month];
+    return DAYS_IN_MONTH[month];
   }
 }
 
@@ -36,9 +36,9 @@ function monthData(year: number, month: number): Array<DataItemType[]> {
   const monthStartsOn = getDayOfWeek(date);
   let day = 1;
 
-  for (let i = 0; i < (daysInMonth + monthStartsOn) / CONSTANTS.DAYS_WEEK; i++) {
+  for (let i = 0; i < (daysInMonth + monthStartsOn) / DAYS_WEEK; i++) {
     data[i] = [];
-    for (let j = 0; j < CONSTANTS.DAYS_WEEK; j++) {
+    for (let j = 0; j < DAYS_WEEK; j++) {
       if (i === 0 && j < monthStartsOn) {
         data[i][j] = {
           date: new Date(year, month, day - (monthStartsOn - j)),

@@ -1,5 +1,5 @@
 import isEmpty from "./isEmpty";
-import { REG_EXP_CHECK_DATE } from "../constants";
+import { REG_EXP_CHECK_DATE } from '../data';
 
 export type ValidationFilterFormPropsType = {
   startParam: string

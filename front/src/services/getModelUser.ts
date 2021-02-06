@@ -1,5 +1,5 @@
 import { StateSignUpFormType } from "../types/signUpFormTypes";
-import { BASIC_ROLES } from "../constants";
+import { USER_ROLES } from "../data";
 
 export type ModelUserType = {
   id?: number;
@@ -14,7 +14,7 @@ function getModelUser(stateSignUpForm: StateSignUpFormType, userId: number): Mod
     id: userId,
     name,
     email,
-    role: BASIC_ROLES.USER,
+    role: USER_ROLES.USER,
   };
   return modelUser;
 }

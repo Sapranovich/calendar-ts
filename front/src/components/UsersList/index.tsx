@@ -6,7 +6,7 @@ import UserItem from "./UserItem";
 import { ModelUserType } from "../../services/getModelUser";
 import IStore from "../../redux/interfaceStore";
 
-import * as CONSTANTS from "../../constants";
+import { BACKEND_URL } from '../../data';
 
 const UsersList = (): JSX.Element => {
   const { id } = useSelector((store: IStore) => store.auth.user);
@@ -15,7 +15,7 @@ const UsersList = (): JSX.Element => {
 
   const setAllUsers = React.useCallback(() => {
     axios
-      .get(`${CONSTANTS.BACKEND_URL}/data-users/?id_ne=${id}`)
+      .get(`${BACKEND_URL}/data-users/?id_ne=${id}`)
       .then((res) => {
         const listUsers = res.data;
         setListUsers(listUsers);

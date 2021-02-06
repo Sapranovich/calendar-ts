@@ -5,7 +5,7 @@ import IStore from "../../../redux/interfaceStore";
 import { openModal, setCurrentHour } from "../../../redux/actions";
 import getTimeInFormat from "../../../services/getTimeInFormat";
 
-import * as CONSTANTS from "../../../constants";
+import { MODAL_TYPES, USER_ROLES } from '../../../data';
 
 const CardEmpty = ({ currentHour }: { currentHour: number }): JSX.Element => {
   const { role } = useSelector((store: IStore) => store.auth.user);
@@ -13,7 +13,7 @@ const CardEmpty = ({ currentHour }: { currentHour: number }): JSX.Element => {
 
   const handleOpenModalClick = () => {
     dispatch(setCurrentHour(currentHour));
-    dispatch(openModal(CONSTANTS.MODAL_TYPES.ADD));
+    dispatch(openModal(MODAL_TYPES.ADD));
   };
 
   return (
@@ -21,7 +21,7 @@ const CardEmpty = ({ currentHour }: { currentHour: number }): JSX.Element => {
       <h3 className="card-message__time">{getTimeInFormat(currentHour)}</h3>
       <div className="card-message__message">Add note...</div>
       <div className="card-message__buttons">
-        {CONSTANTS.BASIC_ROLES.VIEWER !== role && (
+        {USER_ROLES.VIEWER !== role && (
           <button
             className="button button__prim"
             onClick={handleOpenModalClick}

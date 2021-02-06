@@ -5,7 +5,7 @@ import IStore from "../../redux/interfaceStore";
 import WidgetMonth from '../Calendar/WidgetMonth';
 import UsersList from "../UsersList";
 
-import { BASIC_ROLES } from '../../constants';
+import { USER_ROLES } from '../../data';
 
 const SideBar = ({ isOpenSideBar }: { isOpenSideBar: boolean }): JSX.Element => {
   const { role } = useSelector((store: IStore) => store.auth.user);
@@ -13,7 +13,7 @@ const SideBar = ({ isOpenSideBar }: { isOpenSideBar: boolean }): JSX.Element => 
   return (
     <div className={`side-bar ${isOpenSideBar ? "side-bar_visible" : ""}`}>
       <WidgetMonth />
-      {role === BASIC_ROLES.ADMIN ? <UsersList /> : null}
+      {role === USER_ROLES.ADMIN ? <UsersList /> : null}
     </div>
   );
 };

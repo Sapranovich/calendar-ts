@@ -1,0 +1,1 @@
+export const BACKEND_URL = "https://my-cool-project-123.herokuapp.com";

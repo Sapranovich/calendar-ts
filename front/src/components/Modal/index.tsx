@@ -6,7 +6,7 @@ import AddUpdateMessageModal from "../AddUpdateMessageModal";
 import ViewMessageModal from "../ViewMessageModal";
 import { closeModal, setCurrentHour } from "../../redux/actions";
 
-import * as CONSTANTS from "../../constants";
+import { MODAL_TYPES } from '../../data';
 
 function Modal():JSX.Element {
   const { modalType } = useSelector((store: IStore) => store.modal);
@@ -24,9 +24,9 @@ function Modal():JSX.Element {
           className="modal__close-button"
           onClick={handleCloseButtonClick}
         ></span>
-        {CONSTANTS.MODAL_TYPES.ADD === modalType && <AddUpdateMessageModal />}
-        {CONSTANTS.MODAL_TYPES.UPDATE === modalType && <AddUpdateMessageModal />}
-        {CONSTANTS.MODAL_TYPES.VIEW === modalType && <ViewMessageModal />}
+        {MODAL_TYPES.ADD === modalType && <AddUpdateMessageModal />}
+        {MODAL_TYPES.UPDATE === modalType && <AddUpdateMessageModal />}
+        {MODAL_TYPES.VIEW === modalType && <ViewMessageModal />}
       </div>
     </div>
   );

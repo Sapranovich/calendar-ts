@@ -9,7 +9,7 @@ import getTimeInFormat from "../../../services/getTimeInFormat";
 import { requestAllMessages } from "../../../redux/messages/messagesActions";
 import { CardMessagePropsType } from '../../../types/cardMessageTypes';
 
-import * as CONSTANTS from "../../../constants";
+import { BACKEND_URL, MODAL_TYPES, USER_ROLES } from '../../../data';
 
 const CardMessage = ({ groupId, message: { message, email, currentHour, role, userId }}: CardMessagePropsType): JSX.Element => {
   const { id } = useSelector((store: IStore) => store.auth.user);
@@ -34,13 +34,13 @@ const CardMessage = ({ groupId, message: { message, email, currentHour, role, us
     const isMessages = !isEmpty(messagesTargetDay!.messages.filter((el: any) => el));
     if (isMessages) {
       axios
-        .put(`${CONSTANTS.BACKEND_URL}/messages/${currentId}`, messagesTargetDay)
+        .put(`${BACKEND_URL}/messages/${currentId}`, messagesTargetDay)
         .then(() => {
           dispatch(requestAllMessages());
         });
     } else {
       axios
-        .delete(`${CONSTANTS.BACKEND_URL}/messages/${currentId}`)
+        .delete(`${BACKEND_URL}/messages/${currentId}`)
         .then(() => {
           dispatch(requestAllMessages());
         });
@@ -58,15 +58,15 @@ const CardMessage = ({ groupId, message: { message, email, currentHour, role, us
       <div className="card-message__buttons">
         <button
           className="button button__prim"
-          onClick={() => handleOpenModalClick(CONSTANTS.MODAL_TYPES.VIEW)}
+          onClick={() => handleOpenModalClick(MODAL_TYPES.VIEW)}
         >
           View
         </button>
-        {id === userId && CONSTANTS.BASIC_ROLES.VIEWER !== roleCurrentUser && (
+        {id === userId && USER_ROLES.VIEWER !== roleCurrentUser && (
           <React.Fragment>
             <button
               className="button button__prim"
-              onClick={() => handleOpenModalClick(CONSTANTS.MODAL_TYPES.UPDATE)}
+              onClick={() => handleOpenModalClick(MODAL_TYPES.UPDATE)}
             >
               Update
             </button>

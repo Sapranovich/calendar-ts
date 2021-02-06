@@ -10,7 +10,7 @@ import { setAuthUser } from "./redux/actions";
 import { DecodedTokenType } from "./types/decodedTokenTypes";
 import { ModelUserType } from './services/getModelUser'; 
 
-import * as CONSTANTS from "./constants";
+import { BACKEND_URL } from './data';
 
 import "./scss/style.scss";
 
@@ -30,7 +30,7 @@ const App = (): JSX.Element => {
       } else {
         setAuthToken(localStorage.accessToken);
         axios
-          .get(`${CONSTANTS.BACKEND_URL}/data-users/${idUser}`)
+          .get(`${BACKEND_URL}/data-users/${idUser}`)
           .then((res: { data: ModelUserType }) => {
             dispatch(setAuthUser(res.data))
           })

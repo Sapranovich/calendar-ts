@@ -9,7 +9,7 @@ import getTimeInFormat from "../../services/getTimeInFormat";
 import { UserMessageDataType, MessagesSpecificDateType } from '../../types/messagesDataTypes';
 import { requestAllMessages, setCurrentHour, closeModal } from "../../redux/actions";
 
-import * as CONSTANTS from "../../constants";
+import { BACKEND_URL, MODAL_TYPES } from '../../data';
 
 function AddUpdateMessageModal(): JSX.Element {
   const { idSelectedDate, currentHour } = useSelector((store: IStore) => store.calendar);
@@ -48,7 +48,7 @@ function AddUpdateMessageModal(): JSX.Element {
       if (messagesTargetDay) {
         messagesTargetDay.messages[currentHour!] = stateMessageModal;
         axios
-          .put( `${CONSTANTS.BACKEND_URL}/messages/${idSelectedDate}`, messagesTargetDay)
+          .put( `${BACKEND_URL}/messages/${idSelectedDate}`, messagesTargetDay)
           .then(() => {
             dispatch(requestAllMessages());
             dispatch(setCurrentHour(null));
@@ -62,7 +62,7 @@ function AddUpdateMessageModal(): JSX.Element {
           messages: array,
         };
         axios
-          .post(`${CONSTANTS.BACKEND_URL}/messages`, data)
+          .post(`${BACKEND_URL}/messages`, data)
           .then(() => {
             dispatch(requestAllMessages());
             dispatch(setCurrentHour(null));
@@ -105,7 +105,7 @@ function AddUpdateMessageModal(): JSX.Element {
       />
 
       <div className="add-update-message-card__buttons">
-        {CONSTANTS.MODAL_TYPES.UPDATE === modalType && (
+        {MODAL_TYPES.UPDATE === modalType && (
           <button
             className="button button__prim"
             onClick={handleAddUpdateButtonClick}
@@ -114,7 +114,7 @@ function AddUpdateMessageModal(): JSX.Element {
           </button>
         )}
 
-        {CONSTANTS.MODAL_TYPES.ADD === modalType && (
+        {MODAL_TYPES.ADD === modalType && (
           <button
             className="button button__prim"
             onClick={handleAddUpdateButtonClick}
