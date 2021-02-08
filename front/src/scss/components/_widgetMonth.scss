@@ -15,6 +15,9 @@
 }
 .widget-month__list {
   padding: 20px 0;
+  @include media-tablet {
+    padding: 20px 50px;
+  }
 }
 .widget-month__list-header {
   display: flex;
@@ -33,6 +36,12 @@
     height: 32px;
     margin: 2px;
     border-radius: 100%;
+    @include media-laptop {
+      height: 27px;
+    }
+    @include media-tablet {
+      height: 35px;
+    }
   }
 }
 .widget-month__day {

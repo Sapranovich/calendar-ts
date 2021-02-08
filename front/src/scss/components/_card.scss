@@ -38,6 +38,9 @@
 }
 .card-message__email {
   font-size: 1.6rem;
+  @include media-tablet {
+    display: none;
+  }
 }
 .card-message__message {
   flex: 1;

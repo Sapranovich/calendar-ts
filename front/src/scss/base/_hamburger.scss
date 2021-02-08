@@ -1,4 +1,4 @@
-%hamburger-line{
+%hamburger-line {
   content: '';
   position: absolute;
   display: inline-block;
@@ -6,24 +6,36 @@
   border-radius: 5px;
   height: 3px;
   width: 100%;
+  @include media-tablet {
+    border-radius: 4px;
+    height: 2px;
+  }
 }
-.hamburger{
+
+.hamburger {
   position: relative;
   width: 26px;
   height: 20px;
   cursor: pointer;
-  &::before{
+  @include media-tablet {
+    width: 20px;
+    height: 16px;
+  }
+
+  &::before {
     @extend %hamburger-line;
     top: 0;
     left: 0;
   }
-  &::after{
+
+  &::after {
     @extend %hamburger-line;
     bottom: 0;
     left: 0;
   }
 }
-.hamburger__line{
+
+.hamburger__line {
   @extend %hamburger-line;
   top: calc(50% - 1px);
   left: 0;

@@ -5,6 +5,9 @@
 }
 .day-list__group{
   margin-left: 50px;
+  @include media-tablet {
+    margin-left: 0px;
+  }
 }
 .day-list__day-name {
   padding: 20px 0;

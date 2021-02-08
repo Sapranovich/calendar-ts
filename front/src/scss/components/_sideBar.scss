@@ -6,4 +6,21 @@
   &_visible {
     margin-left: -$mobile-small-width;
   }
+  @include media-tablet {
+    position: absolute;
+    width: $mobile-big-width;
+    &_visible {
+      margin-left: -$mobile-big-width;
+    }
+  }
+}
+
+.side-bar__email {
+  display: none;
+  padding: 10px 0;
+  text-align: center;
+  color: $color-header-text;
+  @include media-tablet {
+    display: block;
+  }
 }

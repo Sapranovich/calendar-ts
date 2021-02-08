@@ -1,4 +1,17 @@
 .wrapper {
   width: $content-big-width;
   margin: auto;
+  @include media-big-laptop {
+    width: $content-width;
+  }
+  @include media-laptop {
+    width: $tablet-width;
+  }
+  @include media-tablet {
+    width: $mobile-big-width;
+  }
+  @include media-mobile {
+    width: $mobile-small-width;
+  }
+
 }

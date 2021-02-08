@@ -10,6 +10,12 @@
   cursor: pointer;
   text-transform: uppercase;
   text-decoration: none;
+  @include media-laptop {
+    padding: 10px 15px;
+  }
+  @include media-tablet {
+    padding: 8px 5px;
+  }
   &__prim {
     background-color: $background-button-prim;
     color: $color-button-text-prim;

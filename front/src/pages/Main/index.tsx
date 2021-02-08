@@ -18,14 +18,14 @@ const Main = ():JSX.Element => {
         isOpenSideBar={isOpenSideBar}
         setIsOpenSideBar={setIsOpenSideBar}
       />
-      <main className="main">
+      <div className="main">
         <div className="wrapper">
           <div className="main__wrapper">
             <SideBar isOpenSideBar={isOpenSideBar} />
             <Calendar />
           </div>
         </div>
-      </main>
+      </div>
       {isOpenModal && <Modal />}
     </MainWrapper>
   );

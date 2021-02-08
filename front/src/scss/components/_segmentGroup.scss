@@ -1,6 +1,9 @@
 .segment-group {
   margin-top: 30px;
   margin-left: 50px;
+  @include media-tablet {
+    margin-left: 0px;
+  }
 }
 .segment-group__date {
   margin-bottom: 10px;

@@ -3,24 +3,43 @@
   background-color: $background-header;
   color: $color-header-text;
 }
-.header__wrapper{
+
+.header__wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.header__email{
-  margin:0 30px;
+
+.header__email {
+  margin: 0 30px;
+  @include media-tablet {
+    display: none;
+  }
 }
-.header__date{
+
+.header__date {
   text-align: center;
   width: 270px;
+  @include media-laptop {
+    width: 180px;
+  }
+  @include media-tablet {
+    width: 120px;
+  }
 }
-.header__group{
+
+.header__group {
   display: flex;
   align-items: center;
+  @include media-tablet {
+    >*{
+      &:first-child{
+        margin-right: 20px;
+      }
+    }
+  }
 }
-.header__group > .header__button{
+
+.header__group>.header__button {
   margin: 0 5px;
 }
-
-
