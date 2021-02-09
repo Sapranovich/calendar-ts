@@ -1,8 +1,10 @@
 .side-bar {
   @extend %transition;
-  overflow: hidden;
+  // overflow: hidden;
   background-color: $background-sideBar;
   width: $mobile-small-width;
+  height: 100%;
+  overflow: scroll;
   &_visible {
     margin-left: -$mobile-small-width;
   }

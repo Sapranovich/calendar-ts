@@ -5,6 +5,10 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  @include media-tablet {
+    padding: 5px;
+    width: 350px;
+  }
 }
 .view-message-card__header {
   display: flex;
@@ -30,4 +34,7 @@
   border: solid 2px $background-login-page;
   height: 200px;
   overflow-y: scroll;
+  @include media-tablet {
+    height: 150px;
+  } 
 }

@@ -1,10 +1,14 @@
 .month-toggle {
   > * {
     margin-right: 10px;
+    @include media-tablet {
+      margin-right: 20px;
+    }  
     &:last-child {
       margin-right: 0;
     }
   }
+  
 }
 .month-toggle__button {
   font-size: 2.5rem;
@@ -14,4 +18,7 @@
   outline: none;
   border: none;
   cursor: pointer;
+  @include media-tablet {
+    font-size: 3.5rem;
+  }
 }

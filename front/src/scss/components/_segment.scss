@@ -7,9 +7,15 @@
 .segment__header-title {
   width: calc(100% - 370px);
   text-align: center;
+  @include media-tablet {
+    width: calc(100% - 150px);
+  }
 }
 .filter-messages-form {
   width: 370px;
+  @include media-tablet {
+    width: 150px;
+  }
 }
 .filter-messages-form__warning-feedback {
   text-align: center;
