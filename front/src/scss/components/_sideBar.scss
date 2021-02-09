@@ -10,9 +10,9 @@
   }
   @include media-tablet {
     position: absolute;
-    width: $mobile-big-width;
+    width: 100%;
     &_visible {
-      margin-left: -$mobile-big-width;
+      width: 0%;
     }
   }
 }

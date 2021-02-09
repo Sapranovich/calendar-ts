@@ -9,6 +9,9 @@
     padding: 5px;
     width: 350px;
   }
+  @include media-mobile {
+    width: 250px;
+  }
 }
 .add-update-message-card__header {
   display: flex;
@@ -42,8 +45,9 @@
   padding: 5px 10px;
   margin-bottom: 30px;
   @include media-tablet {
-    height: 150px;
-  }  
+    height: 100px;
+  }
+
 }
 .add-update-message-card__buttons {
 }

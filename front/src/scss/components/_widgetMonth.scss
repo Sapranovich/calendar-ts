@@ -42,6 +42,9 @@
     @include media-tablet {
       height: 35px;
     }
+    @include media-mobile {
+      height: 27px;
+    }
   }
 }
 .widget-month__day {

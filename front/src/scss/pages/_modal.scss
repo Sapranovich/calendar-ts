@@ -23,6 +23,9 @@
   flex-direction: column;
   background-color: $background-modal-wrapper;
   padding: 65px 30px 30px;
+  @include media-tablet {
+    padding: 45px 20px 20px;
+  }
 }
 
 .modal__close-button {

@@ -8,6 +8,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @include media-tablet {
+    padding: 0px 5px;
+  }
 }
 
 .header__email {
@@ -26,6 +29,9 @@
   @include media-tablet {
     width: 120px;
   }
+  @include media-tablet {
+    width: 110px;
+  }
 }
 
 .header__group {
@@ -35,6 +41,9 @@
     >*{
       &:first-child{
         margin-right: 20px;
+        @include media-tablet {
+          margin-right: 15px;
+        }
       }
     }
   }
@@ -42,4 +51,7 @@
 
 .header__group>.header__button {
   margin: 0 5px;
+  @include media-tablet {
+    margin: 0 1px;
+  }
 }
