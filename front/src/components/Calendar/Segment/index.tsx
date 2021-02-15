@@ -82,49 +82,47 @@ const Segment = (): JSX.Element => {
 
           {messagesLocalStorage.length === 0 && `No notes`}
         </h2>
-        {!isNoMessages && (
-          <form className="filter-messages-form" onSubmit={handleSubmitForm}>
+        <form className="filter-messages-form" onSubmit={handleSubmitForm}>
 
-            <div className="filter-messages-form__warning-feedback">{errorsFilter.warning}</div>
+          <div className="filter-messages-form__warning-feedback">{errorsFilter.warning}</div>
 
-            <div className="filter-messages-form__wrapper">
-              <div className="filter-messages-form__group">
-                <input
-                  className="filter-messages-form__input"
-                  type="text"
-                  name="startParam"
-                  value={paramsFilter.startParam}
-                  onChange={handleInputChange}
-                  placeholder="dd/mm/yyyy"
-                />
+          <div className="filter-messages-form__wrapper">
+            <div className="filter-messages-form__group">
+              <input
+                className="filter-messages-form__input"
+                type="text"
+                name="startParam"
+                value={paramsFilter.startParam}
+                onChange={handleInputChange}
+                placeholder="dd/mm/yyyy"
+              />
 
-                <div className="filter-messages-form__error-feedback">{errorsFilter.startParam}</div>
+              <div className="filter-messages-form__error-feedback">{errorsFilter.startParam}</div>
 
-              </div>
-              <div className="filter-messages-form__group">
-                <input
-                  className="filter-messages-form__input"
-                  type="text"
-                  name="endParam"
-                  value={paramsFilter.endParam}
-                  onChange={handleInputChange}
-                  placeholder="dd/mm/yyyy"
-                />
-
-                <div className="filter-messages-form__error-feedback">{errorsFilter.endParam}</div>
-
-              </div>
             </div>
-            <div className="filter-messages-form__buttons">
-            <button className="button button__prim filter-messages-form__button">
-              filter
-            </button>
-            <button type='button' className="button button__prim filter-messages-form__button" onClick={handleResetButtonClick}>
-              reset
-            </button>
+            <div className="filter-messages-form__group">
+              <input
+                className="filter-messages-form__input"
+                type="text"
+                name="endParam"
+                value={paramsFilter.endParam}
+                onChange={handleInputChange}
+                placeholder="dd/mm/yyyy"
+              />
+
+              <div className="filter-messages-form__error-feedback">{errorsFilter.endParam}</div>
+
             </div>
-          </form>
-        )}
+          </div>
+          <div className="filter-messages-form__buttons">
+          <button className="button button__prim filter-messages-form__button">
+            filter
+          </button>
+          <button type='button' className="button button__prim filter-messages-form__button" onClick={handleResetButtonClick}>
+            reset
+          </button>
+          </div>
+        </form>
       </div>
       {!isNoMessages && messagesLocalStorage && (
         <React.Fragment>

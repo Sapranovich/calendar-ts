@@ -18,7 +18,7 @@ function AddUpdateMessageModal(): JSX.Element {
   const { modalType } = useSelector((store: IStore) => store.modal);
   const dispatch = useDispatch();
    
-  const [stateMessageModal,setStateMessageModal] = React.useState<UserMessageDataType>({
+  const [stateMessageModal, setStateMessageModal] = React.useState<UserMessageDataType>({
     userId: id!,
     title: "",
     message: "",
