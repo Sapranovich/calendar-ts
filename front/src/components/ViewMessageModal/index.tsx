@@ -4,13 +4,14 @@ import { useSelector } from "react-redux";
 import IStore from "../../redux/interfaceStore";
 import getDateInFormat from "../../services/getDateInFormat";
 import getTimeInFormat from "../../services/getTimeInFormat";
-import { MessagesSpecificDateType } from '../../types/messagesDataTypes';
+import { MessagesSpecificDateType, UserMessageDataType1 } from '../../types/messagesDataTypes';
 
 function ViewMessageModal(): JSX.Element {
     // Не знаю как решить данную проблему, связанную с вариативностью типов messages
   const { idSelectedDate, currentHour } = useSelector((store: IStore) => store.calendar);
   const { messages } = useSelector((store: any) => store.messages);
-  const messagesTargetDay = messages.find((messagesDay: MessagesSpecificDateType) => messagesDay.id === idSelectedDate);
+  const { id } = useSelector((store: any) => store.auth.user);
+  const targetMessage = messages.find((messagesDay: UserMessageDataType1) => messagesDay.dayId === idSelectedDate && messagesDay.currentHour === currentHour && messagesDay.userId === id);
   
   return (
     <div className="view-message-card">
@@ -22,14 +23,14 @@ function ViewMessageModal(): JSX.Element {
           Time: {getTimeInFormat(currentHour!)}
         </h3>
         <h3 className="view-message-card__author">
-          {messagesTargetDay.messages[currentHour!].email}
+          {targetMessage.email}
         </h3>
       </div>
       <h2 className="view-message-card__title">
-        {messagesTargetDay.messages[currentHour!].title}
+        {targetMessage.title}
       </h2>
       <p className="view-message-card__text">
-        {messagesTargetDay.messages[currentHour!].message}
+        {targetMessage.message}
       </p>
     </div>
   );

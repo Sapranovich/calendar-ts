@@ -14,17 +14,18 @@ export interface DayOfTheWeekPropsType extends RouteComponentProps<any> {
 }
 const DayOfTheWeek = ({ history, dayData: { date, isCurrentMonth }}: DayOfTheWeekPropsType): JSX.Element => {
   const { messages } = useSelector((store: IStore) => store.messages);
+  const { id } = useSelector((store: IStore) => store.auth.user);
   const dispatch = useDispatch();
   const { path } = useRouteMatch();
   const [localStorage, setLocalStorage] = React.useState<UserMessageDataType1[]>([]);
 
   React.useEffect(() => {
     setLocalStorage([]);
-    const messagesDay = messages.filter((el: UserMessageDataType1) => el.dayId === date.getTime()).slice(0,3);
+    const messagesDay = messages.filter((el: UserMessageDataType1) => el.dayId === date.getTime() && el.userId === id).slice(0,3);
     if(!isEmpty(messagesDay)){
       setLocalStorage(messagesDay);
     } 
-  }, [date, messages]);
+  }, [date, id, messages]);
 
   const handleSelectedDateClick = () => {
     dispatch(updateSelectedDate(date));

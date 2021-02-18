@@ -10,7 +10,8 @@ import CardEmpty from "../CardEmpty";
 const Day = (): JSX.Element => {
   const { idSelectedDate, selectedDate } = useSelector((store: IStore) => store.calendar);
   const { messages } = useSelector((store: IStore) => store.messages);
-  const messagesTargetDay = messages.filter((messagesDay: UserMessageDataType1) => messagesDay.dayId === idSelectedDate);
+  const { id } = useSelector((store: IStore) => store.auth.user);
+  const messagesTargetDay = messages.filter((messagesDay: UserMessageDataType1) => messagesDay.dayId === idSelectedDate && messagesDay.userId === id);
 
   return (
     <div className="day-list">

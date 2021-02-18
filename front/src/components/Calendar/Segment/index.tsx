@@ -57,7 +57,7 @@ const Segment = (): JSX.Element => {
           warning: "Dates are swapped",
         });
       }
-      const filteredData = messages.filter((el: UserMessageDataType1) => el.id <= indexStartParam && el.id >= indexEndParam);
+      const filteredData = messages.filter((el: UserMessageDataType1) => el.id! <= indexStartParam && el.id! >= indexEndParam);
       setMessagesLocalStorage(filteredData);
     } else {
       setErrorsFilter(errors);

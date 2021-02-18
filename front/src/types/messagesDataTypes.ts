@@ -20,7 +20,7 @@ export type UserMessageDataType1 = {
   email: string;
   role: string;
   dayId: number;
-  id: number;
+  id?: number;
 };
 
 
