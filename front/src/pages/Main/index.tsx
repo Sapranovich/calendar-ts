@@ -26,7 +26,7 @@ const Main = ():JSX.Element => {
           </div>
         </div>
       </div>
-      {isOpenModal && <Modal />}
+      {/* {isOpenModal && <Modal />} */}
     </MainWrapper>
   );
 };

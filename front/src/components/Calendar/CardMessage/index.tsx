@@ -28,23 +28,23 @@ const CardMessage = ({ groupId, message: { message, email, currentHour, role, us
   };
 
   const handleRemoveButtonClick = () => {
-    const currentId = groupId || idSelectedDate;
-    const messagesTargetDay = messages.find((el: any) => el.id === currentId);
-    messagesTargetDay!.messages[currentHour] = null;
-    const isMessages = !isEmpty(messagesTargetDay!.messages.filter((el: any) => el));
-    if (isMessages) {
-      axios
-        .put(`${BACKEND_URL}/messages/${currentId}`, messagesTargetDay)
-        .then(() => {
-          dispatch(requestAllMessages());
-        });
-    } else {
-      axios
-        .delete(`${BACKEND_URL}/messages/${currentId}`)
-        .then(() => {
-          dispatch(requestAllMessages());
-        });
-    }
+    // const currentId = groupId || idSelectedDate;
+    // const messagesTargetDay = messages.find((el: any) => el.id === currentId);
+    // messagesTargetDay!.messages[currentHour] = null;
+    // const isMessages = !isEmpty(messagesTargetDay!.messages.filter((el: any) => el));
+    // if (isMessages) {
+    //   axios
+    //     .put(`${BACKEND_URL}/messages/${currentId}`, messagesTargetDay)
+    //     .then(() => {
+    //       dispatch(requestAllMessages());
+    //     });
+    // } else {
+    //   axios
+    //     .delete(`${BACKEND_URL}/messages/${currentId}`)
+    //     .then(() => {
+    //       dispatch(requestAllMessages());
+    //     });
+    // }
   };
 
   return (

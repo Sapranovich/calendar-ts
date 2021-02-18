@@ -6,13 +6,13 @@ import SegmentGroup from "./SegmentGroup";
 import verificationFilterInput from "../../../services/verificationFilterInput";
 import getDateInFormat from "../../../services/getDateInFormat";
 import validationFilterForm, { ValidationFilterFormPropsType, ValidationFilterFormErrorsType } from "../../../services/validationFilterForm";
-import { MessagesSpecificDateType } from '../../../types/messagesDataTypes';
+import { UserMessageDataType1 } from '../../../types/messagesDataTypes';
 import { GroupPropsType } from '../../../types/segmentGroupTypes';
+import groupMessagesByDay from "../../../services/groupMessagesByDay";
 
 const Segment = (): JSX.Element => {
   const { isNoMessages, messages } = useSelector((store: IStore) => store.messages);
   const [messagesLocalStorage, setMessagesLocalStorage] = React.useState(messages);
-
   const [errorsFilter, setErrorsFilter] = React.useState<ValidationFilterFormErrorsType>({});
 
   const [paramsFilter, setParamFilter] = React.useState<ValidationFilterFormPropsType>({
@@ -57,7 +57,7 @@ const Segment = (): JSX.Element => {
           warning: "Dates are swapped",
         });
       }
-      const filteredData = messages.filter((el: MessagesSpecificDateType) => el.id <= indexStartParam && el.id >= indexEndParam);
+      const filteredData = messages.filter((el: UserMessageDataType1) => el.id <= indexStartParam && el.id >= indexEndParam);
       setMessagesLocalStorage(filteredData);
     } else {
       setErrorsFilter(errors);
@@ -69,16 +69,18 @@ const Segment = (): JSX.Element => {
     setErrorsFilter({});
   }
 
+  console.log(groupMessagesByDay(messagesLocalStorage))
+
   return (
     <div className="segment">
       <div className="segment__header border_bottom">
         {/* возможно нужно вынести filter в отдельный компонент ??? */}
         <h2 className="segment__header-title">
           {messagesLocalStorage.length > 1 &&
-            `Notes from ${getDateInFormat(messagesLocalStorage[0].id)} to ${getDateInFormat(messagesLocalStorage[messagesLocalStorage.length - 1].id)}`}
+            `Notes from ${getDateInFormat(messagesLocalStorage[0].dayId)} to ${getDateInFormat(messagesLocalStorage[messagesLocalStorage.length - 1].dayId)}`}
 
           {messagesLocalStorage.length === 1 &&
-            `Notes for the ${getDateInFormat(messagesLocalStorage[0].id)}`}
+            `Notes for the ${getDateInFormat(messagesLocalStorage[0].dayId)}`}
 
           {messagesLocalStorage.length === 0 && `No notes`}
         </h2>
@@ -126,9 +128,8 @@ const Segment = (): JSX.Element => {
       </div>
       {!isNoMessages && messagesLocalStorage && (
         <React.Fragment>
-          {messagesLocalStorage.map((group: GroupPropsType, index: number) => (
-            <SegmentGroup key={index} group={group} index={index} />
-          ))}
+          {groupMessagesByDay(messagesLocalStorage).map((el: any, index: number) => <SegmentGroup key={index} group={el} /> )}
+          {groupMessagesByDay(messagesLocalStorage).map(el => console.log(el))}
         </React.Fragment>
       )}
     </div>

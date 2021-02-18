@@ -16,6 +16,6 @@ const Calendar = (): JSX.Element => {
       </Switch>
     </div>
   );
-}
+};
 
 export default Calendar;

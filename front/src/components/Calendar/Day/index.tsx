@@ -3,14 +3,14 @@ import { useSelector } from "react-redux";
 
 import IStore from "../../../redux/interfaceStore";
 import CardMessage from "../CardMessage";
-import { MessagesSpecificDateType } from '../../../types/messagesDataTypes';
+import { UserMessageDataType1 } from '../../../types/messagesDataTypes';
 import getDateInFormat from '../../../services/getDateInFormat';
 import CardEmpty from "../CardEmpty";
 
 const Day = (): JSX.Element => {
   const { idSelectedDate, selectedDate } = useSelector((store: IStore) => store.calendar);
   const { messages } = useSelector((store: IStore) => store.messages);
-  const messagesTargetDay = messages.find((messagesDay: MessagesSpecificDateType) => messagesDay.id === idSelectedDate);
+  const messagesTargetDay = messages.filter((messagesDay: UserMessageDataType1) => messagesDay.dayId === idSelectedDate);
 
   return (
     <div className="day-list">
@@ -20,19 +20,11 @@ const Day = (): JSX.Element => {
         </div>
       </div>
       <div className="day-list__group">
-        {messagesTargetDay &&
-          messagesTargetDay.messages.map((message: any, index: number) =>
-            message ? (
-              <CardMessage key={index} message={message} />
-            ) : (
-              <CardEmpty key={index} currentHour={index} />
-            )
-          )}
-
-        {!messagesTargetDay &&
-          Array(24)
-            .fill(null)
-            .map((el, index) => <CardEmpty key={index} currentHour={index} />)}
+        {Array(24).fill(null).map((el, index: number) => {
+          const message = messagesTargetDay.find(el=> el.currentHour === index);
+          if(message) return <CardMessage key={index} message={message} />
+          return <CardEmpty key={index} currentHour={index} />
+        })}
       </div>
     </div>
   );

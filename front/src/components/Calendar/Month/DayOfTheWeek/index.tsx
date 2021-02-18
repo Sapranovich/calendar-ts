@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps, withRouter, useRouteMatch } from "react-router-dom";
 
 import IStore from "../../../../redux/interfaceStore";
-import { UserMessageDataType, MessagesSpecificDateType } from '../../../../types/messagesDataTypes';
+import { UserMessageDataType1 } from '../../../../types/messagesDataTypes';
+import isEmpty from '../../../../services/isEmpty';
 import { updateSelectedDate } from "../../../../redux/actions";
 import { DayDataType } from "../../../../redux/calendar/calendarReducer";
 import getTimeInFormat from "../../../../services/getTimeInFormat";
@@ -15,14 +16,14 @@ const DayOfTheWeek = ({ history, dayData: { date, isCurrentMonth }}: DayOfTheWee
   const { messages } = useSelector((store: IStore) => store.messages);
   const dispatch = useDispatch();
   const { path } = useRouteMatch();
-  const [localStorage, setLocalStorage] = React.useState<(UserMessageDataType | null)[]>([]);
+  const [localStorage, setLocalStorage] = React.useState<UserMessageDataType1[]>([]);
 
   React.useEffect(() => {
     setLocalStorage([]);
-    const messagesDay = messages.find((el: MessagesSpecificDateType) => el.id === date.getTime());
-    // Почему-то после фильтрации нужно всеравно предусматривать вариант с null...
-    const firstThreeMessagesDay = messagesDay && messagesDay.messages.filter((el: UserMessageDataType | null) => el !== null).slice(0,3);
-    if (firstThreeMessagesDay) setLocalStorage(firstThreeMessagesDay);
+    const messagesDay = messages.filter((el: UserMessageDataType1) => el.dayId === date.getTime()).slice(0,3);
+    if(!isEmpty(messagesDay)){
+      setLocalStorage(messagesDay);
+    } 
   }, [date, messages]);
 
   const handleSelectedDateClick = () => {
@@ -43,17 +44,15 @@ const DayOfTheWeek = ({ history, dayData: { date, isCurrentMonth }}: DayOfTheWee
         <div className="month-list__day-number">{date.getDate()}</div>
       </div>
       <ul className="month-list__day-tasks">
-        {localStorage.map(
-          (el: UserMessageDataType | null, index: number) =>
-            el && (
-              <li key={index} className="month-list__day-task">
-                <h3 className="month-list__day-task-time">
-                  {getTimeInFormat(el.currentHour)}
-                </h3>
-                <p className="month-list__day-task-text">{el.message}</p>
-              </li>
-            )
-        )}
+        {!isEmpty(localStorage) &&
+          localStorage.map((el, index: number) => (
+            <li key={index} className="month-list__day-task">
+              <h3 className="month-list__day-task-time">
+                {getTimeInFormat(el.currentHour)}
+              </h3>
+              <p className="month-list__day-task-text">{el.message}</p>
+            </li>
+          ))}
       </ul>
     </div>
   );

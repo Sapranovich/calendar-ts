@@ -6,7 +6,7 @@ import IStore from "../../redux/interfaceStore";
 import isEmpty from "../../services/isEmpty";
 import getDateInFormat from "../../services/getDateInFormat";
 import getTimeInFormat from "../../services/getTimeInFormat";
-import { UserMessageDataType, MessagesSpecificDateType } from '../../types/messagesDataTypes';
+import { UserMessageDataType, MessagesSpecificDateType, UserMessageDataType1} from '../../types/messagesDataTypes';
 import { requestAllMessages, setCurrentHour, closeModal } from "../../redux/actions";
 
 import { BACKEND_URL, MODAL_TYPES } from '../../data';
@@ -25,15 +25,16 @@ function AddUpdateMessageModal(): JSX.Element {
     currentHour: currentHour!,
     email: email!,
     role: role!,
+
   });
 
-  const messagesTargetDay = messages.find((messagesDay: MessagesSpecificDateType) => messagesDay.id === idSelectedDate);
+  const messagesTargetDay = messages.find((messagesDay: UserMessageDataType1) => messagesDay.id === idSelectedDate);
   
   React.useEffect(() => {
-    if (messagesTargetDay && messagesTargetDay.messages[currentHour!]) {
-      const targetMessage = messagesTargetDay.messages[currentHour!];
-      targetMessage  && setStateMessageModal(targetMessage);
-    }
+    // if (messagesTargetDay && messagesTargetDay.messages[currentHour!]) {
+    //   const targetMessage = messagesTargetDay.messages[currentHour!];
+    //   targetMessage  && setStateMessageModal(targetMessage);
+    // }
   }, [currentHour, messagesTargetDay]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
@@ -44,32 +45,32 @@ function AddUpdateMessageModal(): JSX.Element {
   };
 
   const handleAddUpdateButtonClick = () => {
-    if (!isEmpty(stateMessageModal.message)) {
-      if (messagesTargetDay) {
-        messagesTargetDay.messages[currentHour!] = stateMessageModal;
-        axios
-          .put( `${BACKEND_URL}/messages/${idSelectedDate}`, messagesTargetDay)
-          .then(() => {
-            dispatch(requestAllMessages());
-            dispatch(setCurrentHour(null));
-            dispatch(closeModal());
-          });
-      } else {
-        const array = new Array(24);
-        array[currentHour!] = stateMessageModal;
-        const data = {
-          id: idSelectedDate,
-          messages: array,
-        };
-        axios
-          .post(`${BACKEND_URL}/messages`, data)
-          .then(() => {
-            dispatch(requestAllMessages());
-            dispatch(setCurrentHour(null));
-            dispatch(closeModal());
-        });
-      }
-    }
+    // if (!isEmpty(stateMessageModal.message)) {
+    //   if (messagesTargetDay) {
+    //     messagesTargetDay.messages[currentHour!] = stateMessageModal;
+    //     axios
+    //       .put( `${BACKEND_URL}/messages/${idSelectedDate}`, messagesTargetDay)
+    //       .then(() => {
+    //         dispatch(requestAllMessages());
+    //         dispatch(setCurrentHour(null));
+    //         dispatch(closeModal());
+    //       });
+    //   } else {
+    //     const array = new Array(24);
+    //     array[currentHour!] = stateMessageModal;
+    //     const data = {
+    //       ...stateMessageModal,
+    //       dayId: idSelectedDate
+    //     };
+    //     axios
+    //       .post(`${BACKEND_URL}/messages`, data)
+    //       .then(() => {
+    //         dispatch(requestAllMessages());
+    //         dispatch(setCurrentHour(null));
+    //         dispatch(closeModal());
+    //     });
+    //   }
+    // }
   };
 
   return (

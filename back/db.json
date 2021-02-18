@@ -1,58 +1,16 @@
 {
-  "users": [
-    {
+  "users": [{
       "email": "admin@admin.admin",
       "password": "$2a$10$YNT5Q5diVQfVvvoexE4TN.T42GE4Ub86XfI9NwRE4/Qs3cKWU2jHi",
       "id": 1
     },
     {
       "email": "MyWorkEmail@yandex.ru",
-      "password": "$2a$10$Goed4O33anyKPx4xnOVO.uMxm9h4jJniUNtARiGUEu1cQSkFCPuum",
+      "password": "$2a$10$d3MQjxIWrrT5N7tfEKhZEe/lRq8qSEbvqG1ssAlRWLwSM148iDEee",
       "id": 2
-    },
-    {
-      "email": "SapranoveichAndrei@yandex.ru",
-      "password": "$2a$10$RqcWNtyUILYfZImEPmXtF.sf77LO2Dr/1IEaVgO4jgGXUPk//QjGG",
-      "id": 3
-    },
-    {
-      "email": "Sap@yandex.ru",
-      "password": "$2a$10$NJtkIcZFBfoNRL3r96aM5.cua4gj5R1bAAUYrOfxFEZl7M0rKGNRK",
-      "id": 4
-    },
-    {
-      "email": "SapranovicfffhAndrei@yandex.ruf",
-      "password": "$2a$10$WD03E6N893vg7O7f0cOjbend11JvFPVTGS78KIaeG8oiW4KCtxnMO",
-      "id": 5
-    },
-    {
-      "email": "admin@admin.admeein",
-      "password": "$2a$10$x4ufzKqnmQ4hpG/cvokHGu0XnObeWb6ySjxOmEhIu35vYHc.33iGC",
-      "id": 6
-    },
-    {
-      "email": "admidasdasn@admin.admin",
-      "password": "$2a$10$s2N5aVoxbVY1qtWrhI79luLVrvmPAR25pOC5sQj63GZ3W95BQmURi",
-      "id": 7
-    },
-    {
-      "email": "SapranovichffAndrey@yandex.ru",
-      "password": "$2a$10$nKhbFnHMw5N2N0nfauP6I.w/RdqMxYDUqceKONiltN/aJ7cMmz/ee",
-      "id": 8
-    },
-    {
-      "email": "admin@admieeeeen.admin",
-      "password": "$2a$10$KVMxxvwLpYD2qu8oqzgueehJox27JwAlI1JR987DWM/K2sgRzh8ky",
-      "id": 9
-    },
-    {
-      "email": "MyWorkEmail@yandeddx.ru",
-      "password": "$2a$10$yHQJOxvP/bVAacDd.PR/6uAoqg21PFLLzinBaMgdP6TsrfYeP9Iu6",
-      "id": 10
     }
   ],
-  "data-users": [
-    {
+  "data-users": [{
       "id": 1,
       "name": "fsdf",
       "email": "admin@admin.admin",
@@ -60,597 +18,60 @@
     },
     {
       "id": 2,
-      "name": "dasd",
+      "name": "123123",
       "email": "MyWorkEmail@yandex.ru",
-      "role": "viewer"
-    },
-    {
-      "id": 3,
-      "name": "123123",
-      "email": "SapranoveichAndrei@yandex.ru",
-      "role": "viewer"
-    },
-    {
-      "id": 4,
-      "name": "123123",
-      "email": "Sap@yandex.ru",
-      "role": "user"
-    },
-    {
-      "id": 5,
-      "name": "dsfsd",
-      "email": "SapranovicfffhAndrei@yandex.ruf",
-      "role": "user"
-    },
-    {
-      "id": 6,
-      "name": "dasd",
-      "email": "admin@admin.admeein",
-      "role": "user"
-    },
-    {
-      "id": 7,
-      "name": "dasd",
-      "email": "admidasdasn@admin.admin",
-      "role": "viewer"
-    },
-    {
-      "id": 8,
-      "name": "dasd",
-      "email": "SapranovichffAndrey@yandex.ru",
-      "role": "viewer"
-    },
-    {
-      "id": 9,
-      "name": "dasd",
-      "email": "admin@admieeeeen.admin",
-      "role": "user"
-    },
-    {
-      "id": 10,
-      "name": "fsdf",
-      "email": "MyWorkEmail@yandeddx.ru",
       "role": "user"
     }
   ],
-  "messages": [
-    {
-      "id": 1612299600000,
-      "messages": [
-        null,
-        {
-          "userId": 1,
-          "title": "sgf sfdg авры ",
-          "message": "rgsg патgh gf fd fd ",
-          "currentHour": 1,
-          "email": "admin@admin.admin",
-          "role": "admin"
-        },
-        null,
-        null,
-        null,
-        null,
-        {
-          "userId": 1,
-          "title": "",
-          "message": "паварьоб люм",
-          "currentHour": 6,
-          "email": "admin@admin.admin",
-          "role": "admin"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        {
-          "userId": 2,
-          "title": "",
-          "message": "onm;l,pmи патрпорло юдбьтим\n",
-          "currentHour": 16,
-          "email": "MyWorkEmail@yandex.ru",
-          "role": "user"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ]
+  "messages": [{
+      "userId": 2,
+      "title": "",
+      "message": "g fd ",
+      "currentHour": 4,
+      "email": "MyWorkEmail@yandex.ru",
+      "role": "user",
+      "dayId": 1612990800000,
+      "id": 3
     },
     {
-      "id": 1612904400000,
-      "messages": [
-        null,
-        null,
-        null,
-        null,
-        {
-          "userId": 1,
-          "title": "",
-          "message": "gfs dg и уцф",
-          "currentHour": 4,
-          "email": "admin@admin.admin",
-          "role": "admin"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ]
+      "userId": 2,
+      "title": "",
+      "message": "fdg fdsg fd ",
+      "currentHour": 9,
+      "email": "MyWorkEmail@yandex.ru",
+      "role": "user",
+      "dayId": 1614114000000,
+      "id": 4
     },
     {
-      "id": 1626210000000,
-      "messages": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        {
-          "userId": 1,
-          "title": "",
-          "message": "апт паsgf висм ",
-          "currentHour": 17,
-          "email": "admin@admin.admin",
-          "role": "admin"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ]
+      "userId": 2,
+      "title": "",
+      "message": "sdg sfd xb xcv ",
+      "currentHour": 4,
+      "email": "MyWorkEmail@yandex.ru",
+      "role": "user",
+      "dayId": 1614114000000,
+      "id": 5
     },
     {
-      "id": 1614459600000,
-      "messages": [
-        null,
-        null,
-        null,
-        null,
-        {
-          "userId": 1,
-          "title": "",
-          "message": "тапч мтияч выавыа ва sd  cxvx234324234",
-          "currentHour": 4,
-          "email": "admin@admin.admin",
-          "role": "admin"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ]
+      "userId": 2,
+      "title": "",
+      "message": "gs вап sfd ",
+      "currentHour": 1,
+      "email": "MyWorkEmail@yandex.ru",
+      "role": "user",
+      "dayId": 1614114000000,
+      "id": 6
     },
     {
-      "id": 1614200400000,
-      "messages": [
-        null,
-        null,
-        null,
-        {
-          "userId": 1,
-          "title": "",
-          "message": "fdg обрлюоьимсчяс ва",
-          "currentHour": 3,
-          "email": "admin@admin.admin",
-          "role": "admin"
-        },
-        null,
-        null,
-        {
-          "userId": 1,
-          "title": "",
-          "message": "s dg ngfb ",
-          "currentHour": 6,
-          "email": "admin@admin.admin",
-          "role": "admin"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ]
-    },
-    {
-      "id": 1612386000000,
-      "messages": [
-        null,
-        null,
-        null,
-        {
-          "userId": 1,
-          "title": "",
-          "message": "dsfa выв ",
-          "currentHour": 3,
-          "email": "admin@admin.admin",
-          "role": "admin"
-        },
-        {
-          "userId": 6,
-          "title": "",
-          "message": "fsad afasg fd ",
-          "currentHour": 4,
-          "email": "admin@admin.admeein",
-          "role": "user"
-        },
-        {
-          "userId": 1,
-          "title": "",
-          "message": "аппр апп",
-          "currentHour": 5,
-          "email": "admin@admin.admin",
-          "role": "admin"
-        },
-        {
-          "userId": 1,
-          "title": "",
-          "message": "asdf sdg а смиц ",
-          "currentHour": 6,
-          "email": "admin@admin.admin",
-          "role": "admin"
-        },
-        null,
-        {
-          "userId": 1,
-          "title": "",
-          "message": "af dsf adsf",
-          "currentHour": 8,
-          "email": "admin@admin.admin",
-          "role": "admin"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        {
-          "userId": 1,
-          "title": "",
-          "message": "п врав папр ",
-          "currentHour": 20,
-          "email": "admin@admin.admin",
-          "role": "admin"
-        },
-        null,
-        null,
-        null
-      ]
-    },
-    {
-      "id": 1612472400000,
-      "messages": [
-        null,
-        null,
-        null,
-        null,
-        {
-          "userId": 1,
-          "title": "",
-          "message": "adsf   xcvb rg ",
-          "currentHour": 4,
-          "email": "admin@admin.admin",
-          "role": "admin"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ]
-    },
-    {
-      "id": 1613509200000,
-      "messages": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        {
-          "userId": 1,
-          "title": "",
-          "message": "fasd sg",
-          "currentHour": 18,
-          "email": "admin@admin.admin",
-          "role": "admin"
-        },
-        null,
-        null,
-        null,
-        null,
-        null
-      ]
-    },
-    {
-      "id": 1613768400000,
-      "messages": [
-        null,
-        null,
-        null,
-        {
-          "userId": 1,
-          "title": "",
-          "message": "fd пыав sfd df ",
-          "currentHour": 3,
-          "email": "admin@admin.admin",
-          "role": "admin"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ]
-    },
-    {
-      "id": 1612990800000,
-      "messages": [
-        null,
-        null,
-        {
-          "userId": 1,
-          "title": "",
-          "message": "р ортивы ",
-          "currentHour": 2,
-          "email": "admin@admin.admin",
-          "role": "admin"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        {
-          "userId": 1,
-          "title": "",
-          "message": "asdfd пвак ",
-          "currentHour": 18,
-          "email": "admin@admin.admin",
-          "role": "admin"
-        },
-        null,
-        null,
-        null,
-        null,
-        null
-      ]
-    },
-    {
-      "id": 1613422800000,
-      "messages": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        {
-          "userId": 1,
-          "title": "",
-          "message": "sfg а ва  ",
-          "currentHour": 5,
-          "email": "admin@admin.admin",
-          "role": "admin"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ]
-    },
-    {
-      "id": 1613077200000,
-      "messages": [
-        null,
-        null,
-        null,
-        {
-          "userId": 1,
-          "title": "",
-          "message": "fasd hgd cvx arseg df ",
-          "currentHour": 3,
-          "email": "admin@admin.admin",
-          "role": "admin"
-        },
-        null,
-        null,
-        null,
-        null,
-        {
-          "userId": 1,
-          "title": "",
-          "message": "xcb v ncb v тав ",
-          "currentHour": 8,
-          "email": "admin@admin.admin",
-          "role": "admin"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ]
-    },
-    {
-      "id": 1612818000000,
-      "messages": [
-        null,
-        null,
-        {
-          "userId": 1,
-          "title": "",
-          "message": "патр ьобюлд.д мтип а",
-          "currentHour": 2,
-          "email": "admin@admin.admin",
-          "role": "admin"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ]
+      "userId": 2,
+      "title": "",
+      "message": "sg ввап  мс",
+      "currentHour": 21,
+      "email": "MyWorkEmail@yandex.ru",
+      "role": "user",
+      "dayId": 1614114000000,
+      "id": 7
     }
   ]
 }

@@ -2,7 +2,7 @@ import axios from "axios";
 import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
 
-import { UserMessageDataType, MessagesSpecificDateType } from "../../types/messagesDataTypes";
+import { UserMessageDataType, MessagesSpecificDateType, UserMessageDataType1 } from "../../types/messagesDataTypes";
 import IStore from "../interfaceStore";
 
 import * as constants from "./messagesConstants";
@@ -10,9 +10,9 @@ import { BACKEND_URL } from '../../data';
 
 export type SetAllMessagesActionType = {
   type: typeof constants.SET_ALL_MESSAGES;
-  payload: MessagesSpecificDateType[];
+  payload: UserMessageDataType1[];
 };
-export const setAllMessages = (messages: MessagesSpecificDateType[]): SetAllMessagesActionType => {
+export const setAllMessages = (messages: UserMessageDataType1[]): SetAllMessagesActionType => {
   return {
     type: constants.SET_ALL_MESSAGES,
     payload: messages,
@@ -22,7 +22,7 @@ export const setAllMessages = (messages: MessagesSpecificDateType[]): SetAllMess
 export const requestAllMessages = (): ThunkAction<void, IStore, unknown, Action<string>> => (dispatch) => {
   // axios.get(`${BACKEND_URL}/messages?_sort=id&_order=asc`) сортировка в обратном порядке
   axios
-    .get(`${BACKEND_URL}/messages?_sort=id&_order=desc`)
+    .get(`${BACKEND_URL}/messages?_sort=currentHour&_order=asc`)
     .then((res) => {
       const messages = res.data;
       dispatch(setAllMessages(messages));
