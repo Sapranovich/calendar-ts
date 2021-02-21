@@ -14,6 +14,7 @@ function Modal():JSX.Element {
 
   const handleCloseButtonClick = () => {
     dispatch(setCurrentHour(null));
+    
     dispatch(closeModal());
   };
 

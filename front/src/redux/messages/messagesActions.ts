@@ -2,11 +2,11 @@ import axios from "axios";
 import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
 
-import { UserMessageDataType, MessagesSpecificDateType, UserMessageDataType1 } from "../../types/messagesDataTypes";
+import { UserMessageDataType1 } from "../../types/messagesDataTypes";
 import IStore from "../interfaceStore";
 
 import * as constants from "./messagesConstants";
-import { BACKEND_URL, USER_ROLES } from '../../data';
+import { BACKEND_URL } from '../../data';
 
 export type SetAllMessagesActionType = {
   type: typeof constants.SET_ALL_MESSAGES;
@@ -19,48 +19,13 @@ export const setAllMessages = (messages: UserMessageDataType1[]): SetAllMessages
   };
 };
 
-export const requestAllMessages = (userId:number, role:string): ThunkAction<void, IStore, unknown, Action<string>> => (dispatch) => {
+export const requestAllMessages = (userId:number): ThunkAction<void, IStore, unknown, Action<string>> => (dispatch) => {
   // axios.get(`${BACKEND_URL}/messages?_sort=id&_order=asc`) сортировка в обратном порядке
-  if(USER_ROLES.ADMIN === role){
     axios
-    .get(`${BACKEND_URL}/messages?_sort=currentHour&_order=asc`)
+    .get(`${BACKEND_URL}/messages?userId=${userId}&_sort=dayId,currentHour&_order=asc`)
     .then((res) => {
       const messages = res.data;
       dispatch(setAllMessages(messages));
     });
-  }else{
-    axios
-    .get(`${BACKEND_URL}/messages?userId=${userId}&_sort=currentHour&_order=asc`)
-    .then((res) => {
-      const messages = res.data;
-      dispatch(setAllMessages(messages));
-    });
-  }
 };
 
-// export const addMessage = (userMessageData: UserMessageDataType, idSelectedDate: number): ThunkAction<void, IStore, unknown, Action<string>> => (dispatch) => {
-//   axios
-//     .get(`${BACKEND_URL}/messages/${idSelectedDate}`)
-//     .then((res) => {
-//       const data = res.data;
-//       const index = data.find((message: UserMessageDataType) => message.currentHour === userMessageData.currentHour).id;
-//       if (index) {
-//         data.messages[index] = userMessageData;
-//       } else {
-//         data.messages.push(userMessageData);
-//       }
-//       axios.post(`${BACKEND_URL}/messages`, data);
-//     })
-//     .catch(() => {
-//       const data = {
-//         id: idSelectedDate,
-//         messages: [userMessageData],
-//       };
-//       axios
-//         .post(`${BACKEND_URL}/messages`, data)
-//         .then((res) => console.log(res));
-//     })
-//     // .then(() => {
-//     //   dispatch(requestAllMessages());
-//     // });
-// };

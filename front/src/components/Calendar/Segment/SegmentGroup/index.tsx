@@ -9,7 +9,7 @@ const SegmentGroup = ({ group }: { group: GroupPropsType }): JSX.Element => {
     <div className="segment-group">
       <h3 className="segment-group__date">{getDateInFormat(group.groupId)}</h3>
       {group.messages.map((message, index) => message && (
-        <CardMessage key={index} message={message} groupId={group.groupId}/>
+        <CardMessage key={index} messageData={message} groupId={group.groupId}/>
       ))}
     </div>
   );

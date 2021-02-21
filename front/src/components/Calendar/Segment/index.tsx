@@ -7,12 +7,12 @@ import verificationFilterInput from "../../../services/verificationFilterInput";
 import getDateInFormat from "../../../services/getDateInFormat";
 import validationFilterForm, { ValidationFilterFormPropsType, ValidationFilterFormErrorsType } from "../../../services/validationFilterForm";
 import { UserMessageDataType1 } from '../../../types/messagesDataTypes';
-import { GroupPropsType } from '../../../types/segmentGroupTypes';
 import groupMessagesByDay from "../../../services/groupMessagesByDay";
 
-const Segment = (): JSX.Element => {
-  const { isNoMessages, messages } = useSelector((store: IStore) => store.messages);
-  const [messagesLocalStorage, setMessagesLocalStorage] = React.useState(messages);
+const Segment = ({ propsMessages }: {propsMessages?: UserMessageDataType1[]}): JSX.Element => {
+  const { messages } = useSelector((store: IStore) => store.messages);
+  
+  const [messagesLocalStorage, setMessagesLocalStorage] = React.useState<UserMessageDataType1[]>([]);
   const [errorsFilter, setErrorsFilter] = React.useState<ValidationFilterFormErrorsType>({});
 
   const [paramsFilter, setParamFilter] = React.useState<ValidationFilterFormPropsType>({
@@ -21,8 +21,13 @@ const Segment = (): JSX.Element => {
   });
 
   React.useEffect(() => {
-    setMessagesLocalStorage(messages);
-  }, [messages]);
+    if(propsMessages){
+      setMessagesLocalStorage(propsMessages)
+    }else{
+      setMessagesLocalStorage(messages)
+    }
+  }, [messages, propsMessages]);
+
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setParamFilter({
@@ -57,7 +62,7 @@ const Segment = (): JSX.Element => {
           warning: "Dates are swapped",
         });
       }
-      const filteredData = messages.filter((el: UserMessageDataType1) => el.id! <= indexStartParam && el.id! >= indexEndParam);
+      const filteredData = messagesLocalStorage.filter((el: UserMessageDataType1) => el.dayId! <= indexStartParam && el.dayId! >= indexEndParam);
       setMessagesLocalStorage(filteredData);
     } else {
       setErrorsFilter(errors);
@@ -65,11 +70,13 @@ const Segment = (): JSX.Element => {
   };
 
   const handleResetButtonClick = () => {
-    setMessagesLocalStorage(messages);
+    if(propsMessages){
+      setMessagesLocalStorage(propsMessages)
+    }else{
+      setMessagesLocalStorage(messages)
+    }
     setErrorsFilter({});
   }
-
-  console.log(groupMessagesByDay(messagesLocalStorage))
 
   return (
     <div className="segment">
@@ -77,10 +84,10 @@ const Segment = (): JSX.Element => {
         {/* возможно нужно вынести filter в отдельный компонент ??? */}
         <h2 className="segment__header-title">
           {messagesLocalStorage.length > 1 &&
-            `Notes from ${getDateInFormat(messagesLocalStorage[0].dayId)} to ${getDateInFormat(messagesLocalStorage[messagesLocalStorage.length - 1].dayId)}`}
+            `Notes from ${getDateInFormat(messagesLocalStorage[0].dayId!)} to ${getDateInFormat(messagesLocalStorage[messagesLocalStorage.length - 1].dayId!)}`}
 
           {messagesLocalStorage.length === 1 &&
-            `Notes for the ${getDateInFormat(messagesLocalStorage[0].dayId)}`}
+            `Notes for the ${getDateInFormat(messagesLocalStorage[0].dayId!)}`}
 
           {messagesLocalStorage.length === 0 && `No notes`}
         </h2>
@@ -126,10 +133,9 @@ const Segment = (): JSX.Element => {
           </div>
         </form>
       </div>
-      {!isNoMessages && messagesLocalStorage && (
+      {messagesLocalStorage && (
         <React.Fragment>
           {groupMessagesByDay(messagesLocalStorage).map((el: any, index: number) => <SegmentGroup key={index} group={el} /> )}
-          {groupMessagesByDay(messagesLocalStorage).map(el => console.log(el))}
         </React.Fragment>
       )}
     </div>

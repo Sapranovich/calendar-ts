@@ -23,7 +23,7 @@ const Day = (): JSX.Element => {
       <div className="day-list__group">
         {Array(24).fill(null).map((el, index: number) => {
           const message = messagesTargetDay.find(el=> el.currentHour === index);
-          if(message) return <CardMessage key={index} message={message} />
+          if(message) return <CardMessage key={index} messageData={message} />
           return <CardEmpty key={index} currentHour={index} />
         })}
       </div>

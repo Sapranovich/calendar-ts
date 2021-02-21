@@ -1,5 +1,5 @@
 export { setLoaded, setAuthUser } from "./auth/authActions";
-export { openModal, closeModal } from "./modal/modalActions";
+export { openModal, setModalData, closeModal } from "./modal/modalActions";
 export {
   setAllMessages,
   requestAllMessages,
