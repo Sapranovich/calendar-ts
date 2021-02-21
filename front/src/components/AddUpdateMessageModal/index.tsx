@@ -6,35 +6,18 @@ import IStore from "../../redux/interfaceStore";
 import isEmpty from "../../services/isEmpty";
 import getDateInFormat from "../../services/getDateInFormat";
 import getTimeInFormat from "../../services/getTimeInFormat";
-import { UserMessageDataType, MessagesSpecificDateType, UserMessageDataType1} from '../../types/messagesDataTypes';
+import { UserMessageDataType1 } from '../../types/messagesDataTypes';
 import { requestAllMessages, setCurrentHour, closeModal } from "../../redux/actions";
 
 import { BACKEND_URL, MODAL_TYPES } from '../../data';
+import useModalMessageObject from "../../hooks/useMessageObject";
 
 function AddUpdateMessageModal(): JSX.Element {
-  const { idSelectedDate, currentHour } = useSelector((store: IStore) => store.calendar);
-  const { email, id, role } = useSelector((store: IStore) => store.auth.user);
-  const { messages } = useSelector((store: IStore) => store.messages);
-  const { modalType } = useSelector((store: IStore) => store.modal);
   const dispatch = useDispatch();
-   
-  const [stateMessageModal, setStateMessageModal] = React.useState<UserMessageDataType1>({
-    userId: id!,
-    title: "",
-    message: "",
-    currentHour: currentHour!,
-    email: email!,
-    role: role!,
-    dayId: idSelectedDate!,
-  });
 
-  const targetMessage = messages.find((messagesDay: UserMessageDataType1) => messagesDay.dayId === idSelectedDate && messagesDay.currentHour === currentHour && messagesDay.userId === id);
-  
-  React.useEffect(() => {
-    if (targetMessage) {
-    setStateMessageModal(targetMessage);
-    }
-  }, [currentHour, targetMessage]);
+  const messageObject = useModalMessageObject();
+  const { modalType } = useSelector((store: IStore) => store.modal);
+  const [stateMessageModal, setStateMessageModal] = React.useState<UserMessageDataType1>(messageObject);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     setStateMessageModal({
@@ -45,11 +28,11 @@ function AddUpdateMessageModal(): JSX.Element {
 
   const handleAddUpdateButtonClick = () => {
     if (!isEmpty(stateMessageModal.message)) {
-      if (targetMessage) {
+      if (stateMessageModal.id) {
         axios
-          .put( `${BACKEND_URL}/messages/${targetMessage.id}`, stateMessageModal)
+          .put( `${BACKEND_URL}/messages/${stateMessageModal.id}`, stateMessageModal)
           .then(() => {
-            dispatch(requestAllMessages(id!, role!));
+            dispatch(requestAllMessages(stateMessageModal.userId!));
             dispatch(setCurrentHour(null));
             dispatch(closeModal());
           });
@@ -57,7 +40,7 @@ function AddUpdateMessageModal(): JSX.Element {
         axios
           .post(`${BACKEND_URL}/messages`, stateMessageModal)
           .then(() => {
-            dispatch(requestAllMessages(id!, role!));
+            dispatch(requestAllMessages(stateMessageModal.userId!));
             dispatch(setCurrentHour(null));
             dispatch(closeModal());
         });
@@ -70,13 +53,13 @@ function AddUpdateMessageModal(): JSX.Element {
       <div className="add-update-message-card__header">
 
         <h3 className="add-update-message-card__date">
-          Date: {getDateInFormat(idSelectedDate!)} 
+          Date: {getDateInFormat(stateMessageModal.dayId!)} 
           <br />
           <br /> 
-          Time: {getTimeInFormat(currentHour!)}
+          Time: {getTimeInFormat(stateMessageModal.currentHour!)}
         </h3>
 
-        <h3 className="add-update-message-card__author">{email}</h3>
+        <h3 className="add-update-message-card__author">{stateMessageModal.email}</h3>
 
       </div>
 

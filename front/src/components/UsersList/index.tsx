@@ -33,7 +33,7 @@ const UsersList = (): JSX.Element => {
       {isLoaded ? (
         <ul className="users-list__users border_bottom">
           {listUsers.map((user: ModelUserType, index: number) => (
-            <UserItem key={index} user={user} setAllUsers={setAllUsers} />
+            <UserItem key={index} user={user} />
           ))}
         </ul>
       ) : (

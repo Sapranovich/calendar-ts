@@ -14,7 +14,7 @@ const MainWrapper = ({ children }: { children:any }): JSX.Element => {
     const date = new Date();
     const currentDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
     dispatch(setAllStartDates(currentDate));
-    dispatch(requestAllMessages(id!, role!));
+    dispatch(requestAllMessages(id!));
     // временная фейк-запрос
     setTimeout(() => dispatch(setLoaded(true)), 1000);
     return () => dispatch(setLoaded(false));

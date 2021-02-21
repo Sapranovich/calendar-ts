@@ -49,7 +49,7 @@ const DayOfTheWeek = ({ history, dayData: { date, isCurrentMonth }}: DayOfTheWee
           localStorage.map((el, index: number) => (
             <li key={index} className="month-list__day-task">
               <h3 className="month-list__day-task-time">
-                {getTimeInFormat(el.currentHour)}
+                {getTimeInFormat(el.currentHour!)}
               </h3>
               <p className="month-list__day-task-text">{el.message}</p>
             </li>
