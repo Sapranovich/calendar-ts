@@ -5,7 +5,7 @@ import IStore from "../../redux/interfaceStore";
 import { Loading } from "../../pages";
 import { setAllStartDates, setLoaded, requestAllMessages } from "../../redux/actions";
 
-const MainWrapper = ({ children }: { children:any }): JSX.Element => {
+const MainWrapper = ({ children }: { children: React.ReactNode }): JSX.Element => {
   const { isLoaded } = useSelector((store: IStore) => store.auth);
   const { id, role } = useSelector((store: IStore) => store.auth.user);
   const dispatch = useDispatch();

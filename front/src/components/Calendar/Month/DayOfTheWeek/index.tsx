@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps, withRouter, useRouteMatch } from "react-router-dom";
 
 import IStore from "../../../../redux/interfaceStore";
-import { UserMessageDataType1 } from '../../../../types/messagesDataTypes';
+import { UserMessageDataType } from '../../../../types/messagesDataTypes';
 import isEmpty from '../../../../services/isEmpty';
 import { updateSelectedDate } from "../../../../redux/actions";
 import { DayDataType } from "../../../../redux/calendar/calendarReducer";
@@ -17,11 +17,11 @@ const DayOfTheWeek = ({ history, dayData: { date, isCurrentMonth }}: DayOfTheWee
   const { id } = useSelector((store: IStore) => store.auth.user);
   const dispatch = useDispatch();
   const { path } = useRouteMatch();
-  const [localStorage, setLocalStorage] = React.useState<UserMessageDataType1[]>([]);
+  const [localStorage, setLocalStorage] = React.useState<UserMessageDataType[]>([]);
 
   React.useEffect(() => {
     setLocalStorage([]);
-    const messagesDay = messages.filter((el: UserMessageDataType1) => el.dayId === date.getTime() && el.userId === id).slice(0,3);
+    const messagesDay = messages.filter((el: UserMessageDataType) => el.dayId === date.getTime() && el.userId === id).slice(0,3);
     if(!isEmpty(messagesDay)){
       setLocalStorage(messagesDay);
     } 

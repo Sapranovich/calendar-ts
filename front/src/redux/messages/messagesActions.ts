@@ -2,7 +2,7 @@ import axios from "axios";
 import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
 
-import { UserMessageDataType1 } from "../../types/messagesDataTypes";
+import { UserMessageDataType } from "../../types/messagesDataTypes";
 import IStore from "../interfaceStore";
 
 import * as constants from "./messagesConstants";
@@ -10,9 +10,9 @@ import { BACKEND_URL } from '../../data';
 
 export type SetAllMessagesActionType = {
   type: typeof constants.SET_ALL_MESSAGES;
-  payload: UserMessageDataType1[];
+  payload: UserMessageDataType[];
 };
-export const setAllMessages = (messages: UserMessageDataType1[]): SetAllMessagesActionType => {
+export const setAllMessages = (messages: UserMessageDataType[]): SetAllMessagesActionType => {
   return {
     type: constants.SET_ALL_MESSAGES,
     payload: messages,

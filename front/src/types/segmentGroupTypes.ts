@@ -1,11 +1,11 @@
-import { UserMessageDataType, UserMessageDataType1 } from './messagesDataTypes';
+import { UserMessageDataType } from './messagesDataTypes';
 
 export type GroupPropsType = {
   groupId: number;
-  messages: UserMessageDataType1[];
+  messages: UserMessageDataType[];
 }
 
 export type SegmentGroupPropsType = {
   groupId: number;
-  messages: UserMessageDataType1[];
+  messages: UserMessageDataType[];
 }

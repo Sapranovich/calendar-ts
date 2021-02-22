@@ -3,7 +3,6 @@ export { openModal, setModalData, closeModal } from "./modal/modalActions";
 export {
   setAllMessages,
   requestAllMessages,
-  // addMessage,
 } from "./messages/messagesActions";
 export {
   setAllStartDates,

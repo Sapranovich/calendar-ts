@@ -1,7 +1,7 @@
 import * as constants from "./modalConstants";
 import * as actions from './modalActions';
-import isEmpty from "../../services/isEmpty";
-import { UserMessageDataType1 } from '../../types/messagesDataTypes';
+
+import { UserMessageDataType } from '../../types/messagesDataTypes';
 
 type InferValueTypes<T> = T extends { [key: string]: infer U } ? U : never;
 type ActionTypes = ReturnType<InferValueTypes<typeof actions>>;
@@ -9,7 +9,7 @@ type ActionTypes = ReturnType<InferValueTypes<typeof actions>>;
 export type InitialStateType = {
   isOpenModal:boolean
   modalType:string | null
-  modalData: UserMessageDataType1
+  modalData: UserMessageDataType
 }
 
 const initialState = {

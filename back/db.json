@@ -9,6 +9,11 @@
       "email": "MyWorkEmail@yandex.ru",
       "password": "$2a$10$1J9juTVyGyOfnByV/k2epuI.A.P6U6gIXz10Ty2DDvEPCMJW.CX..",
       "id": 2
+    },
+    {
+      "email": "SapranovichAndrei@yandex.ru",
+      "password": "$2a$10$f9N/9qW3oA22TgJ.cJzw1.mC8/grMCPjxcHE8qFfQr7ujya4z9h/C",
+      "id": 3
     }
   ],
   "data-users": [
@@ -22,6 +27,12 @@
       "id": 2,
       "name": "fsdf",
       "email": "MyWorkEmail@yandex.ru",
+      "role": "admin"
+    },
+    {
+      "id": 3,
+      "name": "fsdf",
+      "email": "SapranovichAndrei@yandex.ru",
       "role": "user"
     }
   ],
@@ -195,6 +206,36 @@
       "role": "admin",
       "dayId": 1613682000000,
       "id": 17
+    },
+    {
+      "userId": 3,
+      "title": "",
+      "message": "fasd asd xc ",
+      "currentHour": 2,
+      "email": "SapranovichAndrei@yandex.ru",
+      "role": "user",
+      "dayId": 1612213200000,
+      "id": 18
+    },
+    {
+      "userId": 3,
+      "title": "",
+      "message": "fds fa с ч",
+      "currentHour": 7,
+      "email": "SapranovichAndrei@yandex.ru",
+      "role": "user",
+      "dayId": 1612213200000,
+      "id": 19
+    },
+    {
+      "userId": 1,
+      "title": "",
+      "message": "выва мвчмсс ми ",
+      "currentHour": 3,
+      "email": "admin@admin.admin",
+      "role": "admin",
+      "dayId": 1612558800000,
+      "id": 20
     }
   ]
 }

@@ -1,5 +1,6 @@
 import * as constants from "./modalConstants";
-import { UserMessageDataType1 } from '../../types/messagesDataTypes';
+import { UserMessageDataType } from '../../types/messagesDataTypes';
+
 type OpenModalActionType = {
   type: typeof constants.OPEN_MODAL
   payload: string
@@ -13,9 +14,9 @@ export const openModal = (modalType: string):OpenModalActionType => {
 
 type SetModalDataActionType = {
   type: typeof constants.SET_MODAL_DATA
-  payload: UserMessageDataType1
+  payload: UserMessageDataType
 };
-export const setModalData = (modalData: UserMessageDataType1): SetModalDataActionType => {
+export const setModalData = (modalData: UserMessageDataType): SetModalDataActionType => {
   return {
     type: constants.SET_MODAL_DATA,
     payload: modalData

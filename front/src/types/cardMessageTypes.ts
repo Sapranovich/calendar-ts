@@ -1,6 +1,6 @@
-import { UserMessageDataType, UserMessageDataType1 } from "./messagesDataTypes";
+import { UserMessageDataType } from "./messagesDataTypes";
 
 export type CardMessagePropsType = {
-  messageData: UserMessageDataType1;
+  messageData: UserMessageDataType;
   groupId?: number;
 };

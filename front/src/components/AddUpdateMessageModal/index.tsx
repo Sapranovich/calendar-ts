@@ -6,7 +6,7 @@ import IStore from "../../redux/interfaceStore";
 import isEmpty from "../../services/isEmpty";
 import getDateInFormat from "../../services/getDateInFormat";
 import getTimeInFormat from "../../services/getTimeInFormat";
-import { UserMessageDataType1 } from '../../types/messagesDataTypes';
+import { UserMessageDataType } from '../../types/messagesDataTypes';
 import { requestAllMessages, setCurrentHour, closeModal } from "../../redux/actions";
 
 import { BACKEND_URL, MODAL_TYPES } from '../../data';
@@ -17,7 +17,7 @@ function AddUpdateMessageModal(): JSX.Element {
 
   const messageObject = useModalMessageObject();
   const { modalType } = useSelector((store: IStore) => store.modal);
-  const [stateMessageModal, setStateMessageModal] = React.useState<UserMessageDataType1>(messageObject);
+  const [stateMessageModal, setStateMessageModal] = React.useState<UserMessageDataType>(messageObject);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     setStateMessageModal({

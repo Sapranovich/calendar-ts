@@ -1,10 +1,13 @@
 import React from "react";
 import { useRouteMatch } from "react-router-dom";
 import axios from "axios";
-import { BACKEND_URL, USER_ROLES } from "../../data";
-import { UserMessageDataType1 } from "../../types/messagesDataTypes";
-import { Loading } from "../../pages";
+
 import Segment from "../Calendar/Segment";
+import { Loading } from "../../pages";
+
+import { UserMessageDataType } from "../../types/messagesDataTypes";
+
+import { BACKEND_URL, USER_ROLES } from "../../data";
 
 type MatchType = {
   params: {
@@ -19,36 +22,22 @@ type SelectedUserDataState = {
   role?: string;
 };
 const SelectedUserData = (): JSX.Element => {
-  const {
-    params: { userId },
-  }: MatchType = useRouteMatch();
+  const { params: { userId } }: MatchType = useRouteMatch();
 
-  const [userData, setUserData] = React.useState<SelectedUserDataState | null>(
-    null
-  );
-  const [userMessages, setUserMessages] = React.useState<
-    UserMessageDataType1[] | null
-  >(null);
+  const [userData, setUserData] = React.useState<SelectedUserDataState | null>(null);
+  const [userMessages, setUserMessages] = React.useState<UserMessageDataType[] | null>(null);
 
-  const getAllDataUser = async () => {
-    try {
-      const user = await axios.get(`${BACKEND_URL}/data-users/${userId}`);
-      const messages = await axios.get(
-        `${BACKEND_URL}/messages?userId=${userId}&_sort=dayId,currentHour&_order=asc`
-      );
-      setUserData({
-        ...user.data,
-      });
-      setUserMessages(messages.data);
-    } catch (e) {
-    } finally {
-      console.log(userData);
-    }
-  };
+  const getAllDataUser = React.useCallback( async () => {
+    const user = await axios.get(`${BACKEND_URL}/data-users/${userId}`);
+    const messages = await axios.get(`${BACKEND_URL}/messages?userId=${userId}&_sort=dayId,currentHour&_order=asc`);
+
+    setUserData(user.data);
+    setUserMessages(messages.data);
+  },[userId]);
 
   React.useEffect(() => {
     getAllDataUser();
-  }, [userId]);
+  }, [getAllDataUser]);
 
   const handleUpdateRoleClick = (role: string) => {
     const updateDataUser = {
@@ -69,6 +58,7 @@ const SelectedUserData = (): JSX.Element => {
 
   return userMessages && userData ? (
     <React.Fragment>
+      {/* Возможно нужно вынести в отдельный компонент и переписать логику запросов */}
       <div className="user-update">
         <div className="user-update__group">
           <h2 className="user-update-role__email">{userData.email}</h2>

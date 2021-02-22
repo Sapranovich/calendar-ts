@@ -12,7 +12,6 @@ import { BACKEND_URL, MODAL_TYPES } from '../../../data';
 
 const CardMessage = ({ groupId, messageData}: CardMessagePropsType): JSX.Element => {
   const authId = useSelector((store: IStore) => store.auth.user.id);
-  const authRole = useSelector((store: IStore) => store.auth.user.role);
   const dispatch = useDispatch();
 
   const handleOpenModalClick = (modalType: string) => {

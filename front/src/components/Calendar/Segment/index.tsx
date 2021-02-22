@@ -6,13 +6,13 @@ import SegmentGroup from "./SegmentGroup";
 import verificationFilterInput from "../../../services/verificationFilterInput";
 import getDateInFormat from "../../../services/getDateInFormat";
 import validationFilterForm, { ValidationFilterFormPropsType, ValidationFilterFormErrorsType } from "../../../services/validationFilterForm";
-import { UserMessageDataType1 } from '../../../types/messagesDataTypes';
+import { UserMessageDataType } from '../../../types/messagesDataTypes';
 import groupMessagesByDay from "../../../services/groupMessagesByDay";
 
-const Segment = ({ propsMessages }: {propsMessages?: UserMessageDataType1[]}): JSX.Element => {
+const Segment = ({ propsMessages }: {propsMessages?: UserMessageDataType[]}): JSX.Element => {
   const { messages } = useSelector((store: IStore) => store.messages);
   
-  const [messagesLocalStorage, setMessagesLocalStorage] = React.useState<UserMessageDataType1[]>([]);
+  const [messagesLocalStorage, setMessagesLocalStorage] = React.useState<UserMessageDataType[]>([]);
   const [errorsFilter, setErrorsFilter] = React.useState<ValidationFilterFormErrorsType>({});
 
   const [paramsFilter, setParamFilter] = React.useState<ValidationFilterFormPropsType>({
@@ -62,7 +62,7 @@ const Segment = ({ propsMessages }: {propsMessages?: UserMessageDataType1[]}): J
           warning: "Dates are swapped",
         });
       }
-      const filteredData = messagesLocalStorage.filter((el: UserMessageDataType1) => el.dayId! <= indexStartParam && el.dayId! >= indexEndParam);
+      const filteredData = messagesLocalStorage.filter((el: UserMessageDataType) => el.dayId! <= indexStartParam && el.dayId! >= indexEndParam);
       setMessagesLocalStorage(filteredData);
     } else {
       setErrorsFilter(errors);
@@ -135,6 +135,7 @@ const Segment = ({ propsMessages }: {propsMessages?: UserMessageDataType1[]}): J
       </div>
       {messagesLocalStorage && (
         <React.Fragment>
+          {/*  Почему-то не получается вместо any подставить GroupPropsType, при этом в SegmentGroup props типизирован через  GroupPropsType*/}
           {groupMessagesByDay(messagesLocalStorage).map((el: any, index: number) => <SegmentGroup key={index} group={el} /> )}
         </React.Fragment>
       )}

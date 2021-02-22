@@ -13,7 +13,7 @@ const UsersList = (): JSX.Element => {
   const [isLoaded, setIsLoaded] = React.useState(false);
   const [listUsers, setListUsers] = React.useState<ModelUserType[]>([]);
 
-  const setAllUsers = React.useCallback(() => {
+  React.useEffect(() => {
     axios
       .get(`${BACKEND_URL}/data-users/?id_ne=${id}`)
       .then((res) => {
@@ -22,10 +22,6 @@ const UsersList = (): JSX.Element => {
         setIsLoaded(true);
       });
   }, [id]);
-
-  React.useEffect(() => {
-    setAllUsers();
-  }, [setAllUsers]);
 
   return (
     <div className="users-list">

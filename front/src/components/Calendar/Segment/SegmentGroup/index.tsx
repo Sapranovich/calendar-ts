@@ -5,6 +5,7 @@ import getDateInFormat from "../../../../services/getDateInFormat";
 import { GroupPropsType } from "../../../../types/segmentGroupTypes";
 
 const SegmentGroup = ({ group }: { group: GroupPropsType }): JSX.Element => {
+  
   return (
     <div className="segment-group">
       <h3 className="segment-group__date">{getDateInFormat(group.groupId)}</h3>

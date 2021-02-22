@@ -1,14 +1,14 @@
 import isEmpty from '../../services/isEmpty';
 
 import { SetAllMessagesActionType } from './messagesActions';
-import { MessagesSpecificDateType, UserMessageDataType1 } from '../../types/messagesDataTypes';
+import { UserMessageDataType } from '../../types/messagesDataTypes';
 
 import * as constants from './messagesConstants';
 
 export type InitialStateType = {
   isNoMessages: boolean
   isLoadedMessages: boolean
-  messages: UserMessageDataType1[]
+  messages: UserMessageDataType[]
 };
 const initialState = {
   isNoMessages: false,

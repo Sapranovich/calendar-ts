@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import IStore from "../../../redux/interfaceStore";
 import CardMessage from "../CardMessage";
-import { UserMessageDataType1 } from '../../../types/messagesDataTypes';
+import { UserMessageDataType } from '../../../types/messagesDataTypes';
 import getDateInFormat from '../../../services/getDateInFormat';
 import CardEmpty from "../CardEmpty";
 
@@ -11,7 +11,7 @@ const Day = (): JSX.Element => {
   const { idSelectedDate, selectedDate } = useSelector((store: IStore) => store.calendar);
   const { messages } = useSelector((store: IStore) => store.messages);
   const { id } = useSelector((store: IStore) => store.auth.user);
-  const messagesTargetDay = messages.filter((messagesDay: UserMessageDataType1) => messagesDay.dayId === idSelectedDate && messagesDay.userId === id);
+  const messagesTargetDay = messages.filter((messagesDay: UserMessageDataType) => messagesDay.dayId === idSelectedDate && messagesDay.userId === id);
 
   return (
     <div className="day-list">
