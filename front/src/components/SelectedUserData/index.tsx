@@ -6,7 +6,6 @@ import Segment from "../Calendar/Segment";
 import { Loading } from "../../pages";
 
 import { UserMessageDataType } from "../../types/messagesDataTypes";
-
 import { BACKEND_URL, USER_ROLES } from "../../data";
 
 type MatchType = {

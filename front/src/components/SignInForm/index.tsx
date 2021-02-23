@@ -34,8 +34,7 @@ const SignInForm = ({ handleToggleButtonClick, registerUserEmail }: SignInFormPr
   };
 
   React.useEffect(()=>{
-    if(registerUserEmail) setStateForm({...stateForm, email: registerUserEmail});
-    //  не могу понять, в чем тут ошибка 
+    if(registerUserEmail) setStateForm(state => {return {...state, email: registerUserEmail}});
   },[registerUserEmail])
 
   const handleSubmitForm = (event: React.FormEvent) => {

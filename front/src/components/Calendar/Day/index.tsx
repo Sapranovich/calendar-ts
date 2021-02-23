@@ -5,6 +5,7 @@ import IStore from "../../../redux/interfaceStore";
 import CardMessage from "../CardMessage";
 import { UserMessageDataType } from '../../../types/messagesDataTypes';
 import getDateInFormat from '../../../services/getDateInFormat';
+import { HOURS_DAY } from '../../../data';
 import CardEmpty from "../CardEmpty";
 
 const Day = (): JSX.Element => {
@@ -21,7 +22,7 @@ const Day = (): JSX.Element => {
         </div>
       </div>
       <div className="day-list__group">
-        {Array(24).fill(null).map((el, index: number) => {
+        {Array(HOURS_DAY).fill(null).map((el, index: number) => {
           const message = messagesTargetDay.find(el=> el.currentHour === index);
           if(message) return <CardMessage key={index} messageData={message} />
           return <CardEmpty key={index} currentHour={index} />
